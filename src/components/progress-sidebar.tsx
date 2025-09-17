@@ -77,35 +77,6 @@ export function ProgressSidebar() {
           </div>
         </div>
 
-        {/* Section Dots */}
-        <div className="flex flex-col space-y-3">
-          {sections.map((section, index) => (
-            <motion.button
-              key={section.id}
-              onClick={() => scrollToSection(section.id)}
-              className={`group relative flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
-                activeSection === section.id
-                  ? 'bg-primary-500 shadow-lg shadow-primary-500/50'
-                  : 'bg-white/10 dark:bg-gray-800/10 hover:bg-white/20 dark:hover:bg-gray-800/20 backdrop-blur-sm border border-white/20 dark:border-gray-700/20'
-              }`}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className={`text-lg transition-colors duration-300 ${
-                activeSection === section.id ? 'text-white' : 'text-gray-400 dark:text-gray-500'
-              }`}>
-                {section.icon}
-              </span>
-              
-              {/* Tooltip */}
-              <div className="absolute right-full mr-3 px-3 py-1 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                {section.label}
-                <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-900 dark:border-l-gray-100 border-t-4 border-t-transparent border-b-4 border-b-transparent" />
-              </div>
-            </motion.button>
-          ))}
-        </div>
-
         {/* Scroll Progress Percentage */}
         <motion.div
           className="text-xs text-gray-400 dark:text-gray-500 font-medium"

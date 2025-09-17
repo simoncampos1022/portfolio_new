@@ -2,17 +2,21 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 interface SectionDividerProps {
-  text: string
-  icon?: string
+  keywords: string[]
   gradient?: string
 }
 
-export function SectionDivider({ text, icon, gradient = 'from-primary-500 to-secondary-500' }: SectionDividerProps) {
+export function SectionDivider({ keywords, gradient = 'from-primary-500 to-secondary-500' }: SectionDividerProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const [hoveredKeyword, setHoveredKeyword] = useState<string | null>(null)
+  const [isPaused, setIsPaused] = useState(false)
+
+  // Create flowing text with separators
+  const flowingText = keywords.join(' • ')
 
   return (
     <motion.div
@@ -20,56 +24,86 @@ export function SectionDivider({ text, icon, gradient = 'from-primary-500 to-sec
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.8 }}
-      className="relative py-16 overflow-hidden"
+      className="relative py-12 overflow-hidden bg-gradient-to-r from-transparent via-white/5 to-transparent dark:via-gray-800/5"
     >
-      {/* Background gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-10`} />
-      
-      {/* Animated background pattern */}
-      <div className="absolute inset-0">
-        <motion.div
-          animate={{ 
-            backgroundPosition: ['0% 0%', '100% 100%'],
-          }}
-          transition={{ 
-            duration: 20, 
-            repeat: Infinity, 
-            repeatType: 'reverse',
-            ease: 'linear'
-          }}
-          className="w-full h-full opacity-5"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '60px 60px',
-            backgroundPosition: '0% 0%'
-          }}
-        />
-      </div>
-
-      <div className="container-custom relative z-10">
-        <div className="text-center">
+      <div className="relative">
+        {/* Flowing text container */}
+        <div className="whitespace-nowrap">
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center space-x-4 px-8 py-4 rounded-full bg-white/10 dark:bg-gray-900/10 backdrop-blur-md border border-white/20 dark:border-gray-700/20"
+            className={`text-lg md:text-xl font-medium bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}
+            animate={isPaused ? {} : { x: ['0%', '-100%'] }}
+            transition={{
+              duration: 40,
+              repeat: Infinity,
+              ease: 'linear',
+              repeatType: 'loop'
+            }}
+            style={{ display: 'inline-block' }}
           >
-            {icon && (
-              <span className="text-2xl">{icon}</span>
-            )}
-            <h2 className={`text-2xl md:text-3xl font-bold bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}>
-              {text}
-            </h2>
-            {icon && (
-              <span className="text-2xl">{icon}</span>
-            )}
+            {/* Duplicate text for seamless loop */}
+            <span className="inline-block mr-8">
+              {keywords.map((keyword, index) => (
+                <span
+                  key={`first-${index}`}
+                  className={`inline-block mx-2 cursor-pointer transition-all duration-300 ${
+                    hoveredKeyword === keyword ? 'scale-125 text-white drop-shadow-lg' : ''
+                  }`}
+                  onMouseEnter={() => {
+                    setHoveredKeyword(keyword)
+                    setIsPaused(true)
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredKeyword(null)
+                    setIsPaused(false)
+                  }}
+                >
+                  {keyword}
+                </span>
+              ))}
+            </span>
+            <span className="inline-block mr-8">
+              {keywords.map((keyword, index) => (
+                <span
+                  key={`second-${index}`}
+                  className={`inline-block mx-2 cursor-pointer transition-all duration-300 ${
+                    hoveredKeyword === keyword ? 'scale-125 text-white drop-shadow-lg' : ''
+                  }`}
+                  onMouseEnter={() => {
+                    setHoveredKeyword(keyword)
+                    setIsPaused(true)
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredKeyword(null)
+                    setIsPaused(false)
+                  }}
+                >
+                  {keyword}
+                </span>
+              ))}
+            </span>
           </motion.div>
         </div>
+
+        {/* Gradient overlays for fade effect */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white/10 dark:from-gray-900/10 to-transparent pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white/10 dark:from-gray-900/10 to-transparent pointer-events-none" />
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-1/2 left-0 w-32 h-px bg-gradient-to-r from-transparent to-white/20 dark:to-gray-600/20" />
-      <div className="absolute top-1/2 right-0 w-32 h-px bg-gradient-to-l from-transparent to-white/20 dark:to-gray-600/20" />
+      {/* Hovered keyword highlight */}
+      {hoveredKeyword && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+        >
+          <div className="px-6 py-3 rounded-full bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-white/30 dark:border-gray-700/30 shadow-lg">
+            <span className="text-lg font-bold text-white drop-shadow-lg">
+              {hoveredKeyword}
+            </span>
+          </div>
+        </motion.div>
+      )}
     </motion.div>
   )
 }

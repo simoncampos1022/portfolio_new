@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { Mail, Phone, MapPin, Github, Linkedin, MessageCircle, Send, CheckCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle } from 'lucide-react'
 
 const contactInfo = [
   {
@@ -47,7 +47,7 @@ const socialLinks = [
   {
     name: 'Telegram',
     href: 'https://t.me/simoncampos1022',
-    icon: MessageCircle,
+    icon: Send,
     color: 'from-blue-500 to-cyan-500',
     description: 'Chat with me directly'
   }

@@ -36,7 +36,7 @@ export function Hero() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <span className="inline-block px-4 py-4 rounded-full night-sky-card text-primary-700 dark:text-primary-300 text-lg font-medium mb-4">
+              <span className="inline-block px-4 py-4 rounded-full night-sky-card text-primary-700 dark:text-primary-300 text-lg font-display font-medium mb-4">
                 👨‍🎓 Hello, I'm Simon
               </span>
             </motion.div>
@@ -46,7 +46,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6"
             >
               <span className="block text-white mb-2 drop-shadow-lg">
                 AI Backend Developer
@@ -121,7 +121,7 @@ export function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-400 via-primary-500 to-primary-600 rounded-full opacity-20 blur-3xl" />
                 
                 {/* Photo */}
-                <div className="relative w-[300px] h-[400px] rounded-full overflow-hidden border-4 border-white/20 dark:border-gray-700/20 shadow-2xl">
+                <div className="relative w-[320px] h-[450px] rounded-full overflow-hidden border-4 border-white/20 dark:border-gray-700/20 shadow-2xl">
                   <Image
                     src="/photo/photo (1).png"
                     alt="Simon Campos - AI Backend Developer"

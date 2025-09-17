@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, MessageCircle, Heart } from 'lucide-react'
+import { Github, Linkedin, Mail, Send, Heart } from 'lucide-react'
 
 const socialLinks = [
   {
@@ -23,7 +23,7 @@ const socialLinks = [
   {
     name: 'Telegram',
     href: 'https://t.me/simoncampos1022',
-    icon: MessageCircle,
+    icon: Send,
   },
 ]
 

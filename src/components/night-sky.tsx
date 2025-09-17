@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
+import { useTheme } from 'next-themes'
 
 interface Star {
   id: number
@@ -12,22 +13,25 @@ interface Star {
   twinklePhase: number
 }
 
-interface FallingStar {
+interface Cloud {
   id: number
   x: number
   y: number
-  angle: number
+  size: number
   speed: number
   opacity: number
-  trail: { x: number; y: number; opacity: number }[]
 }
+
+// Falling stars removed as requested
 
 export function NightSky() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef<number>()
   const lastTimeRef = useRef<number>(0)
   const [stars, setStars] = useState<Star[]>([])
+  const [clouds, setClouds] = useState<Cloud[]>([])
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const { theme } = useTheme()
 
   // Memoize star generation for better performance
   const generateStars = useCallback(() => {
@@ -48,12 +52,31 @@ export function NightSky() {
     return newStars
   }, [dimensions])
 
-  // Initialize stars
+  // Memoize cloud generation for day sky
+  const generateClouds = useCallback(() => {
+    const newClouds: Cloud[] = []
+    const cloudCount = Math.min(Math.floor((dimensions.width * dimensions.height) / 15000), 8)
+    
+    for (let i = 0; i < cloudCount; i++) {
+      newClouds.push({
+        id: i,
+        x: Math.random() * dimensions.width,
+        y: Math.random() * (dimensions.height * 0.6), // Keep clouds in upper portion
+        size: Math.random() * 80 + 40,
+        speed: Math.random() * 0.5 + 0.2,
+        opacity: Math.random() * 0.6 + 0.3,
+      })
+    }
+    return newClouds
+  }, [dimensions])
+
+  // Initialize stars and clouds
   useEffect(() => {
     if (dimensions.width > 0 && dimensions.height > 0) {
       setStars(generateStars())
+      setClouds(generateClouds())
     }
-  }, [dimensions, generateStars])
+  }, [dimensions, generateStars, generateClouds])
 
   // Handle window resize with debouncing
   useEffect(() => {
@@ -98,14 +121,24 @@ export function NightSky() {
     canvas.width = dimensions.width
     canvas.height = dimensions.height
 
-    // Pre-create gradient
+    // Pre-create gradients based on theme
+    const isDark = theme === 'dark'
     const gradient = ctx.createLinearGradient(0, 0, 0, dimensions.height)
-    gradient.addColorStop(0, '#0a0a2e')
-    gradient.addColorStop(0.5, '#16213e')
-    gradient.addColorStop(1, '#0f3460')
+    
+    if (isDark) {
+      // Night sky gradient
+      gradient.addColorStop(0, '#0a0a2e')
+      gradient.addColorStop(0.5, '#16213e')
+      gradient.addColorStop(1, '#0f3460')
+    } else {
+      // Day sky gradient
+      gradient.addColorStop(0, '#87CEEB')
+      gradient.addColorStop(0.3, '#98D8E8')
+      gradient.addColorStop(0.7, '#B0E0E6')
+      gradient.addColorStop(1, '#E0F6FF')
+    }
 
-    // Local falling stars array for direct manipulation
-    let localFallingStars: FallingStar[] = []
+    // Falling stars removed
 
     const animate = (currentTime: number) => {
       // Throttle animation to 60fps
@@ -115,121 +148,92 @@ export function NightSky() {
       }
       lastTimeRef.current = currentTime
 
-      // Clear canvas with dark blue gradient
+      // Clear canvas with appropriate gradient
       ctx.fillStyle = gradient
       ctx.fillRect(0, 0, dimensions.width, dimensions.height)
 
-      // Draw twinkling stars
-      stars.forEach(star => {
-        const twinkle = Math.sin(star.twinklePhase) * 0.5 + 0.5
-        const currentOpacity = star.opacity * (0.3 + twinkle * 0.7)
+      if (isDark) {
+        // Draw twinkling stars for night mode
+        stars.forEach(star => {
+          const twinkle = Math.sin(star.twinklePhase) * 0.5 + 0.5
+          const currentOpacity = star.opacity * (0.3 + twinkle * 0.7)
+          
+          ctx.save()
+          ctx.globalAlpha = currentOpacity
+          ctx.fillStyle = '#ffffff'
+          ctx.shadowColor = '#ffffff'
+          ctx.shadowBlur = star.size * 3
+          
+          ctx.beginPath()
+          ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
+          ctx.fill()
+          
+          ctx.restore()
+          
+          star.twinklePhase += star.twinkleSpeed
+        })
+      } else {
+        // Draw sun for day mode
+        const sunX = dimensions.width * 0.8
+        const sunY = dimensions.height * 0.2
+        const sunRadius = 60
+        
+        // Sun glow
+        const sunGradient = ctx.createRadialGradient(sunX, sunY, 0, sunX, sunY, sunRadius * 2)
+        sunGradient.addColorStop(0, 'rgba(255, 255, 0, 0.8)')
+        sunGradient.addColorStop(0.5, 'rgba(255, 255, 0, 0.4)')
+        sunGradient.addColorStop(1, 'rgba(255, 255, 0, 0)')
         
         ctx.save()
-        ctx.globalAlpha = currentOpacity
-        ctx.fillStyle = '#ffffff'
-        ctx.shadowColor = '#ffffff'
-        ctx.shadowBlur = star.size * 3
-        
+        ctx.fillStyle = sunGradient
         ctx.beginPath()
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
+        ctx.arc(sunX, sunY, sunRadius * 2, 0, Math.PI * 2)
         ctx.fill()
-        
         ctx.restore()
         
-        star.twinklePhase += star.twinkleSpeed
-      })
-
-      // Update and draw falling stars directly
-      localFallingStars = localFallingStars.filter(fallingStar => {
-        // Update position
-        fallingStar.x += Math.cos(fallingStar.angle) * fallingStar.speed
-        fallingStar.y += Math.sin(fallingStar.angle) * fallingStar.speed
-        
-        // Add to trail
-        fallingStar.trail.push({
-          x: fallingStar.x,
-          y: fallingStar.y,
-          opacity: fallingStar.opacity,
-        })
-        
-        // Limit trail length
-        if (fallingStar.trail.length > 20) {
-          fallingStar.trail.shift()
-        }
-        
-        // Fade out more slowly for longer visibility
-        fallingStar.opacity -= 0.008
-        
-        // Draw trail
+        // Sun
         ctx.save()
-        ctx.strokeStyle = '#ffffff'
-        ctx.lineWidth = 4
-        ctx.lineCap = 'round'
-        
-        for (let i = 0; i < fallingStar.trail.length - 1; i++) {
-          const point = fallingStar.trail[i]
-          const nextPoint = fallingStar.trail[i + 1]
-          const trailOpacity = (point.opacity * (i / fallingStar.trail.length)) * 0.95
-          
-          ctx.globalAlpha = trailOpacity
-          ctx.beginPath()
-          ctx.moveTo(point.x, point.y)
-          ctx.lineTo(nextPoint.x, nextPoint.y)
-          ctx.stroke()
-        }
-        
-        // Draw main star
-        ctx.globalAlpha = fallingStar.opacity
-        ctx.fillStyle = '#ffffff'
-        ctx.shadowColor = '#ffffff'
+        ctx.fillStyle = '#FFD700'
+        ctx.shadowColor = '#FFD700'
         ctx.shadowBlur = 20
         ctx.beginPath()
-        ctx.arc(fallingStar.x, fallingStar.y, 5, 0, Math.PI * 2)
+        ctx.arc(sunX, sunY, sunRadius, 0, Math.PI * 2)
         ctx.fill()
-        
         ctx.restore()
         
-        // Remove if faded out or off screen (increased boundaries for longer travel)
-        return fallingStar.opacity > 0 && 
-               fallingStar.y < dimensions.height + 200 && 
-               fallingStar.x < dimensions.width + 200
-      })
+        // Draw moving clouds
+        clouds.forEach(cloud => {
+          ctx.save()
+          ctx.globalAlpha = cloud.opacity
+          ctx.fillStyle = '#FFFFFF'
+          
+          // Draw cloud as multiple circles
+          const cloudX = cloud.x
+          const cloudY = cloud.y
+          const cloudSize = cloud.size
+          
+          ctx.beginPath()
+          ctx.arc(cloudX, cloudY, cloudSize * 0.6, 0, Math.PI * 2)
+          ctx.arc(cloudX + cloudSize * 0.3, cloudY, cloudSize * 0.4, 0, Math.PI * 2)
+          ctx.arc(cloudX - cloudSize * 0.3, cloudY, cloudSize * 0.4, 0, Math.PI * 2)
+          ctx.arc(cloudX + cloudSize * 0.1, cloudY - cloudSize * 0.2, cloudSize * 0.3, 0, Math.PI * 2)
+          ctx.arc(cloudX - cloudSize * 0.1, cloudY - cloudSize * 0.2, cloudSize * 0.3, 0, Math.PI * 2)
+          ctx.fill()
+          
+          ctx.restore()
+          
+          // Move cloud
+          cloud.x += cloud.speed
+          if (cloud.x > dimensions.width + cloudSize) {
+            cloud.x = -cloudSize
+          }
+        })
+      }
+
+      // Falling stars removed - only twinkling stars remain
 
       animationRef.current = requestAnimationFrame(animate)
     }
-
-    // Create falling stars periodically
-    const createFallingStar = () => {
-      // Calculate target position (right-bottom of hero section - approximately 80% width, 40% height)
-      const targetX = dimensions.width * 0.8
-      const targetY = dimensions.height * 0.4
-      
-      // Start from random position on top-left
-      const startX = Math.random() * dimensions.width * 0.3
-      const startY = -50
-      
-      // Calculate angle to target
-      const deltaX = targetX - startX
-      const deltaY = targetY - startY
-      const angle = Math.atan2(deltaY, deltaX)
-      
-      const newFallingStar: FallingStar = {
-        id: Date.now() + Math.random(),
-        x: startX,
-        y: startY,
-        angle: angle,
-        speed: Math.random() * 6 + 4,
-        opacity: 1,
-        trail: [],
-      }
-      localFallingStars.push(newFallingStar)
-    }
-
-    const fallingStarInterval = setInterval(() => {
-      if (Math.random() < 0.5) { // 50% chance for more visible effects
-        createFallingStar()
-      }
-    }, 1500) // Every 1.5 seconds
 
     animationRef.current = requestAnimationFrame(animate)
 
@@ -237,9 +241,8 @@ export function NightSky() {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
-      clearInterval(fallingStarInterval)
     }
-  }, [stars, dimensions])
+  }, [stars, clouds, dimensions, theme])
 
   return (
     <div className="fixed inset-0 w-full h-full -z-10">

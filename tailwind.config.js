@@ -37,6 +37,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Poppins', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
+        mono: ['Source Code Pro', 'monospace'],
+        heading: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
