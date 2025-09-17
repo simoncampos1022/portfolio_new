@@ -64,8 +64,8 @@ export function Hero() {
             transition={{ duration: 0.6 }}
             className="mb-6"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
-              👋 Hello, I'm Simon
+            <span className="inline-block px-4 py-4 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-lg font-medium mb-4">
+              👨‍🎓 Hello, I'm Simon
             </span>
           </motion.div>
 
