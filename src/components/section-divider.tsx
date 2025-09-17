@@ -33,7 +33,7 @@ export function SectionDivider({ keywords, gradient = 'from-primary-500 to-secon
             className={`text-lg md:text-xl font-medium bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}
             animate={isPaused ? {} : { x: ['0%', '-100%'] }}
             transition={{
-              duration: 40,
+              duration: 80,
               repeat: Infinity,
               ease: 'linear',
               repeatType: 'loop'
@@ -88,22 +88,6 @@ export function SectionDivider({ keywords, gradient = 'from-primary-500 to-secon
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white/10 dark:from-gray-900/10 to-transparent pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white/10 dark:from-gray-900/10 to-transparent pointer-events-none" />
       </div>
-
-      {/* Hovered keyword highlight */}
-      {hoveredKeyword && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
-        >
-          <div className="px-6 py-3 rounded-full bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-white/30 dark:border-gray-700/30 shadow-lg">
-            <span className="text-lg font-bold text-white drop-shadow-lg">
-              {hoveredKeyword}
-            </span>
-          </div>
-        </motion.div>
-      )}
     </motion.div>
   )
 }
