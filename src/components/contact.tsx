@@ -90,7 +90,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-900 dark:to-primary-900/20">
+    <section id="contact" className="section-padding night-sky-content">
       <div className="container-custom">
         <motion.div
           ref={ref}

@@ -274,7 +274,7 @@ export function Projects() {
   }
 
   return (
-    <section id="projects" className="section-padding bg-white dark:bg-gray-900">
+    <section id="projects" className="section-padding night-sky-content">
       <div className="container-custom">
         <motion.div
           ref={ref}

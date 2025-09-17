@@ -4,6 +4,8 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
+import { NightSky } from '@/components/night-sky'
+import { ProgressSidebar } from '@/components/progress-sidebar'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -64,7 +66,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="min-h-screen flex flex-col">
+          <NightSky />
+          <ProgressSidebar />
+          <div className="min-h-screen flex flex-col relative z-10">
             <Navbar />
             <main className="flex-1">
               {children}

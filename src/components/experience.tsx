@@ -99,7 +99,7 @@ export function Experience() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="experience" className="section-padding bg-gray-50 dark:bg-gray-800">
+    <section id="experience" className="section-padding night-sky-content">
       <div className="container-custom">
         <motion.div
           ref={ref}
