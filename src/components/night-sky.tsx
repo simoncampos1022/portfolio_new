@@ -173,51 +173,124 @@ export function NightSky() {
           star.twinklePhase += star.twinkleSpeed
         })
       } else {
-        // Draw sun for day mode
-        const sunX = dimensions.width * 0.8
-        const sunY = dimensions.height * 0.2
-        const sunRadius = 60
+        // Draw realistic sun for day mode
+        const sunX = dimensions.width * 0.75
+        const sunY = dimensions.height * 0.25
+        const sunRadius = 45
         
-        // Sun glow
-        const sunGradient = ctx.createRadialGradient(sunX, sunY, 0, sunX, sunY, sunRadius * 2)
-        sunGradient.addColorStop(0, 'rgba(255, 255, 0, 0.8)')
-        sunGradient.addColorStop(0.5, 'rgba(255, 255, 0, 0.4)')
-        sunGradient.addColorStop(1, 'rgba(255, 255, 0, 0)')
+        // Realistic sun glow with multiple layers
+        const sunGradient1 = ctx.createRadialGradient(sunX, sunY, 0, sunX, sunY, sunRadius * 3)
+        sunGradient1.addColorStop(0, 'rgba(255, 248, 220, 0.3)')
+        sunGradient1.addColorStop(0.3, 'rgba(255, 248, 220, 0.2)')
+        sunGradient1.addColorStop(0.7, 'rgba(255, 248, 220, 0.1)')
+        sunGradient1.addColorStop(1, 'rgba(255, 248, 220, 0)')
         
         ctx.save()
-        ctx.fillStyle = sunGradient
+        ctx.fillStyle = sunGradient1
         ctx.beginPath()
-        ctx.arc(sunX, sunY, sunRadius * 2, 0, Math.PI * 2)
+        ctx.arc(sunX, sunY, sunRadius * 3, 0, Math.PI * 2)
         ctx.fill()
         ctx.restore()
         
-        // Sun
+        // Inner sun glow
+        const sunGradient2 = ctx.createRadialGradient(sunX, sunY, 0, sunX, sunY, sunRadius * 1.5)
+        sunGradient2.addColorStop(0, 'rgba(255, 215, 0, 0.4)')
+        sunGradient2.addColorStop(0.5, 'rgba(255, 215, 0, 0.2)')
+        sunGradient2.addColorStop(1, 'rgba(255, 215, 0, 0)')
+        
         ctx.save()
-        ctx.fillStyle = '#FFD700'
-        ctx.shadowColor = '#FFD700'
-        ctx.shadowBlur = 20
+        ctx.fillStyle = sunGradient2
+        ctx.beginPath()
+        ctx.arc(sunX, sunY, sunRadius * 1.5, 0, Math.PI * 2)
+        ctx.fill()
+        ctx.restore()
+        
+        // Realistic sun with gradient
+        const sunGradient3 = ctx.createRadialGradient(sunX - sunRadius * 0.3, sunY - sunRadius * 0.3, 0, sunX, sunY, sunRadius)
+        sunGradient3.addColorStop(0, '#FFF8DC')
+        sunGradient3.addColorStop(0.3, '#FFD700')
+        sunGradient3.addColorStop(0.7, '#FFA500')
+        sunGradient3.addColorStop(1, '#FF8C00')
+        
+        ctx.save()
+        ctx.fillStyle = sunGradient3
         ctx.beginPath()
         ctx.arc(sunX, sunY, sunRadius, 0, Math.PI * 2)
         ctx.fill()
         ctx.restore()
         
-        // Draw moving clouds
+        // Draw realistic clouds
         clouds.forEach(cloud => {
           ctx.save()
           ctx.globalAlpha = cloud.opacity
-          ctx.fillStyle = '#FFFFFF'
           
-          // Draw cloud as multiple circles
+          // Create realistic cloud shape using bezier curves
           const cloudX = cloud.x
           const cloudY = cloud.y
           const cloudSize = cloud.size
           
+          // Cloud shadow (darker bottom)
+          const cloudShadowGradient = ctx.createLinearGradient(cloudX, cloudY, cloudX, cloudY + cloudSize * 0.3)
+          cloudShadowGradient.addColorStop(0, 'rgba(200, 200, 200, 0.8)')
+          cloudShadowGradient.addColorStop(1, 'rgba(180, 180, 180, 0.9)')
+          
+          ctx.fillStyle = cloudShadowGradient
           ctx.beginPath()
-          ctx.arc(cloudX, cloudY, cloudSize * 0.6, 0, Math.PI * 2)
-          ctx.arc(cloudX + cloudSize * 0.3, cloudY, cloudSize * 0.4, 0, Math.PI * 2)
-          ctx.arc(cloudX - cloudSize * 0.3, cloudY, cloudSize * 0.4, 0, Math.PI * 2)
-          ctx.arc(cloudX + cloudSize * 0.1, cloudY - cloudSize * 0.2, cloudSize * 0.3, 0, Math.PI * 2)
-          ctx.arc(cloudX - cloudSize * 0.1, cloudY - cloudSize * 0.2, cloudSize * 0.3, 0, Math.PI * 2)
+          
+          // Main cloud body with realistic curves
+          const centerX = cloudX
+          const centerY = cloudY
+          const width = cloudSize
+          const height = cloudSize * 0.6
+          
+          ctx.moveTo(centerX - width * 0.4, centerY)
+          ctx.bezierCurveTo(
+            centerX - width * 0.5, centerY - height * 0.3,
+            centerX - width * 0.3, centerY - height * 0.5,
+            centerX, centerY - height * 0.4
+          )
+          ctx.bezierCurveTo(
+            centerX + width * 0.2, centerY - height * 0.6,
+            centerX + width * 0.4, centerY - height * 0.4,
+            centerX + width * 0.5, centerY - height * 0.2
+          )
+          ctx.bezierCurveTo(
+            centerX + width * 0.6, centerY,
+            centerX + width * 0.4, centerY + height * 0.2,
+            centerX, centerY + height * 0.1
+          )
+          ctx.bezierCurveTo(
+            centerX - width * 0.2, centerY + height * 0.3,
+            centerX - width * 0.4, centerY + height * 0.1,
+            centerX - width * 0.4, centerY
+          )
+          ctx.closePath()
+          ctx.fill()
+          
+          // Cloud highlight (lighter top)
+          const cloudHighlightGradient = ctx.createLinearGradient(cloudX, cloudY - cloudSize * 0.3, cloudX, cloudY)
+          cloudHighlightGradient.addColorStop(0, 'rgba(255, 255, 255, 0.9)')
+          cloudHighlightGradient.addColorStop(1, 'rgba(240, 240, 240, 0.7)')
+          
+          ctx.fillStyle = cloudHighlightGradient
+          ctx.beginPath()
+          ctx.moveTo(centerX - width * 0.3, centerY - height * 0.2)
+          ctx.bezierCurveTo(
+            centerX - width * 0.2, centerY - height * 0.4,
+            centerX, centerY - height * 0.3,
+            centerX + width * 0.2, centerY - height * 0.4
+          )
+          ctx.bezierCurveTo(
+            centerX + width * 0.3, centerY - height * 0.2,
+            centerX + width * 0.2, centerY,
+            centerX, centerY - height * 0.1
+          )
+          ctx.bezierCurveTo(
+            centerX - width * 0.2, centerY,
+            centerX - width * 0.3, centerY - height * 0.1,
+            centerX - width * 0.3, centerY - height * 0.2
+          )
+          ctx.closePath()
           ctx.fill()
           
           ctx.restore()
