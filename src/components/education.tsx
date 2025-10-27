@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { GraduationCap, Calendar, MapPin, Code, Smartphone, Search, Award, BookOpen } from 'lucide-react'
+import Image from 'next/image'
 
 const education = {
   degree: "Bachelor's Degree in Computer Science",
@@ -141,12 +142,18 @@ export function Education() {
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                   Education Details
                 </h3>
+                <div className="rounded-xl overflow-hidden bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md mb-4">
+                  <Image
+                    src="/education/education_logo1.png"
+                    alt="University of Rizal System (URS) website"
+                    width={1200}
+                    height={400}
+                    className="w-full h-auto"
+                  />
+                </div>
                 
                 <div className="bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-xl p-6 border border-primary-100 dark:border-primary-800/30">
                   <div className="flex items-start space-x-4">
-                    <div className="p-3 rounded-lg bg-primary-100 dark:bg-primary-900/30">
-                      <GraduationCap className="h-6 w-6 text-primary-600 dark:text-primary-400" />
-                    </div>
                     <div className="flex-1">
                       <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                         {education.degree}
@@ -210,6 +217,7 @@ export function Education() {
                     </motion.div>
                   ))}
                 </div>
+                {/* Removed bottom banner; logo moved to top of degree card */}
               </div>
             </motion.div>
 
