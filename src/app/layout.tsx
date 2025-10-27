@@ -80,7 +80,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${poppins.variable} ${playfair.variable} ${sourceCodePro.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
