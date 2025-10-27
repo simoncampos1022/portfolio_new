@@ -3,8 +3,16 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Calendar, MapPin, Building, ExternalLink } from 'lucide-react'
+import { Calendar, MapPin, Building} from 'lucide-react'
+import { SiUpwork } from '@icons-pack/react-simple-icons';
 import { formatDateRange } from '@/lib/utils'
+import Image from 'next/image'
+
+const companyLogos: Record<string, string> = {
+  'truelancer': '/experience/truelancer.ico',
+  'plentina vn': '/experience/plentina_vn.ico',
+  'converge ict': '/experience/converge_ict.ico',
+}
 
 const experiences = [
   {
@@ -164,9 +172,25 @@ export function Experience() {
                     >
                       {/* Company Logo */}
                       <div className="flex items-center space-x-4 mb-4">
-                        <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${experience.color} flex items-center justify-center text-white font-bold text-lg`}>
-                          {experience.logo}
-                        </div>
+                        {experience.company.toLowerCase() === 'upwork' ? (
+                          <div className="w-12 h-12 rounded-lg overflow-hidden bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
+                            <SiUpwork className="w-8 h-8 text-[#6fda44]" aria-label="Upwork" />
+                          </div>
+                        ) : companyLogos[experience.company.toLowerCase()] ? (
+                          <div className="w-12 h-12 rounded-lg overflow-hidden bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
+                            <Image
+                              src={companyLogos[experience.company.toLowerCase()]}
+                              alt={`${experience.company} logo`}
+                              width={48}
+                              height={48}
+                              className="object-contain w-10 h-10"
+                            />
+                          </div>
+                        ) : (
+                          <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${experience.color} flex items-center justify-center text-white font-bold text-lg`}>
+                            {experience.logo}
+                          </div>
+                        )}
                         <div>
                           <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                             {experience.title}

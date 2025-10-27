@@ -255,7 +255,7 @@ const projects = [
   }
 ]
 
-const categories = ['All', 'AI/ML', 'Mobile AI', 'Full-Stack', 'NLP/LLM', 'Computer Vision', 'Data Science']
+const categories = ['All', 'AI/ML', 'Frontend', 'Backend', 'FullStack', 'Trading']
 
 export function Projects() {
   const ref = useRef(null)
@@ -264,9 +264,19 @@ export function Projects() {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  const filteredProjects = selectedCategory === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === selectedCategory)
+  const mapCategory = (category: string): 'AI/ML' | 'Frontend' | 'Backend' | 'FullStack' | 'Trading' => {
+    const c = category.toLowerCase()
+    if (c === 'full-stack' || c === 'full stack') return 'FullStack'
+    if (c === 'frontend') return 'Frontend'
+    if (c === 'backend') return 'Backend'
+    if (c === 'trading') return 'Trading'
+    if (['ai/ml', 'mobile ai', 'nlp/llm', 'computer vision', 'data science'].includes(c)) return 'AI/ML'
+    return 'AI/ML'
+  }
+
+  const filteredProjects = selectedCategory === 'All'
+    ? projects
+    : projects.filter(project => mapCategory(project.category) === selectedCategory)
 
   const handleProjectSelect = (project: typeof projects[0]) => {
     setSelectedProject(project)

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle } from 'lucide-react'
+import { SiYcombinator } from '@icons-pack/react-simple-icons';
 
 const contactInfo = [
   {
@@ -39,18 +40,20 @@ const socialLinks = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/simon-campos-a54987383',
+    href: 'https://www.linkedin.com/in/simon-degala-campos-08965238a',
     icon: Linkedin,
     color: 'from-blue-600 to-blue-700',
     description: 'Connect with me professionally'
   },
+
   {
-    name: 'Telegram',
-    href: 'https://t.me/simoncampos1022',
-    icon: Send,
+    name: 'Ycombinator',
+    href: 'https://www.startupschool.org/cofounder-matching/candidate/0wDq8Gu1U',
+    icon: SiYcombinator,
     color: 'from-blue-500 to-cyan-500',
-    description: 'Chat with me directly'
-  }
+    description: 'View my cofounder profile'
+  },
+  
 ]
 
 export function Contact() {

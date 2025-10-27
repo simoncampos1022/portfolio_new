@@ -85,7 +85,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 🤝 Contact
 
 - **Email**: simon.campos1022@gmail.com
-- **LinkedIn**: [Simon Campos](https://www.linkedin.com/in/simon-campos-a54987383)
+- **LinkedIn**: [Simon Campos](https://www.linkedin.com/in/simon-degala-campos-08965238a)
 - **GitHub**: [@simoncampos1022](https://github.com/simoncampos1022)
 - **Telegram**: [@simoncampos1022](https://t.me/simoncampos1022)
 

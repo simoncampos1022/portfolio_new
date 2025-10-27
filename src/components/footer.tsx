@@ -1,30 +1,31 @@
 'use client'
 
-import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, Send, Heart } from 'lucide-react'
+import { Mail, Heart } from 'lucide-react'
+import { SiDiscord, SiTelegram, SiWhatsapp} from '@icons-pack/react-simple-icons';
+
 
 const socialLinks = [
-  {
-    name: 'GitHub',
-    href: 'https://github.com/simoncampos1022',
-    icon: Github,
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/simon-campos-a54987383',
-    icon: Linkedin,
-  },
   {
     name: 'Email',
     href: 'mailto:simon.campos1022@gmail.com',
     icon: Mail,
   },
   {
+    name: 'Discord',
+    href: 'https://discord.com/users/1290770881701875752',
+    icon: SiDiscord,
+  },
+  {
     name: 'Telegram',
     href: 'https://t.me/simoncampos1022',
-    icon: Send,
+    icon: SiTelegram,
   },
+   {
+     name: 'WhatsApp',
+     href: 'https://wa.me/639634160157',
+     icon: SiWhatsapp,
+  }
 ]
 
 const quickLinks = [
@@ -123,6 +124,7 @@ export function Footer() {
                     whileTap={{ scale: 0.95 }}
                     className="p-3 rounded-lg bg-white dark:bg-gray-800 hover:bg-primary-50 dark:hover:bg-primary-900/20 border border-gray-200 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-700 transition-all duration-300 group"
                     aria-label={social.name}
+                    title={social.name}
                   >
                     <social.icon className="h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200" />
                   </motion.a>
