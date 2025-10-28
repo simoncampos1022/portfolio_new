@@ -4,99 +4,167 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { 
-  Code, 
   Brain, 
   Database, 
   Cloud, 
-  GitBranch, 
   Wrench,
-  Github,
-  Gitlab,
-  Terminal,
   Server,
   Cpu,
-  Layers,
-  Zap,
-  Settings,
   Globe,
   Monitor,
-  Smartphone,
-  FileText,
   MessageSquare,
-  CheckCircle
+  TrendingUp,
+  Palette,
+  BarChart3,
+  Activity,
+  Calculator,
+  Coins,
 } from 'lucide-react'
+
+import { 
+  SiMongodb, SiPostgresql, SiMysql, SiRedis, 
+  SiDocker, SiKubernetes, SiTerraform, SiApachekafka, SiRabbitmq, SiPython, SiJavascript, 
+  SiTypescript, SiReact, SiNextdotjs, SiNodedotjs, SiGo, SiDjango, SiFastapi, 
+  SiFlask, SiTailwindcss, SiHtml5, SiGit, SiGithub, SiGitlab, SiPostman,
+  SiTensorflow, SiPytorch, SiScikitlearn, SiBoost, SiNumpy, SiPandas, SiJupyter,
+  SiVuedotjs, SiAngular, SiRedux, SiWebpack, SiVite, SiNpm, SiYarn,
+  SiExpress, SiLaravel, SiRubyonrails, SiPhp, SiRust,
+  SiJenkins, SiGithubactions, SiPrometheus, SiGrafana,
+  SiElasticsearch, SiFirebase, SiSupabase, SiPlanetscale,
+  SiJest, SiCypress, SiSelenium, SiFigma, SiBitcoin, SiEthereum,
+  SiBinance, SiCoinbase, SiTradingview, SiMeta, SiOpenai
+} from '@icons-pack/react-simple-icons';
+
 
 const skillCategories = [
   {
-    title: 'Languages',
-    icon: Code,
-    skills: [
-      { name: 'Python', icon: Terminal, level: 95 },
-      { name: 'Go', icon: Server, level: 85 },
-      { name: 'Java', icon: Cpu, level: 80 },
-      { name: 'C#', icon: Code, level: 75 },
-      { name: 'JavaScript', icon: Globe, level: 90 },
-      { name: 'TypeScript', icon: FileText, level: 90 },
-      { name: 'C++', icon: Terminal, level: 70 },
-    ]
-  },
-  {
-    title: 'AI Libraries',
+    title: 'AI/ML',
     icon: Brain,
     skills: [
-      { name: 'TensorFlow', icon: Brain, level: 90 },
-      { name: 'PyTorch', icon: Cpu, level: 85 },
-      { name: 'Scikit-learn', icon: Layers, level: 88 },
-      { name: 'CoreML', icon: Smartphone, level: 75 },
+      { name: 'TensorFlow', icon: SiTensorflow },
+      { name: 'PyTorch', icon: SiPytorch },
+      { name: 'Scikit-learn', icon: SiScikitlearn },
+      { name: 'NumPy', icon: SiNumpy },
+      { name: 'Pandas', icon: SiPandas },
+      { name: 'Jupyter', icon: SiJupyter },
+      { name: 'TimeMixer', icon: Activity },
+      { name: 'TimesNet', icon: BarChart3 },
+      { name: 'TabPFN-v2', icon: TrendingUp },
+      { name: 'LSTM', icon: Brain },
+      { name: 'XGBoost', icon: SiBoost },
+      { name: 'OpenCV', icon: Cpu },
+      { name: 'Hugging Face', icon: Brain },
+      { name: 'LangChain', icon: Brain },
+      { name: 'Transformers', icon: Brain },
+      { name: 'Keras', icon: Brain },
     ]
   },
   {
-    title: 'Backend Tools',
-    icon: Database,
+    title: 'Frontend',
+    icon: Palette,
     skills: [
-      { name: 'Django', icon: Server, level: 92 },
-      { name: 'FastAPI', icon: Zap, level: 90 },
-      { name: 'Flask', icon: Code, level: 85 },
-      { name: 'Node.js', icon: Globe, level: 80 },
-      { name: 'REST API', icon: Globe, level: 95 },
-      { name: 'GraphQL', icon: Database, level: 75 },
+      { name: 'React', icon: SiReact },
+      { name: 'Next.js', icon: SiNextdotjs },
+      { name: 'Vue.js', icon: SiVuedotjs },
+      { name: 'Angular', icon: SiAngular },
+      { name: 'TypeScript', icon: SiTypescript },
+      { name: 'JavaScript', icon: SiJavascript },
+      { name: 'HTML/CSS', icon: SiHtml5 },
+      { name: 'Tailwind CSS', icon: SiTailwindcss },
+      { name: 'Redux', icon: SiRedux },
+      { name: 'Webpack', icon: SiWebpack },
+      { name: 'Vite', icon: SiVite },
+      { name: 'NPM', icon: SiNpm },
+      { name: 'Yarn', icon: SiYarn },
+      { name: 'Figma', icon: SiFigma },
     ]
   },
   {
-    title: 'Databases',
+    title: 'Backend',
     icon: Database,
     skills: [
-      { name: 'MySQL', icon: Database, level: 90 },
-      { name: 'PostgreSQL', icon: Database, level: 88 },
-      { name: 'MongoDB', icon: Database, level: 85 },
-      { name: 'Cassandra', icon: Database, level: 70 },
-      { name: 'Supabase', icon: Cloud, level: 80 },
+      { name: 'Python', icon: SiPython },
+      { name: 'Django', icon: SiDjango },
+      { name: 'FastAPI', icon: SiFastapi },
+      { name: 'Flask', icon: SiFlask },
+      { name: 'Node.js', icon: SiNodedotjs },
+      { name: 'Express.js', icon: SiExpress },
+      { name: 'Go', icon: SiGo },
+      { name: 'Java', icon: Cpu },
+      { name: 'PHP', icon: SiPhp },
+      { name: 'Laravel', icon: SiLaravel },
+      { name: 'Ruby on Rails', icon: SiRubyonrails },
+      { name: 'Rust', icon: SiRust },
+      { name: 'REST API', icon: Globe },
+      { name: 'GraphQL', icon: Database },
+      { name: 'Microservices', icon: Server },
+      { name: 'Serverless', icon: Cloud },
     ]
   },
   {
     title: 'DevOps',
     icon: Cloud,
     skills: [
-      { name: 'AWS', icon: Cloud, level: 85 },
-      { name: 'Azure', icon: Cloud, level: 80 },
-      { name: 'Docker', icon: Server, level: 90 },
-      { name: 'Terraform', icon: Settings, level: 75 },
-      { name: 'Kafka', icon: MessageSquare, level: 70 },
-      { name: 'RabbitMQ', icon: MessageSquare, level: 75 },
+      { name: 'AWS', icon: Cloud },
+      { name: 'Azure', icon: Cloud },
+      { name: 'Google Cloud', icon: Cloud },
+      { name: 'Docker', icon: SiDocker },
+      { name: 'Kubernetes', icon: SiKubernetes },
+      { name: 'Terraform', icon: SiTerraform },
+      { name: 'Jenkins', icon: SiJenkins },
+      { name: 'GitLab CI', icon: SiGitlab },
+      { name: 'GitHub Actions', icon: SiGithubactions },
+      { name: 'Prometheus', icon: SiPrometheus },
+      { name: 'Grafana', icon: SiGrafana },
+      { name: 'Kafka', icon: SiApachekafka },
+      { name: 'RabbitMQ', icon: SiRabbitmq },
+      { name: 'ELK Stack', icon: SiElasticsearch },
+      { name: 'Redis', icon: SiRedis },
     ]
   },
   {
-    title: 'Tools & Others',
+    title: 'Trading',
+    icon: TrendingUp,
+    skills: [
+      { name: 'AI Trading', icon: Brain },
+      { name: 'Timeseries Forecasting', icon: MessageSquare },
+      { name: 'Sentiment Analysis', icon: MessageSquare },
+      { name: 'Pattern Detection', icon: MessageSquare },
+      { name: 'Financial Analysis', icon: Calculator },
+      { name: 'Backtesting', icon: BarChart3 },
+      { name: 'Optimization', icon: BarChart3 },
+      { name: 'API Integration', icon: Globe },
+      { name: 'Cryptocurrency', icon: SiBitcoin },
+      { name: 'Stock Market', icon: TrendingUp },
+      { name: 'Forex Trading', icon: Coins },
+      { name: 'TradingView', icon: SiTradingview },
+      { name: 'MetaTrader 4', icon: Monitor },
+      { name: 'MetaTrader 5', icon: Monitor },
+      { name: 'NinjaTrader', icon: Monitor },
+    ]
+  },
+  {
+    title: 'Other',
     icon: Wrench,
     skills: [
-      { name: 'GitHub', icon: Github, level: 95 },
-      { name: 'GitLab', icon: Gitlab, level: 85 },
-      { name: 'Git', icon: GitBranch, level: 90 },
-      { name: 'Postman', icon: Globe, level: 85 },
-      { name: 'VS Code', icon: Monitor, level: 90 },
-      { name: 'Selenium', icon: Settings, level: 80 },
-      { name: 'Jira', icon: CheckCircle, level: 85 },
-      { name: 'Slack', icon: MessageSquare, level: 80 },
+      { name: 'MySQL', icon: SiMysql },
+      { name: 'PostgreSQL', icon: SiPostgresql },
+      { name: 'MongoDB', icon: SiMongodb },
+      { name: 'Redis', icon: SiRedis },
+      { name: 'Firebase', icon: SiFirebase },
+      { name: 'Supabase', icon: SiSupabase },
+      { name: 'PlanetScale', icon: SiPlanetscale },
+      { name: 'Neon', icon: Database },
+      { name: 'GitHub', icon: SiGithub },
+      { name: 'GitLab', icon: SiGitlab },
+      { name: 'Git', icon: SiGit },
+      { name: 'Postman', icon: SiPostman },
+      { name: 'VS Code', icon: Monitor },
+      { name: 'Jest', icon: SiJest },
+      { name: 'Cypress', icon: SiCypress },
+      { name: 'Playwright', icon: Monitor },
+      { name: 'Selenium', icon: SiSelenium },
+      { name: 'Adobe XD', icon: Palette },
     ]
   }
 ]
@@ -131,7 +199,7 @@ export function Skills() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
             >
-              A comprehensive toolkit for building scalable, intelligent backend systems
+              A comprehensive toolkit for building scalable, intelligent systems and AI trading solutions
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -149,20 +217,20 @@ export function Skills() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.6, delay: 0.8 + categoryIndex * 0.1 }}
-                className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group"
+                className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700"
               >
                 {/* Category Header */}
                 <div className="flex items-center space-x-3 mb-6">
-                  <div className="p-2 rounded-lg bg-primary-100 dark:bg-primary-900/30 group-hover:bg-primary-200 dark:group-hover:bg-primary-800/40 transition-colors duration-300">
-                    <category.icon className="h-6 w-6 text-primary-600 dark:text-primary-400" />
+                  <div className="p-3 rounded-lg bg-gradient-to-r from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30 group-hover:from-primary-200 group-hover:to-secondary-200 dark:group-hover:from-primary-800/40 dark:group-hover:to-secondary-800/40 transition-all duration-300">
+                    <category.icon className="h-7 w-7 text-primary-600 dark:text-primary-400" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
                     {category.title}
                   </h3>
                 </div>
 
                 {/* Skills List */}
-                <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div
                       key={skill.name}
@@ -174,28 +242,13 @@ export function Skills() {
                       }}
                       className="group/skill"
                     >
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <skill.icon className="h-4 w-4 text-gray-600 dark:text-gray-400 group-hover/skill:text-primary-600 dark:group-hover/skill:text-primary-400 transition-colors duration-200" />
-                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                            {skill.name}
-                          </span>
+                      <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 hover:shadow-md">
+                        <div className="flex-shrink-0">
+                          <skill.icon className="h-6 w-6 group-hover/skill:scale-110 transition-all duration-200" style={{ color: 'inherit' }} />
                         </div>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">
-                          {skill.level}%
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover/skill:text-gray-900 dark:group-hover/skill:text-white transition-colors duration-200">
+                          {skill.name}
                         </span>
-                      </div>
-                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                          transition={{ 
-                            duration: 1, 
-                            delay: 1.2 + categoryIndex * 0.1 + skillIndex * 0.05,
-                            ease: "easeOut"
-                          }}
-                          className="h-2 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"
-                        />
                       </div>
                     </motion.div>
                   ))}
