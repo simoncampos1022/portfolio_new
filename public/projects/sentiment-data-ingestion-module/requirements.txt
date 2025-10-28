@@ -1,0 +1,7 @@
+aiohttp
+pandas
+python-dotenv
+tweepy
+pyarrow
+transformers
+winloop
