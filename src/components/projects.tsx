@@ -252,6 +252,297 @@ const projects = [
     status: 'Research',
     icon: Database,
     gradient: 'from-violet-500 to-purple-500'
+  },
+  {
+    id: 10,
+    title: 'Jobs3 Frontend',
+    subtitle: 'Next.js Job Marketplace UI',
+    description: '2024: Frontend developer for Jobs3. Implemented wallet integrations, responsive UI, admin panel, and high-fidelity designs from Figma.',
+    longDescription: 'In 2024 I worked as a frontend developer on the Jobs3 marketplace (publicly available). You can check my accuracy in the attached image files — these are not screenshots of the live platform but screenshots of Figma, demonstrating precise execution of high‑fidelity UI designs. The project is developed in an agile manner; I contributed to updating the MVP to versions 1.0 and 2.0 with contracts, implementing new designs across client/freelancer and employer/employee flows.',
+    image: '/projects/jobs3_frontend/image1-Metamask, Phantom.png',
+    images: [
+      '/projects/jobs3_frontend/image1-Metamask, Phantom.png',
+      '/projects/jobs3_frontend/image2-tokens and transactions.png',
+      '/projects/jobs3_frontend/image3-landing page.png',
+      '/projects/jobs3_frontend/image4-admin page.png',
+      '/projects/jobs3_frontend/image5-responsiveness.png',
+      '/projects/jobs3_frontend/image6-UI.png'
+    ],
+    technologies: [
+      'Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Radix UI', 'Redux Toolkit',
+      'wagmi', 'viem', 'Solana Wallet Adapter', 'MetaMask', 'Phantom', 'GSAP',
+      'ApexCharts', 'CKEditor', 'TanStack Query'
+    ],
+    features: [
+      'Wallet integration (MetaMask, Phantom)',
+      'Token and transaction UI workflows',
+      'Visually appealing landing page',
+      'User-friendly admin panel',
+      'Responsive design (mobile, tablet, desktop)',
+      'High-fidelity Figma design implementation'
+    ],
+    liveUrl: '',
+    githubUrl: '',
+    category: 'Frontend',
+    status: 'In Development',
+    icon: Code,
+    gradient: 'from-sky-500 to-indigo-500'
+  },
+  {
+    id: 11,
+    title: 'Jobs3 Backend',
+    subtitle: 'Node.js Backend for Job Marketplace',
+    description: '2024: Backend developer for Jobs3. Designed APIs, integrated Pinecone/OpenAI/LangChain, Telegram alerts, and email notifications.',
+    longDescription: 'In 2024 I worked as a backend developer on the Jobs3 marketplace (publicly available). The attached images are screenshots of real code, demonstrating the implemented features. The project is developed in an agile manner; I contributed to updating the MVP to versions 1.0 and 2.0 with contracts, adding new backend features across clients/freelancers and employers/employees.',
+    image: '/projects/jobs3_backend/image1 ( api ).png',
+    images: [
+      '/projects/jobs3_backend/image1 ( api ).png',
+      '/projects/jobs3_backend/image2 ( api ).png',
+      '/projects/jobs3_backend/image3 ( pinecone, openai, langchain ).png',
+      '/projects/jobs3_backend/image4 ( telegram api ).png',
+      '/projects/jobs3_backend/image5 ( email alert ) .png'
+    ],
+    technologies: [
+      'Node.js', 'Express', 'MongoDB', 'Mongoose', 'JWT', 'AWS S3', 'Pinecone',
+      'LangChain', 'OpenAI', 'Nodemailer', 'Telegram Bot API', 'Socket.IO',
+      'Cron', 'Multer', 'Sharp'
+    ],
+    features: [
+      'REST API design and implementation',
+      'AI search with Pinecone + OpenAI + LangChain',
+      'Telegram bot alerts for job postings',
+      'Email notification system',
+      'Scalable Node.js/Express architecture'
+    ],
+    liveUrl: '',
+    githubUrl: '',
+    category: 'Backend',
+    status: 'In Development',
+    icon: Database,
+    gradient: 'from-amber-500 to-orange-600'
+  },
+  {
+    id: 12,
+    title: 'Binance Historical Data Fetcher',
+    subtitle: 'Free Candlestick Data Downloader',
+    description: 'Python script to fetch free historical Binance Futures candlestick (OHLCV) data for any symbol and interval without API keys. Download years of data (2021–2025) for backtesting and analysis.',
+    longDescription: 'A powerful Python script that easily fetches free historical Binance Futures candlestick (OHLCV candle) data. Download years of data (e.g., 2021–2025) for any symbol and interval — all without API keys or paid plans. Works with Binance Futures REST API, supports all timeframes (1m, 5m, 15m, 1h, 4h, 1d), handles full date ranges automatically, and appends & updates CSV files with rate-limit safety and auto sleep.',
+    image: '',
+    images: [],
+    technologies: ['Python', 'Pandas', 'Requests', 'Binance API', 'CSV', 'OHLCV'],
+    features: [
+      'Free & No API Key Required',
+      'Fetch from Binance Futures REST API',
+      'Supports Any Symbol (BTCUSDT, ETHUSDT, etc.)',
+      'All Timeframes Supported (1m to 1d)',
+      'Handles Full Date Ranges Automatically',
+      'Appends & Updates CSV Files',
+      'Rate-Limit Safe with Auto Sleep',
+      'Clean & Readable Data Output'
+    ],
+    liveUrl: '',
+    githubUrl: 'https://github.com/frostyalce000/binance-free-historical-candlestick-data-fetcher',
+    category: 'Trading',
+    status: 'Live',
+    icon: Database,
+    gradient: 'from-yellow-500 to-orange-500'
+  },
+  {
+    id: 13,
+    title: 'Bitget Historical Data Fetcher',
+    subtitle: 'Free Futures Candlestick Downloader',
+    description: 'Python script to fetch historical candlestick (OHLCV) data from Bitget Futures API for any trading pair and interval — completely free without API keys.',
+    longDescription: 'Easily fetch historical candlestick (OHLCV) data from the Bitget Futures API for any trading pair and interval — completely free and without API keys. Uses Bitget API v2 endpoint for reliable data ingestion. The script fetches in reverse (from end date backwards) due to API limitations, with safe rate limiting at 0.2 seconds per request. Data includes open, high, low, close, volume, quote_volume, and timestamp (UTC).',
+    image: '',
+    images: [],
+    technologies: ['Python', 'Pandas', 'Requests', 'Bitget API', 'CSV', 'OHLCV'],
+    features: [
+      'Free & No API Key Required',
+      'Fetch from Bitget Futures API v2',
+      'Supports Any Trading Pair',
+      'All Intervals Supported (1m to 1D)',
+      'Automatic Date Range Handling',
+      'CSV Export with Auto-Append',
+      'Rate-Limit Safe Implementation',
+      'Reverse Fetching for API Optimization'
+    ],
+    liveUrl: '',
+    githubUrl: 'https://github.com/frostyalce000/bitget-free-historical-candlestick-data-fetcher',
+    category: 'Trading',
+    status: 'Live',
+    icon: Database,
+    gradient: 'from-blue-500 to-cyan-500'
+  },
+  {
+    id: 14,
+    title: 'Blofin Historical Data Fetcher',
+    subtitle: 'Free Candlestick Data Tool',
+    description: 'Python script to fetch free historical candlestick (OHLCV) data from Blofin exchange for any trading pair and interval without authentication.',
+    longDescription: 'A Python-based tool to easily fetch free historical candlestick (OHLCV) data from the Blofin exchange API for any trading pair and interval. Supports futures and spot markets without requiring API keys or authentication. Automatically handles pagination, rate limiting, and data formatting into clean CSV files for backtesting, analysis, and machine learning applications.',
+    image: '',
+    images: [],
+    technologies: ['Python', 'Pandas', 'Requests', 'Blofin API', 'CSV', 'OHLCV'],
+    features: [
+      'Free & No API Key Required',
+      'Fetch from Blofin Exchange API',
+      'Supports Futures and Spot Markets',
+      'All Timeframes Supported',
+      'Automatic Pagination Handling',
+      'CSV Export with Clean Data',
+      'Rate-Limit Safe Operations',
+      'Historical Data for Backtesting'
+    ],
+    liveUrl: '',
+    githubUrl: 'https://github.com/frostyalce000/blofin-free-historical-candlestick-data-fetcher',
+    category: 'Trading',
+    status: 'Live',
+    icon: Database,
+    gradient: 'from-emerald-500 to-teal-500'
+  },
+  {
+    id: 15,
+    title: 'Chart Pattern Detection YOLO',
+    subtitle: 'AI-Powered Trading Pattern Recognition',
+    description: 'YOLO-based pattern detection system for swing trading that identifies chart patterns (Cup-and-Handle, Double Bottom, Head and Shoulders) and candlestick formations (Marubozu, Morning Star, Doji) in real-time.',
+    longDescription: 'Advanced pattern detection system using YOLO (You Only Look Once) model for automated chart pattern recognition in swing trading. The system uses two specialized YOLO models: one for large-scale chart patterns (Cup-and-Handle, Double Bottom, Head and Shoulders) over longer timeframes, and another for candlestick patterns (Marubozu, Morning Star, Doji) for precise entry/exit points. YOLO processes charts in real-time by dividing price charts into grids, predicting bounding boxes around detected patterns with confidence scores, and overlaying visual cues on charts for informed trading decisions.',
+    image: '/projects/Chart-Pattern-Detection-YOLO/yolo1.png',
+    images: [
+      '/projects/Chart-Pattern-Detection-YOLO/yolo1.png',
+      '/projects/Chart-Pattern-Detection-YOLO/yolo2.png',
+      '/projects/Chart-Pattern-Detection-YOLO/yolo3.png',
+      '/projects/Chart-Pattern-Detection-YOLO/yolo4.png'
+    ],
+    technologies: ['Python', 'YOLO', 'Computer Vision', 'PyTorch', 'OpenCV', 'NumPy', 'Pandas', 'Trading Algorithms'],
+    features: [
+      'Real-time chart pattern detection',
+      'Dual YOLO models for macro and micro patterns',
+      'Cup-and-Handle, Double Bottom, Head and Shoulders detection',
+      'Candlestick pattern recognition (Marubozu, Morning Star, Doji)',
+      'Bounding box prediction with confidence scores',
+      'Automated pattern visualization on charts',
+      'High-speed processing for swing trading',
+      'Trained on extensive historical chart datasets'
+    ],
+    liveUrl: '',
+    githubUrl: '',
+    category: 'Trading',
+    status: 'Live',
+    icon: Eye,
+    gradient: 'from-purple-500 to-pink-500'
+  },
+  {
+    id: 16,
+    title: 'Forex Trading Strategy Backtester',
+    subtitle: 'EUR/USD Backtesting Framework',
+    description: 'Python-based backtesting framework for forex trading strategies on EUR/USD. Simulates trading cycles with take-profit, stop-loss, and dynamic trigger levels (X1, X2) using historical OHLCV data.',
+    longDescription: 'A comprehensive Python backtesting framework designed specifically for forex trading strategies on the EUR/USD currency pair. The system simulates trading cycles based on historical trade entry times and OHLCV data, evaluating both buy and sell trades with configurable pip-based take-profit (TP), stop-loss (SL), and additional trigger levels (X1 and X2) for dynamic trade management. Features flexible timestamp parsing for multiple formats, maximum holding period (5 days default), robust error handling, and generates detailed CSV reports with trade outcomes. The strategy incorporates dynamic TP adjustments: if price moves 10 pips against position (X1 trigger), a new position is simulated with TP reset to entry price; if price moves 25 pips total (X2 trigger), another position is simulated with TP set to X1 trigger price.',
+    image: '',
+    images: [],
+    technologies: ['Python', 'Pandas', 'Pytz', 'CSV', 'OHLCV', 'Forex Trading', 'Backtesting'],
+    features: [
+      'Flexible timestamp parsing (M/D/Y or D/M/Y formats)',
+      'Trade simulation with configurable pip-based TP/SL',
+      'Dynamic trade management with X1 and X2 trigger levels',
+      'Maximum holding period (5 days default)',
+      'Robust error handling and logging',
+      'CSV output with detailed trade performance metrics',
+      'Supports both buy and sell trades',
+      'EUR/USD 1-minute interval backtesting'
+    ],
+    liveUrl: '',
+    githubUrl: 'https://github.com/johnbdfilio000/Forex-Trading-Strategy-Backtester',
+    category: 'Trading',
+    status: 'Live',
+    icon: Code,
+    gradient: 'from-red-500 to-orange-500'
+  },
+  {
+    id: 17,
+    title: 'Crypto Sentiment Data Ingestion',
+    subtitle: 'AI Trading Sentiment Collector',
+    description: 'Asynchronous Python system to collect, analyze, and store crypto sentiment data from CryptoPanic, Reddit, CoinMarketCap, and Twitter. Uses FinBERT for financial sentiment analysis with real-time updates every 15 minutes.',
+    longDescription: 'A modular, asynchronous Python application designed to aggregate real-time sentiment data from various crypto news and social media platforms for AI trading systems. The system fetches posts, tweets, and news articles from CryptoPanic, Reddit, CoinMarketCap, Twitter, and RSS feeds, processes them through FinBERT (a state-of-the-art financial sentiment analysis model), and stores results in JSON and Parquet formats. Features asynchronous data fetching for efficient concurrent API calls, duplicate detection to avoid redundancy, configurable tracked currencies and accounts, atomic JSON saving with up to 5000 records, scheduled runs every 15 minutes aligned to quarter hours, and robust error handling with comprehensive logging for production readiness.',
+    image: '',
+    images: [],
+    technologies: ['Python', 'FinBERT', 'Transformers', 'PyTorch', 'Pandas', 'Asyncio', 'Tweepy', 'Aiohttp', 'Parquet', 'Reddit API', 'Twitter API'],
+    features: [
+      'Asynchronous data fetching from multiple sources',
+      'Multi-source support (CryptoPanic, Reddit, CMC, Twitter, RSS)',
+      'FinBERT financial sentiment analysis',
+      'Data persistence with JSON and Parquet exports',
+      'Duplicate detection and deduplication',
+      'Configurable tracked currencies and accounts',
+      'Scheduled runs every 15 minutes',
+      'Robust error handling and logging'
+    ],
+    liveUrl: '',
+    githubUrl: '',
+    category: 'Trading',
+    status: 'Live',
+    icon: Brain,
+    gradient: 'from-indigo-500 to-purple-500'
+  },
+  {
+    id: 18,
+    title: 'TimeMixer++ Price Forecasting',
+    subtitle: 'Short-Term Market Prediction Model',
+    description: 'State-of-the-art time series forecasting model for accurate short-term price prediction in financial markets. Leverages multi-scale and multi-resolution approach to capture complex temporal patterns across stocks, ETFs, forex, and crypto.',
+    longDescription: 'TimeMixer++ is a cutting-edge time series pattern machine (TSPM) designed for high-accuracy short-term price forecasting in financial markets. The model employs four key components: Multi-Resolution Time Imaging (MRTI) to transform time series data into multi-resolution time images capturing patterns in temporal and frequency domains; Time Image Decomposition (TID) using dual-axis attention to disentangle seasonal and trend patterns; Multi-Scale Mixing (MCM) to hierarchically aggregate patterns across different temporal scales from microscopic to macroscopic information; and Multi-Resolution Mixing (MRM) to adaptively integrate representations across different resolutions. These components enable TimeMixer++ to capture fine-scale market reactions and achieve state-of-the-art performance, outperforming traditional models like ARCH, GARCH, LSTM, and GRU in handling the non-linear dynamics of financial time series.',
+    image: '/projects/Timeseries-Forecasting-TimeMixerPlus/timemixer1.png',
+    images: [
+      '/projects/Timeseries-Forecasting-TimeMixerPlus/timemixer1.png',
+      '/projects/Timeseries-Forecasting-TimeMixerPlus/timemixer2.png',
+      '/projects/Timeseries-Forecasting-TimeMixerPlus/timemixer3.png'
+    ],
+    technologies: ['Python', 'PyTorch', 'Time Series Forecasting', 'Deep Learning', 'Transformers', 'Multi-Scale Analysis', 'Financial ML'],
+    features: [
+      'Multi-Resolution Time Imaging (MRTI)',
+      'Time Image Decomposition (TID) with dual-axis attention',
+      'Multi-Scale Mixing (MCM) for hierarchical aggregation',
+      'Multi-Resolution Mixing (MRM) for adaptive integration',
+      'Short-term price prediction for stocks, ETFs, forex, crypto',
+      'Captures fine-scale market reactions',
+      'Disentangles seasonal and trend patterns',
+      'State-of-the-art forecasting performance'
+    ],
+    liveUrl: '',
+    githubUrl: '',
+    category: 'Trading',
+    status: 'Live',
+    icon: Brain,
+    gradient: 'from-cyan-500 to-blue-500'
+  },
+  {
+    id: 19,
+    title: 'AI Body Detection & Measurement',
+    subtitle: 'Shopify Clothing Fit Finder',
+    description: 'Computer vision system that extracts precise body measurements from a single front-facing photo to recommend well-fitting clothes on Shopify. Uses AI to analyze body shape and provide personalized clothing recommendations.',
+    longDescription: 'An AI-powered clothing fit finder integrated with Shopify that helps users find perfectly fitting clothes using computer vision. The system processes a single clear front-facing photo to automatically detect key body points and estimate measurements including waist, hips, arms, and other dimensions. These measurements are seamlessly integrated with Shopify to recommend size-matched clothing items. The application uses advanced computer vision techniques with OpenCV and Mediapipe to analyze body shape without requiring special cameras or equipment. The workflow: user uploads a photo, AI model processes the image to extract measurements, data is sent to Shopify backend, and the platform displays recommended clothing that matches the measurements.',
+    image: '/projects/Body-Detection-AI/output.png',
+    images: [
+      '/projects/Body-Detection-AI/output.png',
+      '/projects/Body-Detection-AI/output1.jpg',
+      '/projects/Body-Detection-AI/output2.jpg',
+      '/projects/Body-Detection-AI/IMG_8446.jpg',
+      '/projects/Body-Detection-AI/z-codebase.png'
+    ],
+    technologies: ['Python', 'OpenCV', 'Mediapipe', 'Computer Vision', 'FastAPI', 'Flutter', 'Shopify API', 'Deep Learning'],
+    features: [
+      'Photo-based body measurement extraction',
+      'AI-powered body point detection',
+      'Automatic measurement estimation (waist, hips, arms)',
+      'Smart Shopify integration',
+      'No special hardware required',
+      'Personalized clothing recommendations',
+      'Single photo processing',
+      'Size-matched clothing suggestions'
+    ],
+    liveUrl: '',
+    githubUrl: '',
+    category: 'AI/ML',
+    status: 'Completed',
+    icon: Eye,
+    gradient: 'from-pink-500 to-rose-500'
   }
 ]
 
@@ -274,8 +565,8 @@ export function Projects() {
     return 'AI/ML'
   }
 
-  const filteredProjects = selectedCategory === 'All'
-    ? projects
+  const filteredProjects = selectedCategory === 'All' 
+    ? projects 
     : projects.filter(project => mapCategory(project.category) === selectedCategory)
 
   const handleProjectSelect = (project: typeof projects[0]) => {
@@ -352,9 +643,11 @@ export function Projects() {
                 className="group cursor-pointer"
                 onClick={() => handleProjectSelect(project)}
               >
-                <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col">
                   {/* Project Image */}
-                  <div className="h-48 relative overflow-hidden">
+                  <div className="h-48 relative overflow-hidden flex-shrink-0">
+                    {project.image ? (
+                      <>
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -363,6 +656,14 @@ export function Projects() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-black/20" />
+                      </>
+                    ) : (
+                      <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} flex items-center justify-center p-6`}>
+                        <h3 className="text-white text-2xl font-bold text-center leading-tight">
+                          {project.title}
+                        </h3>
+                      </div>
+                    )}
                     <div className="absolute top-4 right-4 flex space-x-2">
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                         project.status === 'Live' 
@@ -378,7 +679,7 @@ export function Projects() {
                   </div>
 
                   {/* Project Content */}
-                  <div className="p-6">
+                  <div className="p-6 flex-1 flex flex-col">
                     <div className="flex items-center space-x-2 mb-2">
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200">
                         {project.title}
@@ -392,7 +693,7 @@ export function Projects() {
                     </p>
 
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-2 mb-4 flex-1">
                       {project.technologies.slice(0, 4).map((tech) => (
                         <span
                           key={tech}
