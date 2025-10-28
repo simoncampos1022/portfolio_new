@@ -123,7 +123,7 @@ const projects = [
     liveUrl: '',
     githubUrl: 'https://github.com/simoncampos1022/RAG-System-arXivRAG-Multimodal-Conversational',
     category: 'NLP/LLM',
-    status: 'In Development',
+    status: 'Completed',
     icon: Brain,
     gradient: 'from-indigo-500 to-purple-500'
   },
@@ -145,10 +145,10 @@ const projects = [
       'FAISS-based retrieval system with Gradio interface',
       'Docker containerization for reproducibility'
     ],
-    liveUrl: 'https://huggingface.co/spaces/YuITC/Vietnamese-Legal-Doc-Retrieval',
-    githubUrl: 'https://github.com/YuITC/Vietnamese-Legal-Doc-Retrieval',
+    liveUrl: '',
+    githubUrl: 'https://github.com/simoncampos1022/Vietnamese-Legal-Doc-Retrieval',
     category: 'NLP/LLM',
-    status: 'Live',
+    status: 'Completed',
     icon: Database,
     gradient: 'from-emerald-500 to-teal-500'
   },
@@ -171,7 +171,7 @@ const projects = [
       'Low-latency style transfer for smooth rendering'
     ],
     liveUrl: 'https://realtime-style-transfer.streamlit.app/',
-    githubUrl: 'https://github.com/YuITC/Realtime-Style-Transfer',
+    githubUrl: 'https://github.com/simoncampos1022/Style-Transfer-Realtime',
     category: 'Computer Vision',
     status: 'Live',
     icon: Zap,
@@ -196,7 +196,7 @@ const projects = [
       'Interactive Streamlit application for instant OCR'
     ],
     liveUrl: 'https://scene-text-recognition.streamlit.app/',
-    githubUrl: 'https://github.com/YuITC/Scene-Text-Recognition',
+    githubUrl: 'https://github.com/simoncampos1022/DL-OCR-YOLOandCRNN',
     category: 'Computer Vision',
     status: 'Live',
     icon: Eye,
@@ -222,7 +222,7 @@ const projects = [
       'Interactive Streamlit app with multiple modeling approaches'
     ],
     liveUrl: '',
-    githubUrl: 'https://github.com/YuITC/2024-DataScience-Salaries-Analysis',
+    githubUrl: 'https://github.com/simoncampos1022/Data-Science-Job-Salary-Prediction',
     category: 'Data Science',
     status: 'Completed',
     icon: Cloud,
@@ -247,9 +247,9 @@ const projects = [
       'Memory-efficient PyTorch data pipelines'
     ],
     liveUrl: '',
-    githubUrl: 'https://github.com/YuITC/Dense-Passage-Retrieval',
-    category: 'NLP/LLM',
-    status: 'Research',
+    githubUrl: 'https://github.com/simoncampos1022/DPR-Dense-Passage-Retrieval',
+    category: 'AI/ML',
+    status: 'Completed',
     icon: Database,
     gradient: 'from-violet-500 to-purple-500'
   },
@@ -284,7 +284,7 @@ const projects = [
     liveUrl: '',
     githubUrl: '',
     category: 'Frontend',
-    status: 'In Development',
+    status: 'Completed',
     icon: Code,
     gradient: 'from-sky-500 to-indigo-500'
   },
@@ -317,7 +317,7 @@ const projects = [
     liveUrl: '',
     githubUrl: '',
     category: 'Backend',
-    status: 'In Development',
+    status: 'Completed',
     icon: Database,
     gradient: 'from-amber-500 to-orange-600'
   },
@@ -343,7 +343,7 @@ const projects = [
     liveUrl: '',
     githubUrl: 'https://github.com/frostyalce000/binance-free-historical-candlestick-data-fetcher',
     category: 'Trading',
-    status: 'Live',
+    status: 'Completed',
     icon: Database,
     gradient: 'from-yellow-500 to-orange-500'
   },
@@ -450,7 +450,7 @@ const projects = [
       'EUR/USD 1-minute interval backtesting'
     ],
     liveUrl: '',
-    githubUrl: 'https://github.com/johnbdfilio000/Forex-Trading-Strategy-Backtester',
+    githubUrl: 'https://github.com/simoncampos1022/Forex-Trading-Strategy-Backtester',
     category: 'Trading',
     status: 'Live',
     icon: Code,
@@ -711,18 +711,22 @@ export function Projects() {
 
                     {/* Action Buttons */}
                     <div className="flex space-x-2">
-                      <motion.a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 text-sm font-medium"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Eye className="h-4 w-4" />
-                        <span>Live Demo</span>
-                      </motion.a>
+                      {
+                        project.liveUrl && (
+                          <motion.a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 text-sm font-medium"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Eye className="h-4 w-4" />
+                            <span>Live Demo</span>
+                          </motion.a>
+                        )
+                      }
                       <motion.a
                         href={project.githubUrl}
                         target="_blank"
