@@ -3,13 +3,13 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Code, Brain, Database, Cloud, Users, Target } from 'lucide-react'
+import { Code, Brain, Database, Cloud, Users, Target, TrendingUp } from 'lucide-react'
 
 const stats = [
   { label: 'Years Experience', value: '6+', icon: Target },
-  { label: 'Projects Completed', value: '50+', icon: Code },
-  { label: 'AI Models Deployed', value: '20+', icon: Brain },
-  { label: 'Happy Clients', value: '30+', icon: Users },
+  { label: 'Projects Completed', value: '47+', icon: Code },
+  { label: 'AI Models Deployed', value: '13+', icon: Brain },
+  { label: 'Happy Clients', value: '16+', icon: Users },
 ]
 
 const highlights = [
@@ -27,6 +27,11 @@ const highlights = [
     icon: Cloud,
     title: 'Cloud & DevOps',
     description: 'Proficient in AWS, Azure, Docker, Kubernetes, and CI/CD pipelines for reliable, scalable deployments.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'AI Trading Systems',
+    description: 'Passionate about developing AI trading bots and forecasting models using TimeMixer, TimesNet, TabPFN-v2, sentiment analysis, and YOLO pattern detection.',
   },
 ]
 
@@ -76,6 +81,9 @@ export function About() {
                 </p>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                   I thrive at the intersection of backend engineering and applied machine learning. From developing credit management systems at fintech startups to building AI-powered trading algorithms, I've consistently delivered robust solutions that drive real business value.
+                </p>
+                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                  I'm particularly passionate about AI trading systems and have developed several trading bots and forecasting models. I leverage cutting-edge time series models like TimeMixer, TimeMixer++, TimesNet, TimeXer, and TabPFN-v2, along with sentiment analysis using OpenAI API and Grok. I also use YOLO models for chart pattern detection to enhance trading strategies.
                 </p>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                   Currently, I'm focused on creating AI-powered applications that integrate machine learning models for enhanced user interaction and automation, while maintaining the highest standards of code quality and system reliability.
