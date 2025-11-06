@@ -341,9 +341,9 @@ const projects = [
       'Clean & Readable Data Output'
     ],
     liveUrl: '',
-    githubUrl: 'https://github.com/frostyalce000/binance-free-historical-candlestick-data-fetcher',
+    githubUrl: 'https://github.com/simoncampos1022/binance-free-historical-candlestick-data-ingestion-module',
     category: 'Trading',
-    status: 'Completed',
+    status: 'Live',
     icon: Database,
     gradient: 'from-yellow-500 to-orange-500'
   },
@@ -367,7 +367,7 @@ const projects = [
       'Reverse Fetching for API Optimization'
     ],
     liveUrl: '',
-    githubUrl: 'https://github.com/frostyalce000/bitget-free-historical-candlestick-data-fetcher',
+    githubUrl: 'https://github.com/simoncampos1022/bitget-free-historical-candlestick-data-ingestion-module',
     category: 'Trading',
     status: 'Live',
     icon: Database,
@@ -393,7 +393,7 @@ const projects = [
       'Historical Data for Backtesting'
     ],
     liveUrl: '',
-    githubUrl: 'https://github.com/frostyalce000/blofin-free-historical-candlestick-data-fetcher',
+    githubUrl: 'https://github.com/simoncampos1022/blofin-free-historical-candlestick-data-ingestion-module',
     category: 'Trading',
     status: 'Live',
     icon: Database,
