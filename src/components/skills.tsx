@@ -59,7 +59,7 @@ const skillCategories = [
       { name: 'LlamaIndex', icon: Brain },
       { name: 'NumPy', icon: SiNumpy },
       { name: 'Pandas', icon: SiPandas },
-      { name: 'Pandas', icon: SiPolars },
+      { name: 'Polars', icon: SiPolars },
       { name: 'Scikit-learn', icon: SiScikitlearn },
       { name: 'Jupyter', icon: SiJupyter },
       { name: 'OpenCV', icon: SiOpencv },

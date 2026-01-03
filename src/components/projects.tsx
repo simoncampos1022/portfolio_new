@@ -75,15 +75,15 @@ const projects = [
   },
   {
     id: 3,
-    title: 'UI-Butler',
-    subtitle: 'Advanced Full-Stack Monorepo Architecture',
-    description: 'Full-Stack monorepo using Turborepo with Nest.js backend microservices and Next.js frontend microservices. Features gRPC communication, Redis caching, and AI workflow management.',
-    longDescription: 'UI-Butler is a comprehensive full-stack monorepo project showcasing modern microservices architecture. It includes Nest.js-based backend services with modular architecture, inter-service communication via gRPC, custom Redis-based caching, JWT authentication, BullMQ job processing, and AI integration with GEMINI AI response streaming.',
-    image: '/projects/UI-Butler/diagram.png',
+    title: 'Dream Market Landing',
+    subtitle: 'Modern Trading Platform',
+    description: 'Dream Market is a cutting-edge platform that enables users to trade on the outcome of future events using advanced algorithms and real-time data analysis.',
+    longDescription: 'Dream Market is a cutting-edge platform that enables users to trade on the outcome of future events using advanced algorithms and real-time data analysis.',
+    image: '/projects/Dream-Market-Landing/dream-market-landing.png',
     images: [
-      '/projects/UI-Butler/diagram.png'
+      '/projects/Dream-Market-Landing/dream-market-landing.png'
     ],
-    technologies: ['Nest.js', 'Next.js', 'TypeScript', 'Turborepo', 'gRPC', 'Redis', 'Docker', 'BullMQ'],
+    technologies: ['React', 'Next.js', 'Tailwindcss', 'SSL/TLS', 'Vercel', 'Node.js', 'Webpack', 'D3', 'BullMQ'],
     features: [
       'Microservices architecture',
       'gRPC communication',
@@ -94,9 +94,9 @@ const projects = [
       'Server-Sent Events (SSE)',
       'React Flow visualization'
     ],
-    liveUrl: 'https://www.uibutler.xyz/',
-    githubUrl: 'https://github.com/simoncampos1022/ui-bulter',
-    category: 'Full-Stack',
+    liveUrl: 'https://dreams-market-modern-landing.vercel.app/',
+    githubUrl: 'https://github.com/simoncampos1022/dreams-market-landing',
+    category: 'Frontend',
     status: 'Live',
     icon: Code,
     gradient: 'from-blue-500 to-cyan-500'
@@ -694,7 +694,7 @@ export function Projects() {
 
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-2 mb-4 flex-1">
-                      {project.technologies.slice(0, 4).map((tech) => (
+                      {project.technologies.slice(0, 6).map((tech) => (
                         <span
                           key={tech}
                           className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-md"
@@ -702,9 +702,9 @@ export function Projects() {
                           {tech}
                         </span>
                       ))}
-                      {project.technologies.length > 4 && (
+                      {project.technologies.length > 6 && (
                         <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-md">
-                          +{project.technologies.length - 4} more
+                          +{project.technologies.length - 6} more
                         </span>
                       )}
                     </div>

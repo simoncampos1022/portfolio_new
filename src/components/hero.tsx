@@ -48,10 +48,10 @@ export function Hero() {
               className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6"
             >
               <span className="block text-white mb-2 drop-shadow-lg">
-                AI Backend Developer
+                Senior Software Engineer
               </span>
               <span className="block gradient-text drop-shadow-lg">
-                & Python Expert
+                Backend & Python Expert
               </span>
             </motion.h1>
 
