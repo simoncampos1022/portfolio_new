@@ -176,7 +176,7 @@ export function Contact() {
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                   Follow Me
                 </h4>
-                <div className="flex space-x-4">
+                <div className="flex flex-wrap gap-3 sm:gap-4">
                   {socialLinks.map((social, index) => (
                     <motion.a
                       key={social.name}
@@ -188,10 +188,10 @@ export function Contact() {
                       transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="p-4 rounded-xl bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-300 group"
+                      className="p-3 sm:p-4 rounded-xl bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-300 group"
                       title={social.description}
                     >
-                      <social.icon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200" />
+                      <social.icon className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200" />
                     </motion.a>
                   ))}
                 </div>
@@ -203,7 +203,7 @@ export function Contact() {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg"
+              className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 md:p-8 shadow-lg"
             >
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 Send a Message

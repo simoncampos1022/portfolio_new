@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { ExternalLink, Github, Eye, Code, Brain, Database, Cloud, Zap, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ExternalLink, Github, Eye, Code, Zap, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 
 const projects = [
@@ -36,7 +36,6 @@ const projects = [
     githubUrl: 'https://github.com/simoncampos1022/ai-sass-app',
     category: 'AI/ML',
     status: 'Live',
-    icon: Brain,
     gradient: 'from-purple-500 to-pink-500'
   },
   {
@@ -68,9 +67,8 @@ const projects = [
     ],
     liveUrl: 'https://drive.google.com/drive/folders/1T0s3laE9Z6iulVpn4Z99IlYFK7xCbErO?usp=sharing',
     githubUrl: 'https://github.com/simoncampos1022/food-ai-app',
-    category: 'Mobile AI',
+    category: 'FullStack',
     status: 'Live',
-    icon: Brain,
     gradient: 'from-green-500 to-teal-500'
   },
   {
@@ -98,163 +96,41 @@ const projects = [
     githubUrl: 'https://github.com/simoncampos1022/dreams-market-landing',
     category: 'Frontend',
     status: 'Live',
-    icon: Code,
     gradient: 'from-blue-500 to-cyan-500'
   },
   {
     id: 4,
-    title: 'Multimodal Agentic RAG System',
-    subtitle: 'PDF Document Analysis with AI Agents',
-    description: 'An Agentic RAG system that enhances traditional RAG by enabling multimodal PDF analysis. It processes not only text but also images, tables, and combined queries that mix visual and textual information.',
-    longDescription: 'An Agentic RAG system that enhances traditional RAG by enabling multimodal PDF analysis. It processes not only text but also images, tables, and combined queries that mix visual and textual information. The architecture integrates LangGraph for intelligent agentic reasoning, Docling for deep PDF understanding, and Milvus for hybrid search with improved retrieval accuracy. A user-friendly web interface ensures smooth interaction. The system is designed for researchers, data scientists, and developers who require intelligent document analysis and question answering across large PDF collections containing diverse content.',
-    image: '/projects/Multimodal Agentic RAG/Picture1.png',
+    title: 'AI Body Detection & Measurement',
+    subtitle: 'Shopify Clothing Fit Finder',
+    description: 'Computer vision system that extracts precise body measurements from a single front-facing photo to recommend well-fitting clothes on Shopify. Uses AI to analyze body shape and provide personalized clothing recommendations.',
+    longDescription: 'An AI-powered clothing fit finder integrated with Shopify that helps users find perfectly fitting clothes using computer vision. The system processes a single clear front-facing photo to automatically detect key body points and estimate measurements including waist, hips, arms, and other dimensions. These measurements are seamlessly integrated with Shopify to recommend size-matched clothing items. The application uses advanced computer vision techniques with OpenCV and Mediapipe to analyze body shape without requiring special cameras or equipment. The workflow: user uploads a photo, AI model processes the image to extract measurements, data is sent to Shopify backend, and the platform displays recommended clothing that matches the measurements.',
+    image: '/projects/Body-Detection-AI/output.png',
     images: [
-      '/projects/Multimodal Agentic RAG/Picture1.png',
-      '/projects/Multimodal Agentic RAG/Picture2.png',
+      '/projects/Body-Detection-AI/output.png',
+      '/projects/Body-Detection-AI/output1.jpg',
+      '/projects/Body-Detection-AI/output2.jpg',
+      '/projects/Body-Detection-AI/IMG_8446.jpg',
+      '/projects/Body-Detection-AI/z-codebase.png'
     ],
-    technologies: ['LangChain', 'LangGraph', 'Docling', 'Milvus', 'Attu', 'Docker', 'OpenAI', 'HuggingFace', 'PIL', 'OpenCV', 'PyTorch', 'Flask'],
+    technologies: ['Python', 'OpenCV', 'Mediapipe', 'Computer Vision', 'FastAPI', 'Flutter', 'Shopify API', 'Deep Learning'],
     features: [
-      'End-to-end Agentic RAG workflow with LangGraph',
-      'Multimodal PDF ingestion pipeline with OpenAI Vision',
-      'Milvus vector store with BM25 hybrid retrieval',
-      'Conversational memory and agent step tracing',
-      'Flask-based web application with real-time visualization'
+      'Photo-based body measurement extraction',
+      'AI-powered body point detection',
+      'Automatic measurement estimation (waist, hips, arms)',
+      'Smart Shopify integration',
+      'No special hardware required',
+      'Personalized clothing recommendations',
+      'Single photo processing',
+      'Size-matched clothing suggestions'
     ],
     liveUrl: '',
-    githubUrl: 'https://github.com/simoncampos1022/RAG-System-arXivRAG-Multimodal-Conversational',
-    category: 'NLP/LLM',
+    githubUrl: '',
+    category: 'AI/ML',
     status: 'Completed',
-    icon: Brain,
-    gradient: 'from-indigo-500 to-purple-500'
+    gradient: 'from-pink-500 to-rose-500'
   },
   {
     id: 5,
-    title: 'Vietnamese Legal Document Retrieval',
-    subtitle: 'Semantic Search for Legal Documents',
-    description: 'A semantic retrieval system for Vietnamese legal documents using Sentence Transformers, fine-tuned on custom data and evaluated with MTEB, supporting scalable vector search via FAISS.',
-    longDescription: 'A semantic retrieval system for Vietnamese legal documents using Sentence Transformers, fine-tuned on custom data and evaluated with MTEB, supporting scalable vector search via FAISS. The system achieved strong benchmark results with NDCG@10 of 60.4% and MAP@10 of 53.6% on MTEB (BKAI Legal Retrieval), demonstrating effectiveness in legal information retrieval tasks.',
-    image: '/projects/Vietnamese Legal Document Retrieval/Picture1.png',
-    images: [
-      '/projects/Vietnamese Legal Document Retrieval/Picture1.png'
-    ],
-    technologies: ['Python', 'PyTorch', 'SentenceTransformers', 'MTEB', 'Accelerate', 'Gradio', 'Docker', 'Pandas', 'FAISS'],
-    features: [
-      'Fine-tuned multilingual SBERT on 100K+ Vietnamese legal documents',
-      'Achieved NDCG@10 of 60.4% and MAP@10 of 53.6% on MTEB',
-      'Complete pipeline with data preprocessing and evaluation',
-      'FAISS-based retrieval system with Gradio interface',
-      'Docker containerization for reproducibility'
-    ],
-    liveUrl: '',
-    githubUrl: 'https://github.com/simoncampos1022/Vietnamese-Legal-Doc-Retrieval',
-    category: 'NLP/LLM',
-    status: 'Completed',
-    icon: Database,
-    gradient: 'from-emerald-500 to-teal-500'
-  },
-  {
-    id: 6,
-    title: 'Real-time Neural Style Transfer',
-    subtitle: 'Artistic Image Transformation',
-    description: 'A real-time neural style transfer application using feed-forward networks and OpenCV, deployed with Streamlit for instant artistic transformation on video feeds.',
-    longDescription: 'A real-time neural style transfer application using feed-forward networks and OpenCV, deployed with Streamlit. The system uses a lightweight feed-forward CNN trained on MS-COCO and fine-tuned with artistic styles (e.g., Monet, Van Gogh). It integrates OpenCV for live webcam streaming and real-time frame processing, enabling seamless artistic transformation on video feeds.',
-    image: '/projects/Real-time Neural Style Transfer/Picture1.png',
-    images: [
-      '/projects/Real-time Neural Style Transfer/Picture1.png'
-    ],
-    technologies: ['Python', 'PyTorch', 'VGG', 'TransformerNet', 'OpenCV', 'Numpy', 'Streamlit'],
-    features: [
-      'Real-time neural style transfer with lightweight CNN',
-      'Live webcam streaming and frame processing',
-      'Interactive Streamlit web interface',
-      'Frame-by-frame normalization and optimization',
-      'Low-latency style transfer for smooth rendering'
-    ],
-    liveUrl: 'https://realtime-style-transfer.streamlit.app/',
-    githubUrl: 'https://github.com/simoncampos1022/Style-Transfer-Realtime',
-    category: 'Computer Vision',
-    status: 'Live',
-    icon: Zap,
-    gradient: 'from-rose-500 to-pink-500'
-  },
-  {
-    id: 7,
-    title: 'Scene Text Recognition System',
-    subtitle: 'OCR with YOLOv11m and CRNN',
-    description: 'A scalable OCR system using YOLOv11m and CRNN with CTC loss, deployed via FastAPI + Ray Serve, supporting real-time OCR with GPU acceleration and an interactive Streamlit UI.',
-    longDescription: 'A scalable OCR system using YOLOv11m and CRNN with CTC loss, deployed via FastAPI + Ray Serve, supporting real-time OCR with GPU acceleration and an interactive Streamlit UI. The system integrates YOLOv11m for text detection and CRNN (ResNet34) for recognition, achieving ~88% precision on the ICDAR2003 benchmark.',
-    image: '/projects/Scene Text Recognition/Picture1.png',
-    images: [
-      '/projects/Scene Text Recognition/Picture1.png'
-    ],
-    technologies: ['Python', 'PyTorch', 'YOLOv11m', 'OpenCV', 'CRNN', 'Scikit-learn', 'FastAPI', 'Ray Serve', 'Streamlit'],
-    features: [
-      'YOLOv11m + CRNN pipeline for text detection and recognition',
-      '~88% precision on ICDAR2003 benchmark',
-      'Scalable OCR API with FastAPI and Ray Serve',
-      'GPU acceleration and autoscaling support',
-      'Interactive Streamlit application for instant OCR'
-    ],
-    liveUrl: 'https://scene-text-recognition.streamlit.app/',
-    githubUrl: 'https://github.com/simoncampos1022/DL-OCR-YOLOandCRNN',
-    category: 'Computer Vision',
-    status: 'Live',
-    icon: Eye,
-    gradient: 'from-cyan-500 to-blue-500'
-  },
-  {
-    id: 8,
-    title: 'Data Science Salary Prediction',
-    subtitle: 'Glassdoor 2024 Analysis with ML & LLMs',
-    description: 'This project predicts data science job salaries using 2024 Glassdoor data with both traditional machine learning and large language models (LLMs). It offers a comparison of predictive methods for salary estimation.',
-    longDescription: 'This project predicts data science job salaries using 2024 Glassdoor data with both traditional machine learning and large language models (LLMs). It offers a comparison of predictive methods, helping professionals, recruiters, and researchers analyze salary trends. By incorporating job-related features, the project tackles the challenge of accurate salary estimation while exploring LLMs in regression tasks. An interactive Streamlit app delivers accessible predictions for technical and non-technical users alike.',
-    image: '/projects/Data Science Salary Prediction/Picture1.png',
-    images: [
-      '/projects/Data Science Salary Prediction/Picture1.png',
-      '/projects/Data Science Salary Prediction/Picture2.png'
-    ],
-    technologies: ['Selenium', 'Pandas', 'NumPy', 'Scikit-learn', 'XGBoost', 'Optuna', 'PyTorch', 'Transformers', 'PEFT (QLoRA)', 'SFT', 'OpenAI SDK', 'Hugging Face', 'Weights & Biases'],
-    features: [
-      'Comprehensive data crawling and preprocessing from Glassdoor 2024',
-      'Achieved R² = 0.82 using XGBoost vs Linear Regression baseline (R² = 0.71)',
-      'Advanced hyperparameter tuning with Optuna',
-      'LLM-based regression with OpenAI GPT-5 and LLaMA 3.1 fine-tuning',
-      'Interactive Streamlit app with multiple modeling approaches'
-    ],
-    liveUrl: '',
-    githubUrl: 'https://github.com/simoncampos1022/Data-Science-Job-Salary-Prediction',
-    category: 'Data Science',
-    status: 'Completed',
-    icon: Cloud,
-    gradient: 'from-orange-500 to-red-500'
-  },
-  {
-    id: 9,
-    title: 'Dense Passage Retrieval',
-    subtitle: 'Open-Domain Question Answering',
-    description: 'PyTorch reimplementation of the paper "Dense Passage Retrieval for Open-Domain Question Answering" with modular design, low GPU optimization (T4), and accuracy improvements over the original paper.',
-    longDescription: 'PyTorch reimplementation of the paper "Dense Passage Retrieval for Open-Domain Question Answering" with modular design, low GPU optimization (T4), and accuracy improvements over the original paper for enhanced usability and performance. The system uses dual-encoder Transformers for high-accuracy semantic search across large-scale QA datasets.',
-    image: '/projects/Dense Passage Retrieval/Picture1.png',
-    images: [
-      '/projects/Dense Passage Retrieval/Picture1.png'
-    ],
-    technologies: ['Python', 'PyTorch', 'Transformers', 'Accelerate', 'FAISS', 'Numpy', 'Pandas', 'Matplotlib'],
-    features: [
-      'Modular dense passage retrieval with dual-encoder Transformers',
-      '~1% improvement over original DPR baseline',
-      'FAISS integration for efficient vector indexing',
-      'Optimized for 16GB NVIDIA T4 GPU with mixed precision',
-      'Memory-efficient PyTorch data pipelines'
-    ],
-    liveUrl: '',
-    githubUrl: 'https://github.com/simoncampos1022/DPR-Dense-Passage-Retrieval',
-    category: 'AI/ML',
-    status: 'Completed',
-    icon: Database,
-    gradient: 'from-violet-500 to-purple-500'
-  },
-  {
-    id: 10,
     title: 'Jobs3 Frontend',
     subtitle: 'Next.js Job Marketplace UI',
     description: '2024: Frontend developer for Jobs3. Implemented wallet integrations, responsive UI, admin panel, and high-fidelity designs from Figma.',
@@ -285,11 +161,10 @@ const projects = [
     githubUrl: '',
     category: 'Frontend',
     status: 'Completed',
-    icon: Code,
     gradient: 'from-sky-500 to-indigo-500'
   },
   {
-    id: 11,
+    id: 6,
     title: 'Jobs3 Backend',
     subtitle: 'Node.js Backend for Job Marketplace',
     description: '2024: Backend developer for Jobs3. Designed APIs, integrated Pinecone/OpenAI/LangChain, Telegram alerts, and email notifications.',
@@ -318,11 +193,168 @@ const projects = [
     githubUrl: '',
     category: 'Backend',
     status: 'Completed',
-    icon: Database,
     gradient: 'from-amber-500 to-orange-600'
   },
   {
+    id: 7,
+    title: 'GoTrip - City Jabber',
+    subtitle: 'Travel planning platform',
+    description: 'City Jabber is a travel planning platform that helps users discover and explore cities around the world. It offers personalized recommendations for attractions, restaurants, and activities based on user preferences and interests.',
+    longDescription: 'City Jabber is a travel planning platform that helps users discover and explore cities around the world. It offers personalized recommendations for attractions, restaurants, and activities based on user preferences and interests.',
+    image: '/projects/City-Jabber/cityjabber (1).png',
+    images: [
+      '/projects/City-Jabber/cityjabber (1).png',
+      '/projects/City-Jabber/cityjabber (2).png',
+      '/projects/City-Jabber/cityjabber (3).png',
+      '/projects/City-Jabber/cityjabber (4).png',
+      '/projects/City-Jabber/cityjabber (5).png',
+      '/projects/City-Jabber/cityjabber (6).png',
+    ],
+    technologies: [
+      'Next.js', 'MongoDB', 'Bootstrap', 'GEO API', 'BigData', 'Search Algorithm', 'React Toolkit'
+    ],
+    features: [
+      'Personalized travel recommendations',
+      'City discovery and exploration',
+      'Attraction and restaurant discovery',
+      'Activity and event recommendations',
+      'User profile and preferences management',
+      'Social media integration',
+      'Search functionality',
+      'Filtering and sorting options',
+      'Responsive design',
+      'SEO optimization',
+      'Performance optimization',
+      'Security and data protection',
+      'Scalability and reliability',
+    ],
+    liveUrl: '',
+    githubUrl: '',
+    category: 'FullStack',
+    status: 'Completed',
+    gradient: 'from-amber-500 to-orange-600'
+  },
+  {
+    id: 8,
+    title: 'Real-time Neural Style Transfer',
+    subtitle: 'Artistic Image Transformation',
+    description: 'A real-time neural style transfer application using feed-forward networks and OpenCV, deployed with Streamlit for instant artistic transformation on video feeds.',
+    longDescription: 'A real-time neural style transfer application using feed-forward networks and OpenCV, deployed with Streamlit. The system uses a lightweight feed-forward CNN trained on MS-COCO and fine-tuned with artistic styles (e.g., Monet, Van Gogh). It integrates OpenCV for live webcam streaming and real-time frame processing, enabling seamless artistic transformation on video feeds.',
+    image: '/projects/Real-time Neural Style Transfer/Picture1.png',
+    images: [
+      '/projects/Real-time Neural Style Transfer/Picture1.png'
+    ],
+    technologies: ['Python', 'PyTorch', 'VGG', 'TransformerNet', 'OpenCV', 'Numpy', 'Streamlit'],
+    features: [
+      'Real-time neural style transfer with lightweight CNN',
+      'Live webcam streaming and frame processing',
+      'Interactive Streamlit web interface',
+      'Frame-by-frame normalization and optimization',
+      'Low-latency style transfer for smooth rendering'
+    ],
+    liveUrl: 'https://realtime-style-transfer.streamlit.app/',
+    githubUrl: 'https://github.com/simoncampos1022/Style-Transfer-Realtime',
+    category: 'AI/ML',
+    status: 'Live',
+    gradient: 'from-rose-500 to-pink-500'
+  },
+  {
+    id: 9,
+    title: 'Outlook Account Creator Automation',
+    subtitle: 'Web scraper and Automation tool',
+    description: 'Created a web scraper and automation tool to create the outlook account automatically with using bypassing captcha and turning proxy.',
+    longDescription: 'Created a web scraper and automation tool to create the outlook account automatically with using bypassing captcha and turning proxy.',
+    image: '/projects/Outlook-Creator/outlook-creator.png',
+    images: [
+      '/projects/Outlook-Creator/outlook-creator.png'
+    ],
+    technologies: ['Puppeteer', 'Node.js', 'JavaScript', 'Proxy', 'Captcha', 'Outlook API'],
+    features: [
+      'Web scraper and automation tool to create the outlook account automatically with using bypassing captcha and turning proxy.',
+      'Bypassing captcha and turning proxy',
+      'Creating the outlook account automatically',
+    ],
+    liveUrl: 'https://drive.google.com/file/d/1JeCRS-JJ2K1p13_XWFFa1BCS1qOrMMdl/view?usp=drive_link',
+    githubUrl: 'https://github.com/simoncampos1022/Outlook-auto-creator-puppeteer',
+    category: 'FullStack',
+    status: 'Completed',
+    gradient: 'from-rose-500 to-pink-500'
+  },
+  {
+    id: 10,
+    title: 'Scene Text Recognition System',
+    subtitle: 'OCR with YOLOv11m and CRNN',
+    description: 'A scalable OCR system using YOLOv11m and CRNN with CTC loss, deployed via FastAPI + Ray Serve, supporting real-time OCR with GPU acceleration and an interactive Streamlit UI.',
+    longDescription: 'A scalable OCR system using YOLOv11m and CRNN with CTC loss, deployed via FastAPI + Ray Serve, supporting real-time OCR with GPU acceleration and an interactive Streamlit UI. The system integrates YOLOv11m for text detection and CRNN (ResNet34) for recognition, achieving ~88% precision on the ICDAR2003 benchmark.',
+    image: '/projects/Scene Text Recognition/Picture1.png',
+    images: [
+      '/projects/Scene Text Recognition/Picture1.png'
+    ],
+    technologies: ['Python', 'PyTorch', 'YOLOv11m', 'OpenCV', 'CRNN', 'Scikit-learn', 'FastAPI', 'Ray Serve', 'Streamlit'],
+    features: [
+      'YOLOv11m + CRNN pipeline for text detection and recognition',
+      '~88% precision on ICDAR2003 benchmark',
+      'Scalable OCR API with FastAPI and Ray Serve',
+      'GPU acceleration and autoscaling support',
+      'Interactive Streamlit application for instant OCR'
+    ],
+    liveUrl: 'https://scene-text-recognition.streamlit.app/',
+    githubUrl: 'https://github.com/simoncampos1022/DL-OCR-YOLOandCRNN',
+    category: 'AI/ML',
+    status: 'Live',
+    gradient: 'from-cyan-500 to-blue-500'
+  },
+  {
+    id: 11,
+    title: 'Data Science Salary Prediction',
+    subtitle: 'Glassdoor 2024 Analysis with ML & LLMs',
+    description: 'This project predicts data science job salaries using 2024 Glassdoor data with both traditional machine learning and large language models (LLMs). It offers a comparison of predictive methods for salary estimation.',
+    longDescription: 'This project predicts data science job salaries using 2024 Glassdoor data with both traditional machine learning and large language models (LLMs). It offers a comparison of predictive methods, helping professionals, recruiters, and researchers analyze salary trends. By incorporating job-related features, the project tackles the challenge of accurate salary estimation while exploring LLMs in regression tasks. An interactive Streamlit app delivers accessible predictions for technical and non-technical users alike.',
+    image: '/projects/Data Science Salary Prediction/Picture1.png',
+    images: [
+      '/projects/Data Science Salary Prediction/Picture1.png',
+      '/projects/Data Science Salary Prediction/Picture2.png'
+    ],
+    technologies: ['Selenium', 'Pandas', 'NumPy', 'Scikit-learn', 'XGBoost', 'Optuna', 'PyTorch', 'Transformers', 'PEFT (QLoRA)', 'SFT', 'OpenAI SDK', 'Hugging Face', 'Weights & Biases'],
+    features: [
+      'Comprehensive data crawling and preprocessing from Glassdoor 2024',
+      'Achieved R² = 0.82 using XGBoost vs Linear Regression baseline (R² = 0.71)',
+      'Advanced hyperparameter tuning with Optuna',
+      'LLM-based regression with OpenAI GPT-5 and LLaMA 3.1 fine-tuning',
+      'Interactive Streamlit app with multiple modeling approaches'
+    ],
+    liveUrl: '',
+    githubUrl: 'https://github.com/simoncampos1022/Data-Science-Job-Salary-Prediction',
+    category: 'AI/ML',
+    status: 'Completed',
+    gradient: 'from-orange-500 to-red-500'
+  },
+  {
     id: 12,
+    title: 'Dense Passage Retrieval',
+    subtitle: 'Open-Domain Question Answering',
+    description: 'PyTorch reimplementation of the paper "Dense Passage Retrieval for Open-Domain Question Answering" with modular design, low GPU optimization (T4), and accuracy improvements over the original paper.',
+    longDescription: 'PyTorch reimplementation of the paper "Dense Passage Retrieval for Open-Domain Question Answering" with modular design, low GPU optimization (T4), and accuracy improvements over the original paper for enhanced usability and performance. The system uses dual-encoder Transformers for high-accuracy semantic search across large-scale QA datasets.',
+    image: '/projects/Dense Passage Retrieval/Picture1.png',
+    images: [
+      '/projects/Dense Passage Retrieval/Picture1.png'
+    ],
+    technologies: ['Python', 'PyTorch', 'Transformers', 'Accelerate', 'FAISS', 'Numpy', 'Pandas', 'Matplotlib'],
+    features: [
+      'Modular dense passage retrieval with dual-encoder Transformers',
+      '~1% improvement over original DPR baseline',
+      'FAISS integration for efficient vector indexing',
+      'Optimized for 16GB NVIDIA T4 GPU with mixed precision',
+      'Memory-efficient PyTorch data pipelines'
+    ],
+    liveUrl: '',
+    githubUrl: 'https://github.com/simoncampos1022/DPR-Dense-Passage-Retrieval',
+    category: 'AI/ML',
+    status: 'Completed',
+    gradient: 'from-violet-500 to-purple-500'
+  },
+  {
+    id: 13,
     title: 'Binance Historical Data Fetcher',
     subtitle: 'Free Candlestick Data Downloader',
     description: 'Python script to fetch free historical Binance Futures candlestick (OHLCV) data for any symbol and interval without API keys. Download years of data (2021–2025) for backtesting and analysis.',
@@ -344,11 +376,10 @@ const projects = [
     githubUrl: 'https://github.com/simoncampos1022/binance-free-historical-candlestick-data-ingestion-module',
     category: 'Trading',
     status: 'Live',
-    icon: Database,
     gradient: 'from-yellow-500 to-orange-500'
   },
   {
-    id: 13,
+    id: 14,
     title: 'Bitget Historical Data Fetcher',
     subtitle: 'Free Futures Candlestick Downloader',
     description: 'Python script to fetch historical candlestick (OHLCV) data from Bitget Futures API for any trading pair and interval — completely free without API keys.',
@@ -370,11 +401,10 @@ const projects = [
     githubUrl: 'https://github.com/simoncampos1022/bitget-free-historical-candlestick-data-ingestion-module',
     category: 'Trading',
     status: 'Live',
-    icon: Database,
     gradient: 'from-blue-500 to-cyan-500'
   },
   {
-    id: 14,
+    id: 15,
     title: 'Blofin Historical Data Fetcher',
     subtitle: 'Free Candlestick Data Tool',
     description: 'Python script to fetch free historical candlestick (OHLCV) data from Blofin exchange for any trading pair and interval without authentication.',
@@ -396,11 +426,10 @@ const projects = [
     githubUrl: 'https://github.com/simoncampos1022/blofin-free-historical-candlestick-data-ingestion-module',
     category: 'Trading',
     status: 'Live',
-    icon: Database,
     gradient: 'from-emerald-500 to-teal-500'
   },
   {
-    id: 15,
+    id: 16,
     title: 'Chart Pattern Detection YOLO',
     subtitle: 'AI-Powered Trading Pattern Recognition',
     description: 'YOLO-based pattern detection system for swing trading that identifies chart patterns (Cup-and-Handle, Double Bottom, Head and Shoulders) and candlestick formations (Marubozu, Morning Star, Doji) in real-time.',
@@ -427,11 +456,10 @@ const projects = [
     githubUrl: '',
     category: 'Trading',
     status: 'Live',
-    icon: Eye,
     gradient: 'from-purple-500 to-pink-500'
   },
   {
-    id: 16,
+    id: 17,
     title: 'Forex Trading Strategy Backtester',
     subtitle: 'EUR/USD Backtesting Framework',
     description: 'Python-based backtesting framework for forex trading strategies on EUR/USD. Simulates trading cycles with take-profit, stop-loss, and dynamic trigger levels (X1, X2) using historical OHLCV data.',
@@ -453,11 +481,10 @@ const projects = [
     githubUrl: 'https://github.com/simoncampos1022/Forex-Trading-Strategy-Backtester',
     category: 'Trading',
     status: 'Live',
-    icon: Code,
     gradient: 'from-red-500 to-orange-500'
   },
   {
-    id: 17,
+    id: 18,
     title: 'Crypto Sentiment Data Ingestion',
     subtitle: 'AI Trading Sentiment Collector',
     description: 'Asynchronous Python system to collect, analyze, and store crypto sentiment data from CryptoPanic, Reddit, CoinMarketCap, and Twitter. Uses FinBERT for financial sentiment analysis with real-time updates every 15 minutes.',
@@ -479,11 +506,10 @@ const projects = [
     githubUrl: '',
     category: 'Trading',
     status: 'Live',
-    icon: Brain,
     gradient: 'from-indigo-500 to-purple-500'
   },
   {
-    id: 18,
+    id: 19,
     title: 'TimeMixer++ Price Forecasting',
     subtitle: 'Short-Term Market Prediction Model',
     description: 'State-of-the-art time series forecasting model for accurate short-term price prediction in financial markets. Leverages multi-scale and multi-resolution approach to capture complex temporal patterns across stocks, ETFs, forex, and crypto.',
@@ -509,41 +535,33 @@ const projects = [
     githubUrl: '',
     category: 'Trading',
     status: 'Live',
-    icon: Brain,
     gradient: 'from-cyan-500 to-blue-500'
   },
   {
-    id: 19,
-    title: 'AI Body Detection & Measurement',
-    subtitle: 'Shopify Clothing Fit Finder',
-    description: 'Computer vision system that extracts precise body measurements from a single front-facing photo to recommend well-fitting clothes on Shopify. Uses AI to analyze body shape and provide personalized clothing recommendations.',
-    longDescription: 'An AI-powered clothing fit finder integrated with Shopify that helps users find perfectly fitting clothes using computer vision. The system processes a single clear front-facing photo to automatically detect key body points and estimate measurements including waist, hips, arms, and other dimensions. These measurements are seamlessly integrated with Shopify to recommend size-matched clothing items. The application uses advanced computer vision techniques with OpenCV and Mediapipe to analyze body shape without requiring special cameras or equipment. The workflow: user uploads a photo, AI model processes the image to extract measurements, data is sent to Shopify backend, and the platform displays recommended clothing that matches the measurements.',
-    image: '/projects/Body-Detection-AI/output.png',
+    id: 20,
+    title: 'Multimodal Agentic RAG System',
+    subtitle: 'PDF Document Analysis with AI Agents',
+    description: 'An Agentic RAG system that enhances traditional RAG by enabling multimodal PDF analysis. It processes not only text but also images, tables, and combined queries that mix visual and textual information.',
+    longDescription: 'An Agentic RAG system that enhances traditional RAG by enabling multimodal PDF analysis. It processes not only text but also images, tables, and combined queries that mix visual and textual information. The architecture integrates LangGraph for intelligent agentic reasoning, Docling for deep PDF understanding, and Milvus for hybrid search with improved retrieval accuracy. A user-friendly web interface ensures smooth interaction. The system is designed for researchers, data scientists, and developers who require intelligent document analysis and question answering across large PDF collections containing diverse content.',
+    image: '/projects/Multimodal Agentic RAG/Picture1.png',
     images: [
-      '/projects/Body-Detection-AI/output.png',
-      '/projects/Body-Detection-AI/output1.jpg',
-      '/projects/Body-Detection-AI/output2.jpg',
-      '/projects/Body-Detection-AI/IMG_8446.jpg',
-      '/projects/Body-Detection-AI/z-codebase.png'
+      '/projects/Multimodal Agentic RAG/Picture1.png',
+      '/projects/Multimodal Agentic RAG/Picture2.png',
     ],
-    technologies: ['Python', 'OpenCV', 'Mediapipe', 'Computer Vision', 'FastAPI', 'Flutter', 'Shopify API', 'Deep Learning'],
+    technologies: ['LangChain', 'LangGraph', 'Docling', 'Milvus', 'Attu', 'Docker', 'OpenAI', 'HuggingFace', 'PIL', 'OpenCV', 'PyTorch', 'Flask'],
     features: [
-      'Photo-based body measurement extraction',
-      'AI-powered body point detection',
-      'Automatic measurement estimation (waist, hips, arms)',
-      'Smart Shopify integration',
-      'No special hardware required',
-      'Personalized clothing recommendations',
-      'Single photo processing',
-      'Size-matched clothing suggestions'
+      'End-to-end Agentic RAG workflow with LangGraph',
+      'Multimodal PDF ingestion pipeline with OpenAI Vision',
+      'Milvus vector store with BM25 hybrid retrieval',
+      'Conversational memory and agent step tracing',
+      'Flask-based web application with real-time visualization'
     ],
     liveUrl: '',
-    githubUrl: '',
+    githubUrl: 'https://github.com/simoncampos1022/RAG-System-arXivRAG-Multimodal-Conversational',
     category: 'AI/ML',
     status: 'Completed',
-    icon: Eye,
-    gradient: 'from-pink-500 to-rose-500'
-  }
+    gradient: 'from-indigo-500 to-purple-500'
+  },
 ]
 
 const categories = ['All', 'AI/ML', 'Frontend', 'Backend', 'FullStack', 'Trading']
@@ -615,13 +633,13 @@ export function Projects() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex flex-wrap justify-center gap-4 mb-12"
+            className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-2"
           >
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                className={`px-3 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm md:text-base rounded-full font-medium transition-all duration-300 ${
                   selectedCategory === category
                     ? 'bg-primary-500 text-white shadow-lg'
                     : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400'
@@ -643,9 +661,19 @@ export function Projects() {
                 className="group cursor-pointer"
                 onClick={() => handleProjectSelect(project)}
               >
-                <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col">
+                <div className="bg-white dark:bg-gray-800 rounded-xl overflow-visible shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col relative">
+                  {/* Star Image - positioned relative to card */}
+                  <div className="absolute -top-3 -left-3 z-50 rotate-45">
+                    <Image
+                      src="/projects/star.png"
+                      alt="Star"
+                      width={32}
+                      height={32}
+                      className="h-8 w-8"
+                    />
+                  </div>
                   {/* Project Image */}
-                  <div className="h-48 relative overflow-hidden flex-shrink-0">
+                  <div className="h-48 relative overflow-hidden flex-shrink-0 rounded-t-xl">
                     {project.image ? (
                       <>
                     <Image
@@ -673,13 +701,10 @@ export function Projects() {
                         {project.status}
                       </span>
                     </div>
-                    <div className="absolute bottom-4 left-4">
-                      <project.icon className="h-8 w-8 text-white" />
-                    </div>
                   </div>
 
                   {/* Project Content */}
-                  <div className="p-6 flex-1 flex flex-col">
+                  <div className="p-6 flex-1 flex flex-col justify-between">
                     <div className="flex items-center space-x-2 mb-2">
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200">
                         {project.title}
@@ -693,7 +718,7 @@ export function Projects() {
                     </p>
 
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-4 flex-1">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.slice(0, 6).map((tech) => (
                         <span
                           key={tech}
@@ -759,29 +784,30 @@ export function Projects() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
-                className="bg-white dark:bg-gray-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+                className="bg-white dark:bg-gray-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto mx-2 sm:mx-4"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-6">
-                    <div>
-                      <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                <div className="p-4 sm:p-6">
+                  <div className="flex items-start justify-between mb-4 sm:mb-6 gap-2">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2 break-words">
                         {selectedProject.title}
                       </h3>
-                      <p className="text-primary-600 dark:text-primary-400 font-medium">
+                      <p className="text-sm sm:text-base text-primary-600 dark:text-primary-400 font-medium break-words">
                         {selectedProject.subtitle}
                       </p>
                     </div>
                     <button
                       onClick={() => setSelectedProject(null)}
-                      className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                      className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 flex-shrink-0 ml-2"
+                      aria-label="Close modal"
                     >
-                      <X className="h-6 w-6" />
+                      <X className="h-5 w-5 sm:h-6 sm:w-6" />
                     </button>
                   </div>
 
-                  <div className="space-y-6">
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <div className="space-y-4 sm:space-y-6">
+                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
                       {selectedProject.longDescription}
                     </p>
 
@@ -874,29 +900,33 @@ export function Projects() {
                       </div>
                     </div>
 
-                    <div className="flex space-x-4">
-                      <motion.a
-                        href={selectedProject.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center space-x-2 px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 font-medium"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                        <span>View Live</span>
-                      </motion.a>
-                      <motion.a
-                        href={selectedProject.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center space-x-2 px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 font-medium"
-                      >
-                        <Github className="h-4 w-4" />
-                        <span>View Code</span>
-                      </motion.a>
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                      {selectedProject.liveUrl && (
+                        <motion.a
+                          href={selectedProject.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center justify-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 font-medium text-sm sm:text-base"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          <span>View Live</span>
+                        </motion.a>
+                      )}
+                      {selectedProject.githubUrl && (
+                        <motion.a
+                          href={selectedProject.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center justify-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 font-medium text-sm sm:text-base"
+                        >
+                          <Github className="h-4 w-4" />
+                          <span>View Code</span>
+                        </motion.a>
+                      )}
                     </div>
                   </div>
                 </div>

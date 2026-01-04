@@ -35,7 +35,7 @@ export function Hero() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <span className="inline-block px-4 py-4 rounded-full night-sky-card text-primary-700 dark:text-primary-300 text-lg font-display font-medium mb-4">
+              <span className="inline-block px-3 py-2 sm:px-4 sm:py-4 rounded-full night-sky-card text-primary-700 dark:text-primary-300 text-sm sm:text-lg font-display font-medium mb-4">
                 👨‍🎓 Hello, I'm Simon
               </span>
             </motion.div>
@@ -45,7 +45,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 sm:mb-6"
             >
               <span className="block text-white mb-2 drop-shadow-lg">
                 Senior Software Engineer
@@ -60,7 +60,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed drop-shadow-lg"
+              className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8 leading-relaxed drop-shadow-lg px-2 sm:px-0"
             >
               Building scalable systems and intelligent AI solutions that drive innovation and support complex workflows.
             </motion.p>
@@ -91,7 +91,7 @@ export function Hero() {
                 onClick={scrollToProjects}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-primary text-lg px-8 py-4"
+                className="btn-primary text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 w-full sm:w-auto"
               >
                 View My Work
               </motion.button>
@@ -99,7 +99,7 @@ export function Hero() {
                 onClick={scrollToContact}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-secondary text-lg px-8 py-4"
+                className="btn-secondary text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 w-full sm:w-auto"
               >
                 Contact Me
               </motion.button>
@@ -115,18 +115,18 @@ export function Hero() {
               className="relative"
             >
               {/* Photo Container */}
-              <div className="relative flex w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] items-center justify-center">
+              <div className="relative flex w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] items-center justify-center">
                 {/* Background Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-400 via-primary-500 to-primary-600 rounded-full opacity-20 blur-3xl" />
                 
                 {/* Photo */}
-                <div className="relative w-[320px] h-[450px] rounded-full overflow-hidden border-4 border-white/20 dark:border-gray-700/20 shadow-2xl">
+                <div className="relative w-[256px] h-[360px] sm:w-[320px] sm:h-[450px] rounded-full overflow-hidden border-4 border-white/20 dark:border-gray-700/20 shadow-2xl">
                   <Image
                     src="/photo/photo (1).png"
-                    alt="Simon Campos - AI Backend Developer"
+                    alt="Simon Degala Campos - AI Backend Developer"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 320px, (max-width: 1024px) 384px, 448px"
+                    sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, (max-width: 1024px) 384px, 448px"
                     priority
                   />
                 </div>

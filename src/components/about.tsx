@@ -8,8 +8,6 @@ import { Code, Brain, Database, Cloud, Users, Target, TrendingUp } from 'lucide-
 const stats = [
   { label: 'Years Experience', value: '6+', icon: Target },
   { label: 'Projects Completed', value: '47+', icon: Code },
-  { label: 'AI Models Deployed', value: '13+', icon: Brain },
-  { label: 'Happy Clients', value: '16+', icon: Users },
 ]
 
 const highlights = [
@@ -76,7 +74,7 @@ export function About() {
               className="space-y-6"
             >
               <div className="space-y-4">
-                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                   I'm an AI backend developer with 6+ years of experience, passionate about building scalable systems that power intelligent solutions. My journey started with curiosity about algorithms in university, which grew into creating AI-driven products that help businesses innovate.
                 </p>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -95,7 +93,7 @@ export function About() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="grid grid-cols-2 gap-6 pt-8"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-6 sm:pt-8"
               >
                 {stats.map((stat, index) => (
                   <motion.div

@@ -61,9 +61,10 @@ export function Navbar() {
           <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-lg sm:text-xl lg:text-2xl font-bold gradient-text"
+              className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold gradient-text"
             >
-              Simon Campos
+              <span className="hidden sm:inline">Simon Degala Campos</span>
+              <span className="sm:hidden">Simon Degala Campos</span>
             </motion.div>
           </Link>
 

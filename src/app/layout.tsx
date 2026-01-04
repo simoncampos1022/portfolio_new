@@ -39,23 +39,23 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Simon Campos - AI Backend Developer',
-  description: 'AI Backend Developer & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
-  keywords: ['AI', 'Backend Developer', 'Python', 'Machine Learning', 'Full Stack', 'Portfolio'],
+  title: 'Simon Degala Campos - AI Backend Developer | Backend & Python Expert',
+  description: 'Senior Software Engineer | Backend & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
+  keywords: ['Senior Software Engineer', 'Backend', 'Python', 'Machine Learning', 'Full Stack', 'Portfolio'],
   authors: [{ name: 'Simon Degala Campos' }],
   creator: 'Simon Degala Campos',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://simoncampos.dev',
-    title: 'Simon Campos - AI Backend Developer',
-    description: 'AI Backend Developer & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
-    siteName: 'Simon Campos Portfolio',
+    title: 'Simon Degala Campos - AI Backend Developer | Backend & Python Expert',
+    description: 'Senior Software Engineer | Backend & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
+    siteName: 'Simon Degala Campos Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Simon Campos - AI Backend Developer',
-    description: 'AI Backend Developer & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
+    title: 'Simon Degala Campos - Senior Software Engineer | Backend & Python Expert',
+    description: 'Senior Software Engineer | Backend & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
   },
   robots: {
     index: true,

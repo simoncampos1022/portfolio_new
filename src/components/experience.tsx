@@ -165,10 +165,10 @@ export function Experience() {
                   {/* Experience Card */}
                   <div className={`ml-12 md:ml-0 md:w-5/12 ${
                     index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
-                  }`}>
+                  } w-full`}>
                     <motion.div
                       whileHover={{ scale: 1.02, y: -5 }}
-                      className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
+                      className="bg-white dark:bg-gray-900 rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
                     >
                       {/* Company Logo */}
                       <div className="flex items-center space-x-4 mb-4">

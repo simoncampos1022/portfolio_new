@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { GraduationCap, Calendar, MapPin, Code, Smartphone, Search, Award, BookOpen } from 'lucide-react'
+import { Calendar, MapPin, Code, Award, BookOpen } from 'lucide-react'
 import Image from 'next/image'
 
 const education = {
@@ -17,60 +17,6 @@ const education = {
     'Gained practical experience in coding, debugging, and collaborative development environments'
   ]
 }
-
-const academicProjects = [
-  {
-    id: 1,
-    title: 'Student Information System',
-    subtitle: 'Capstone Project',
-    description: 'Built a comprehensive web application for student enrollment and records management. The system streamlined administrative processes and improved data organization for educational institutions.',
-    features: [
-      'Student enrollment and registration',
-      'Grade management and reporting',
-      'Course scheduling and management',
-      'Faculty and staff administration',
-      'Automated report generation',
-      'User authentication and authorization'
-    ],
-    technologies: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript', 'HTML/CSS'],
-    icon: Code,
-    color: 'from-blue-500 to-cyan-500'
-  },
-  {
-    id: 2,
-    title: 'Mobile To-Do App',
-    subtitle: 'Android Development',
-    description: 'Developed a feature-rich task management application with notification system. The app helped users organize their daily tasks and improve productivity through intuitive design.',
-    features: [
-      'Task creation and management',
-      'Priority and category system',
-      'Push notifications and reminders',
-      'Data synchronization',
-      'User-friendly interface',
-      'Offline functionality'
-    ],
-    technologies: ['Java', 'Android Studio', 'SQLite', 'Firebase', 'Material Design'],
-    icon: Smartphone,
-    color: 'from-green-500 to-teal-500'
-  },
-  {
-    id: 3,
-    title: 'Mini Search Engine',
-    subtitle: 'Web Development Project',
-    description: 'Created a lightweight search engine that indexed documents and implemented basic keyword search functionality. The project demonstrated understanding of information retrieval concepts.',
-    features: [
-      'Document indexing and crawling',
-      'Keyword-based search',
-      'Search result ranking',
-      'Web interface for queries',
-      'Basic query optimization',
-      'Result highlighting'
-    ],
-    technologies: ['Python', 'Flask', 'BeautifulSoup', 'SQLite', 'HTML/CSS', 'JavaScript'],
-    icon: Search,
-    color: 'from-purple-500 to-pink-500'
-  }
-]
 
 const achievements = [
   {
@@ -112,7 +58,7 @@ export function Education() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-4xl md:text-5xl font-bold mb-6"
             >
-              Education & <span className="gradient-text">Academic Projects</span>
+              Education
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -130,7 +76,7 @@ export function Education() {
             />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="max-w-4xl mx-auto">
             {/* Education Details */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -152,7 +98,7 @@ export function Education() {
                   />
                 </div>
                 
-                <div className="bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-xl p-6 border border-primary-100 dark:border-primary-800/30">
+                <div className="bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-xl p-4 sm:p-6 border border-primary-100 dark:border-primary-800/30">
                   <div className="flex items-start space-x-4">
                     <div className="flex-1">
                       <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
@@ -217,78 +163,6 @@ export function Education() {
                     </motion.div>
                   ))}
                 </div>
-                {/* Removed bottom banner; logo moved to top of degree card */}
-              </div>
-            </motion.div>
-
-            {/* Academic Projects */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="space-y-8"
-            >
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Academic Projects
-              </h3>
-
-              <div className="space-y-6">
-                {academicProjects.map((project, index) => (
-                  <motion.div
-                    key={project.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.6, delay: 0.7 + index * 0.2 }}
-                    className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 group"
-                  >
-                    <div className="flex items-start space-x-4">
-                      <div className={`p-3 rounded-lg bg-gradient-to-r ${project.color} group-hover:scale-110 transition-transform duration-300`}>
-                        <project.icon className="h-6 w-6 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                          {project.title}
-                        </h4>
-                        <p className="text-primary-600 dark:text-primary-400 text-sm font-medium mb-3">
-                          {project.subtitle}
-                        </p>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 leading-relaxed">
-                          {project.description}
-                        </p>
-
-                        <div className="mb-4">
-                          <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                            Key Features:
-                          </h5>
-                          <div className="grid grid-cols-1 gap-1">
-                            {project.features.slice(0, 3).map((feature, featIndex) => (
-                              <div key={featIndex} className="text-xs text-gray-600 dark:text-gray-300 flex items-start">
-                                <span className="w-1 h-1 bg-primary-500 rounded-full mt-2 mr-2 flex-shrink-0" />
-                                {feature}
-                              </div>
-                            ))}
-                            {project.features.length > 3 && (
-                              <div className="text-xs text-primary-600 dark:text-primary-400 font-medium">
-                                +{project.features.length - 3} more features
-                              </div>
-                            )}
-                          </div>
-                        </div>
-
-                        <div className="flex flex-wrap gap-1">
-                          {project.technologies.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-md"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
               </div>
             </motion.div>
           </div>

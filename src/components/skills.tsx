@@ -51,15 +51,12 @@ const skillCategories = [
     skills: [
       { name: 'PyTorch', icon: SiPytorch },
       { name: 'TensorFlow', icon: SiTensorflow },
-      { name: 'Keras', icon: SiKeras },
-      { name: 'JAX', icon: Brain },
       { name: 'Hugging Face', icon: SiHuggingface },
       { name: 'LangChain', icon: SiLangchain },
       { name: 'RAG', icon: Brain },
       { name: 'LlamaIndex', icon: Brain },
       { name: 'NumPy', icon: SiNumpy },
       { name: 'Pandas', icon: SiPandas },
-      { name: 'Polars', icon: SiPolars },
       { name: 'Scikit-learn', icon: SiScikitlearn },
       { name: 'Jupyter', icon: SiJupyter },
       { name: 'OpenCV', icon: SiOpencv },
@@ -95,7 +92,6 @@ const skillCategories = [
     skills: [
       { name: 'Python', icon: SiPython },
       { name: 'FastAPI', icon: SiFastapi },
-      { name: 'Flask', icon: SiFlask },
       { name: 'Django', icon: SiDjango },
       { name: 'Node.js', icon: SiNodedotjs },
       { name: 'Express.js', icon: SiExpress },
@@ -143,13 +139,11 @@ const skillCategories = [
       { name: 'Sentiment Analysis', icon: Heart },
       { name: 'Pattern Detection', icon: TrendingUp },
       { name: 'Algorithm Trading', icon: MessageSquare },
-      { name: 'Financial Analysis', icon: Calculator },
       { name: 'Backtesting', icon: BarChart3 },
       { name: 'Optimization', icon: Activity },
       { name: 'API Integration', icon: Globe },
       { name: 'Trading Automation', icon: Bot },
-      { name: 'Cryptocurrency', icon: SiBitcoin },
-      { name: 'Stock Market', icon: Coins },
+      { name: 'Crypto Trading', icon: SiBitcoin },
       { name: 'Forex Trading', icon: DollarSign },
       { name: 'TradingView', icon: SiTradingview },
       { name: 'MetaTrader 4/5', icon: Monitor },
@@ -241,7 +235,7 @@ export function Skills() {
                 </div>
 
                 {/* Skills List */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-2 sm:gap-4">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div
                       key={skill.name}
@@ -253,11 +247,11 @@ export function Skills() {
                       }}
                       className="group/skill"
                     >
-                      <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 hover:shadow-md">
+                      <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 hover:shadow-md">
                         <div className="flex-shrink-0">
-                          <skill.icon className="h-6 w-6 group-hover/skill:scale-110 transition-all duration-200" style={{ color: 'inherit' }} />
+                          <skill.icon className="h-5 w-5 sm:h-6 sm:w-6 group-hover/skill:scale-110 transition-all duration-200" style={{ color: 'inherit' }} />
                         </div>
-                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover/skill:text-gray-900 dark:group-hover/skill:text-white transition-colors duration-200">
+                        <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 group-hover/skill:text-gray-900 dark:group-hover/skill:text-white transition-colors duration-200 truncate">
                           {skill.name}
                         </span>
                       </div>
