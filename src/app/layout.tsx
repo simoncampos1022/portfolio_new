@@ -44,6 +44,11 @@ export const metadata: Metadata = {
   keywords: ['Senior Software Engineer', 'Backend', 'Python', 'Machine Learning', 'Full Stack', 'Portfolio'],
   authors: [{ name: 'Simon Degala Campos' }],
   creator: 'Simon Degala Campos',
+  icons: {
+    icon: '/simon.ico',
+    shortcut: '/simon.ico',
+    apple: '/simon.ico',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -51,11 +56,20 @@ export const metadata: Metadata = {
     title: 'Simon Degala Campos - AI Backend Developer | Backend & Python Expert',
     description: 'Senior Software Engineer | Backend & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
     siteName: 'Simon Degala Campos Portfolio',
+    images: [
+      {
+        url: '/simon.ico',
+        width: 512,
+        height: 512,
+        alt: 'Simon Degala Campos - Portfolio',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Simon Degala Campos - Senior Software Engineer | Backend & Python Expert',
     description: 'Senior Software Engineer | Backend & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
+    images: ['/simon.ico'],
   },
   robots: {
     index: true,

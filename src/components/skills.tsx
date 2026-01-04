@@ -94,7 +94,6 @@ const skillCategories = [
       { name: 'FastAPI', icon: SiFastapi },
       { name: 'Django', icon: SiDjango },
       { name: 'Node.js', icon: SiNodedotjs },
-      { name: 'Express.js', icon: SiExpress },
       { name: 'Go', icon: SiGo },
       { name: 'PHP', icon: SiPhp },
       { name: 'Laravel', icon: SiLaravel },
@@ -107,7 +106,6 @@ const skillCategories = [
       { name: 'PostgreSQL', icon: SiPostgresql },
       { name: 'MongoDB', icon: SiMongodb },
       { name: 'Redis', icon: SiRedis },
-      { name: 'Firebase', icon: SiFirebase },
       { name: 'Supabase', icon: SiSupabase },
       { name: 'Serverless', icon: Cloud },
     ]
@@ -150,7 +148,6 @@ const skillCategories = [
       { name: 'NinjaTrader 8', icon: Monitor },
       { name: 'cTrader', icon: Monitor },
       { name: 'Binance', icon: SiBinance },
-      { name: 'Coinbase', icon: SiCoinbase },
       { name: 'Ethereum', icon: SiEthereum },
       { name: 'Solana', icon: SiSolana },
     ]
