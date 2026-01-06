@@ -177,7 +177,8 @@ export function Projects() {
                           <span className="sm:hidden">Live</span>
                         </a>
                       )}
-                      {project.githubUrl && (
+                      {/* Code Button - Always Displayed */}
+                      {project.githubUrl ? (
                         <a
                           href={project.githubUrl}
                           target="_blank"
@@ -188,18 +189,30 @@ export function Projects() {
                           <Github className="h-3 w-3 sm:h-4 sm:w-4" />
                           <span>Code</span>
                         </a>
-                      )}
-                      {!project.liveUrl && !project.githubUrl && (
+                      ) : (
                         <button
-                          className="flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 text-xs sm:text-sm font-medium w-full sm:w-auto"
+                          disabled
+                          className="group/code flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-gray-600 text-gray-400 dark:text-gray-500 rounded-lg cursor-not-allowed opacity-60 transition-colors duration-200 text-xs sm:text-sm font-medium"
                           onClick={(e) => {
                             e.stopPropagation()
-                            handleProjectClick(project.id)
+                            e.preventDefault()
                           }}
                         >
-                          <span>View Details</span>
+                          <Github className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <span className="code-text group-hover/code:hidden">Code</span>
+                          <span className="code-hover-text hidden group-hover/code:inline">Private</span>
                         </button>
                       )}
+                      {/* View Details Button - Always Displayed */}
+                      <button
+                        className="flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 text-xs sm:text-sm font-medium w-full sm:w-auto"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          handleProjectClick(project.id)
+                        }}
+                      >
+                        <span>View Details</span>
+                      </button>
                     </div>
                   </div>
                 </div>
