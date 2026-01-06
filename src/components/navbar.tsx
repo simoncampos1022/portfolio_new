@@ -71,7 +71,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center space-x-2 xl:space-x-3">
             {/* Resume Button */}
             <a
-              href="/resume/Simon_Campos_AI_Backend_Developer_Resume.pdf"
+              href="/resume/Simon_Campos_Senior_Software_Engineer_Backend_And_Python_Expert_Resume.pdf"
               download
               className="btn-primary flex items-center space-x-1 xl:space-x-2 text-sm xl:text-base px-3 xl:px-4 py-2"
             >
@@ -136,7 +136,7 @@ export function Navbar() {
               ))}
               <div className="px-4 pt-4 border-t border-gray-200/20 dark:border-gray-700/20 mt-4">
                 <a
-                  href="/resume/Simon_Campos_AI_Backend_Developer_Resume.pdf"
+                  href="/resume/Simon_Campos_Senior_Software_Engineer_Backend_And_Python_Expert_Resume.pdf"
                   download
                   className="btn-primary flex items-center justify-center space-x-2 w-full"
                 >
