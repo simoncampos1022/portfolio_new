@@ -12,8 +12,9 @@ export function Projects() {
   const router = useRouter()
   const [selectedCategory, setSelectedCategory] = useState('All')
 
-  const mapCategory = (category: string): 'AI/ML' | 'Frontend' | 'Backend' | 'FullStack' | 'Trading' | 'DevOps' => {
-    const c = category.toLowerCase()
+  const mapCategory = (category: string | string[]): 'AI/ML' | 'Frontend' | 'Backend' | 'FullStack' | 'Trading' | 'DevOps' => {
+    const categories = Array.isArray(category) ? category : [category]
+    const c = categories[0]?.toLowerCase() || ''
     if (c === 'full-stack' || c === 'full stack') return 'FullStack'
     if (c === 'frontend') return 'Frontend'
     if (c === 'backend') return 'Backend'
@@ -23,7 +24,7 @@ export function Projects() {
     return 'AI/ML'
   }
 
-  const getCategoryColor = (category: string): string => {
+  const getCategoryColor = (category: string | string[]): string => {
     const mappedCategory = mapCategory(category)
     switch (mappedCategory) {
       case 'AI/ML':
@@ -43,9 +44,17 @@ export function Projects() {
     }
   }
 
+  const hasCategory = (projectCategories: string[], selected: string): boolean => {
+    if (selected === 'All') return true
+    return projectCategories.some(cat => {
+      const mapped = mapCategory(cat)
+      return mapped === selected
+    })
+  }
+
   const filteredProjects = selectedCategory === 'All' 
     ? projects 
-    : projects.filter(project => mapCategory(project.category) === selectedCategory)
+    : projects.filter(project => hasCategory(project.category, selectedCategory))
 
   const handleProjectClick = (projectId: number) => {
     router.push(`/projects/${projectId}`)
@@ -123,10 +132,20 @@ export function Projects() {
                         </h3>
                       </div>
                     )}
-                    <div className="absolute top-2 sm:top-4 right-2 sm:right-4 flex space-x-2">
-                      <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium ${getCategoryColor(project.category)}`}>
-                        {mapCategory(project.category)}
-                      </span>
+                    <div className="absolute top-2 sm:top-4 right-2 sm:right-4 flex flex-wrap gap-1 max-w-[60%] justify-end">
+                      {project.category.slice(0, 2).map((cat, idx) => (
+                        <span 
+                          key={idx}
+                          className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium ${getCategoryColor(cat)}`}
+                        >
+                          {mapCategory(cat)}
+                        </span>
+                      ))}
+                      {project.category.length > 2 && (
+                        <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium bg-gray-500 text-white">
+                          +{project.category.length - 2}
+                        </span>
+                      )}
                     </div>
                   </div>
 

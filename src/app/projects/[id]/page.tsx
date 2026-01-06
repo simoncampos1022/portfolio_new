@@ -35,8 +35,9 @@ export default function ProjectDetailPage() {
     )
   }
 
-  const mapCategory = (category: string): 'AI/ML' | 'Frontend' | 'Backend' | 'FullStack' | 'Trading' | 'DevOps' => {
-    const c = category.toLowerCase()
+  const mapCategory = (category: string | string[]): 'AI/ML' | 'Frontend' | 'Backend' | 'FullStack' | 'Trading' | 'DevOps' => {
+    const categories = Array.isArray(category) ? category : [category]
+    const c = categories[0]?.toLowerCase() || ''
     if (c === 'full-stack' || c === 'full stack') return 'FullStack'
     if (c === 'frontend') return 'Frontend'
     if (c === 'backend') return 'Backend'
@@ -46,7 +47,7 @@ export default function ProjectDetailPage() {
     return 'AI/ML'
   }
 
-  const getCategoryColor = (category: string): string => {
+  const getCategoryColor = (category: string | string[]): string => {
     const mappedCategory = mapCategory(category)
     switch (mappedCategory) {
       case 'AI/ML':
@@ -116,10 +117,15 @@ export default function ProjectDetailPage() {
 
             {/* Project Header */}
             <div className="mb-8 sm:mb-12">
-              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                <span className={`px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium ${getCategoryColor(project.category)}`}>
-                  {mapCategory(project.category)}
-                </span>
+              <div className="flex items-center flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-6">
+                {project.category.map((cat, idx) => (
+                  <span 
+                    key={idx}
+                    className={`px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium ${getCategoryColor(cat)}`}
+                  >
+                    {mapCategory(cat)}
+                  </span>
+                ))}
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 break-words">
                 {project.title}

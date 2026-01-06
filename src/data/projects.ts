@@ -9,7 +9,7 @@ export interface Project {
   features: string[]
   liveUrl: string
   githubUrl: string
-  category: string
+  category: string[]
   gradient: string
 }
 
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     ],
     liveUrl: 'https://www.fxutopia.com/',
     githubUrl: '',
-    category: 'Backend',
+    category: ['Backend', 'Trading'],
     gradient: 'from-emerald-600 to-green-600'
   },
   // Project 2: Jifunze - High-Performance E-Learning Platform - Images: /public/projects/Jifunze/ (NO IMAGES YET)
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: 'https://github.com/simoncampos1022/EduPlatform-Django',
-    category: 'Backend',
+    category: ['Backend'],
     gradient: 'from-blue-600 to-indigo-600'
   },
   // Project 3: YouTube Analytics ETL Pipeline - Images: /public/projects/YouTube-Analytics-ETL-Pipeline/ (NO IMAGES YET)
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: 'https://github.com/simoncampos1022/youtube-analytics-etl-pipeline',
-    category: 'Backend',
+    category: ['Backend'],
     gradient: 'from-red-600 to-pink-600'
   },
   // Project 4: Imaginify - Images: /public/projects/Imaginify/
@@ -143,7 +143,7 @@ export const projects: Project[] = [
     ],
     liveUrl: 'https://ai-sass-app-pi.vercel.app/',
     githubUrl: 'https://github.com/simoncampos1022/ai-sass-app',
-    category: 'AI/ML',
+    category: ['full-stack'],
     gradient: 'from-purple-500 to-pink-500'
   },
   // Project 5: Plante AI - Images: /public/projects/Plante AI/
@@ -175,7 +175,7 @@ export const projects: Project[] = [
     ],
     liveUrl: 'https://drive.google.com/drive/folders/1T0s3laE9Z6iulVpn4Z99IlYFK7xCbErO?usp=sharing',
     githubUrl: 'https://github.com/simoncampos1022/food-ai-app',
-    category: 'full-stack',
+    category: ['full-stack', 'AI/ML'],
     gradient: 'from-green-500 to-teal-500'
   },
   // Project 6: Dream Market Landing - Images: /public/projects/Dream-Market-Landing/
@@ -206,7 +206,7 @@ export const projects: Project[] = [
     ],
     liveUrl: 'https://dreams-market-modern-landing.vercel.app/',
     githubUrl: 'https://github.com/simoncampos1022/dreams-market-landing',
-    category: 'Frontend',
+    category: ['Frontend'],
     gradient: 'from-blue-500 to-cyan-500'
   },
   // Project 7: AI Body Detection & Measurement - Images: /public/projects/Body-Detection-AI/
@@ -236,7 +236,7 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: '',
-    category: 'AI/ML',
+    category: ['AI/ML'],
     gradient: 'from-pink-500 to-rose-500'
   },
   // Project 8: Jobs3 Frontend - Images: /public/projects/jobs3_frontend/
@@ -269,7 +269,7 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: '',
-    category: 'Frontend',
+    category: ['Frontend'],
     gradient: 'from-sky-500 to-indigo-500'
   },
   // Project 9: Jobs3 Backend - Images: /public/projects/jobs3_backend/
@@ -300,7 +300,7 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: '',
-    category: 'Backend',
+    category: ['Backend'],
     gradient: 'from-amber-500 to-orange-600'
   },
   // Project 10: GoTrip - City Jabber - Images: /public/projects/City-Jabber/
@@ -333,7 +333,7 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: '',
-    category: 'full-stack',
+    category: ['full-stack'],
     gradient: 'from-amber-500 to-orange-600'
   },
   // Project 11: Real-time Neural Style Transfer - Images: /public/projects/Real-time Neural Style Transfer/
@@ -356,7 +356,7 @@ export const projects: Project[] = [
     ],
     liveUrl: 'https://realtime-style-transfer.streamlit.app/',
     githubUrl: 'https://github.com/simoncampos1022/Style-Transfer-Realtime',
-    category: 'AI/ML',
+    category: ['AI/ML'],
     gradient: 'from-rose-500 to-pink-500'
   },
   // Project 12: Outlook Account Creator Automation - Images: /public/projects/Outlook-Creator/
@@ -377,7 +377,7 @@ export const projects: Project[] = [
     ],
     liveUrl: 'https://drive.google.com/file/d/1JeCRS-JJ2K1p13_XWFFa1BCS1qOrMMdl/view?usp=drive_link',
     githubUrl: 'https://github.com/simoncampos1022/Outlook-auto-creator-puppeteer',
-    category: 'full-stack',
+    category: ['full-stack'],
     gradient: 'from-rose-500 to-pink-500'
   },
   // Project 13: Scene Text Recognition System - Images: /public/projects/Scene Text Recognition/
@@ -400,7 +400,7 @@ export const projects: Project[] = [
     ],
     liveUrl: 'https://scene-text-recognition.streamlit.app/',
     githubUrl: 'https://github.com/simoncampos1022/DL-OCR-YOLOandCRNN',
-    category: 'AI/ML',
+    category: ['AI/ML'],
     gradient: 'from-cyan-500 to-blue-500'
   },
   // Project 14: Data Science Salary Prediction - Images: /public/projects/Data Science Salary Prediction/
@@ -424,7 +424,7 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: 'https://github.com/simoncampos1022/Data-Science-Job-Salary-Prediction',
-    category: 'AI/ML',
+    category: ['AI/ML'],
     gradient: 'from-orange-500 to-red-500'
   },
   // Project 15: Dense Passage Retrieval - Images: /public/projects/Dense Passage Retrieval/
@@ -447,84 +447,47 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: 'https://github.com/simoncampos1022/DPR-Dense-Passage-Retrieval',
-    category: 'AI/ML',
+    category: ['AI/ML'],
     gradient: 'from-violet-500 to-purple-500'
   },
-  // Project 16: Binance Historical Data Fetcher - Images: /public/projects/Binance-Historical-Data-Fetcher/ (NO IMAGES YET)
+  // Project 16: Botara 3.0 - Advanced Futures Trading Bot
   {
     id: 16,
-    title: 'Binance Historical Data Fetcher',
-    subtitle: 'Free Candlestick Data Downloader',
-    description: 'Python script to fetch free historical Binance Futures candlestick (OHLCV) data for any symbol and interval without API keys. Download years of data (2021–2025) for backtesting and analysis.',
-    image: '',
-    images: [],
-    technologies: ['Python', 'Pandas', 'Requests', 'Binance API', 'CSV', 'OHLCV'],
+    title: 'Botara 3.0 - Advanced Futures Trading Bot',
+    subtitle: 'Multi-Indicator Algorithmic Trading System',
+    description: 'A sophisticated algorithmic trading system designed for cryptocurrency and forex futures markets. Implements a multi-indicator strategy with Fisher Transform, RSI, Volume Oscillator, and ATR-based risk management. Features Optuna-optimized parameters, dual position support, trailing stops, and real-time monitoring.',
+    image: '/projects/Botara-Futures-Trading-Strategy/logo.png',
+    images: [
+      '/projects/Botara-Futures-Trading-Strategy/logo.png',
+    ],
+    technologies: [
+      'Python', 'Optuna', 'Pandas', 'NumPy', 'Requests', 'Binance API',
+      'Bitget API', 'Blofin API', 'Bybit API', 'MetaTrader4', 'MetaTrader5',
+      'TradeStation', 'Fisher Transform', 'RSI', 'Volume Oscillator', 'ATR',
+      'Webhook Integration', 'Multi-threading', 'CSV', 'Backtesting', 'Algorithmic Trading'
+    ],
     features: [
-      'Free & No API Key Required',
-      'Fetch from Binance Futures REST API',
-      'Supports Any Symbol (BTCUSDT, ETHUSDT, etc.)',
-      'All Timeframes Supported (1m to 1d)',
-      'Handles Full Date Ranges Automatically',
-      'Appends & Updates CSV Files',
-      'Rate-Limit Safe with Auto Sleep',
-      'Clean & Readable Data Output'
+      'Multi-indicator crossover strategy (Fisher Transform, RSI, Volume Oscillator, ATR)',
+      'Optuna-optimized entry/exit parameters using Bayesian optimization',
+      'Dual position support (simultaneous long and short positions)',
+      'ATR-based dynamic stop-loss and take-profit levels',
+      'Trailing stop loss with automatic profit protection',
+      'Partial position exits (50% at first target, trailing stop on remainder)',
+      'Real-time position monitoring every second',
+      'Automated signal detection with hourly indicator updates',
+      'Position replacement logic for better entry points',
+      'Comprehensive backtesting on multiple crypto and forex pairs',
+      'Live testing with 2+ months of positive results',
+      'Webhook integration for real-time trade notifications'
     ],
     liveUrl: '',
-    githubUrl: 'https://github.com/simoncampos1022/binance-free-historical-candlestick-data-ingestion-module',
-    category: 'Trading',
-    gradient: 'from-orange-500 to-blue-500'
+    githubUrl: 'https://github.com/simoncampos1022/profitable-futures-trading-strategy-crypto-forex-stock',
+    category: ['Trading'],
+    gradient: 'from-yellow-500 to-orange-500'
   },
-  // Project 17: Bitget Historical Data Fetcher - Images: /public/projects/Bitget-Historical-Data-Fetcher/ (NO IMAGES YET)
+  // Project 17: Chart Pattern Detection YOLO - Images: /public/projects/Chart-Pattern-Detection-YOLO/
   {
     id: 17,
-    title: 'Bitget Historical Data Fetcher',
-    subtitle: 'Free Futures Candlestick Downloader',
-    description: 'Python script to fetch historical candlestick (OHLCV) data from Bitget Futures API for any trading pair and interval — completely free without API keys.',
-    image: '',
-    images: [],
-    technologies: ['Python', 'Pandas', 'Requests', 'Bitget API', 'CSV', 'OHLCV'],
-    features: [
-      'Free & No API Key Required',
-      'Fetch from Bitget Futures API v2',
-      'Supports Any Trading Pair',
-      'All Intervals Supported (1m to 1D)',
-      'Automatic Date Range Handling',
-      'CSV Export with Auto-Append',
-      'Rate-Limit Safe Implementation',
-      'Reverse Fetching for API Optimization'
-    ],
-    liveUrl: '',
-    githubUrl: 'https://github.com/simoncampos1022/bitget-free-historical-candlestick-data-ingestion-module',
-    category: 'Trading',
-    gradient: 'from-blue-500 to-cyan-500'
-  },
-  // Project 18: Blofin Historical Data Fetcher - Images: /public/projects/Blofin-Historical-Data-Fetcher/ (NO IMAGES YET)
-  {
-    id: 18,
-    title: 'Blofin Historical Data Fetcher',
-    subtitle: 'Free Candlestick Data Tool',
-    description: 'Python script to fetch free historical candlestick (OHLCV) data from Blofin exchange for any trading pair and interval without authentication.',
-    image: '',
-    images: [],
-    technologies: ['Python', 'Pandas', 'Requests', 'Blofin API', 'CSV', 'OHLCV'],
-    features: [
-      'Free & No API Key Required',
-      'Fetch from Blofin Exchange API',
-      'Supports Futures and Spot Markets',
-      'All Timeframes Supported',
-      'Automatic Pagination Handling',
-      'CSV Export with Clean Data',
-      'Rate-Limit Safe Operations',
-      'Historical Data for Backtesting'
-    ],
-    liveUrl: '',
-    githubUrl: 'https://github.com/simoncampos1022/blofin-free-historical-candlestick-data-ingestion-module',
-    category: 'Trading',
-    gradient: 'from-green-500 to-purple-500'
-  },
-  // Project 19: Chart Pattern Detection YOLO - Images: /public/projects/Chart-Pattern-Detection-YOLO/
-  {
-    id: 19,
     title: 'Chart Pattern Detection YOLO',
     subtitle: 'AI-Powered Trading Pattern Recognition',
     description: 'YOLO-based pattern detection system for swing trading that identifies chart patterns (Cup-and-Handle, Double Bottom, Head and Shoulders) and candlestick formations (Marubozu, Morning Star, Doji) in real-time.',
@@ -548,12 +511,12 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: '',
-    category: 'Trading',
+    category: ['AI/ML', 'Trading'],
     gradient: 'from-purple-500 to-pink-500'
   },
-  // Project 20: Forex Trading Strategy Backtester - Images: /public/projects/Forex-Trading-Strategy-Backtester/ (NO IMAGES YET)
+  // Project 18: Forex Trading Strategy Backtester - Images: /public/projects/Forex-Trading-Strategy-Backtester/ (NO IMAGES YET)
   {
-    id: 20,
+    id: 18,
     title: 'Forex Trading Strategy Backtester',
     subtitle: 'EUR/USD Backtesting Framework',
     description: 'Python-based backtesting framework for forex trading strategies on EUR/USD. Simulates trading cycles with take-profit, stop-loss, and dynamic trigger levels (X1, X2) using historical OHLCV data.',
@@ -572,12 +535,84 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: 'https://github.com/simoncampos1022/Forex-Trading-Strategy-Backtester',
-    category: 'Trading',
+    category: ['Trading'],
     gradient: 'from-red-500 to-orange-500'
   },
-  // Project 21: Crypto Sentiment Data Ingestion - Images: /public/projects/Crypto-Sentiment-Data-Ingestion/ (NO IMAGES YET)
+  // Project 19: Binance Historical Data Fetcher - Images: /public/projects/Binance-Historical-Data-Fetcher/ (NO IMAGES YET)
+  {
+    id: 19,
+    title: 'Binance Historical Data Fetcher',
+    subtitle: 'Free Candlestick Data Downloader',
+    description: 'Python script to fetch free historical Binance Futures candlestick (OHLCV) data for any symbol and interval without API keys. Download years of data (2021–2025) for backtesting and analysis.',
+    image: '',
+    images: [],
+    technologies: ['Python', 'Pandas', 'Requests', 'Binance API', 'CSV', 'OHLCV'],
+    features: [
+      'Free & No API Key Required',
+      'Fetch from Binance Futures REST API',
+      'Supports Any Symbol (BTCUSDT, ETHUSDT, etc.)',
+      'All Timeframes Supported (1m to 1d)',
+      'Handles Full Date Ranges Automatically',
+      'Appends & Updates CSV Files',
+      'Rate-Limit Safe with Auto Sleep',
+      'Clean & Readable Data Output'
+    ],
+    liveUrl: '',
+    githubUrl: 'https://github.com/simoncampos1022/binance-free-historical-candlestick-data-ingestion-module',
+    category: ['Trading'],
+    gradient: 'from-orange-500 to-blue-500'
+  },
+  // Project 20: Bitget Historical Data Fetcher - Images: /public/projects/Bitget-Historical-Data-Fetcher/ (NO IMAGES YET)
+  {
+    id: 20,
+    title: 'Bitget Historical Data Fetcher',
+    subtitle: 'Free Futures Candlestick Downloader',
+    description: 'Python script to fetch historical candlestick (OHLCV) data from Bitget Futures API for any trading pair and interval — completely free without API keys.',
+    image: '',
+    images: [],
+    technologies: ['Python', 'Pandas', 'Requests', 'Bitget API', 'CSV', 'OHLCV'],
+    features: [
+      'Free & No API Key Required',
+      'Fetch from Bitget Futures API v2',
+      'Supports Any Trading Pair',
+      'All Intervals Supported (1m to 1D)',
+      'Automatic Date Range Handling',
+      'CSV Export with Auto-Append',
+      'Rate-Limit Safe Implementation',
+      'Reverse Fetching for API Optimization'
+    ],
+    liveUrl: '',
+    githubUrl: 'https://github.com/simoncampos1022/bitget-free-historical-candlestick-data-ingestion-module',
+    category: ['Trading'],
+    gradient: 'from-blue-500 to-cyan-500'
+  },
+  // Project 21: Blofin Historical Data Fetcher - Images: /public/projects/Blofin-Historical-Data-Fetcher/ (NO IMAGES YET)
   {
     id: 21,
+    title: 'Blofin Historical Data Fetcher',
+    subtitle: 'Free Candlestick Data Tool',
+    description: 'Python script to fetch free historical candlestick (OHLCV) data from Blofin exchange for any trading pair and interval without authentication.',
+    image: '',
+    images: [],
+    technologies: ['Python', 'Pandas', 'Requests', 'Blofin API', 'CSV', 'OHLCV'],
+    features: [
+      'Free & No API Key Required',
+      'Fetch from Blofin Exchange API',
+      'Supports Futures and Spot Markets',
+      'All Timeframes Supported',
+      'Automatic Pagination Handling',
+      'CSV Export with Clean Data',
+      'Rate-Limit Safe Operations',
+      'Historical Data for Backtesting'
+    ],
+    liveUrl: '',
+    githubUrl: 'https://github.com/simoncampos1022/blofin-free-historical-candlestick-data-ingestion-module',
+    category: ['Trading'],
+    gradient: 'from-green-500 to-purple-500'
+  },
+  // Project 22: Crypto Sentiment Data Ingestion - Images: /public/projects/Crypto-Sentiment-Data-Ingestion/ (NO IMAGES YET)
+  {
+    id: 22,
     title: 'Crypto Sentiment Data Ingestion',
     subtitle: 'AI Trading Sentiment Collector',
     description: 'Asynchronous Python system to collect, analyze, and store crypto sentiment data from CryptoPanic, Reddit, CoinMarketCap, and Twitter. Uses FinBERT for financial sentiment analysis with real-time updates every 15 minutes.',
@@ -596,12 +631,12 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: '',
-    category: 'Trading',
+    category: ['Trading'],
     gradient: 'from-orange-500 to-purple-500'
   },
-  // Project 22: TimeMixer++ Price Forecasting - Images: /public/projects/Timeseries-Forecasting-TimeMixerPlus/
+  // Project 23: TimeMixer++ Price Forecasting - Images: /public/projects/Timeseries-Forecasting-TimeMixerPlus/
   {
-    id: 22,
+    id: 23,
     title: 'TimeMixer++ Price Forecasting',
     subtitle: 'Short-Term Market Prediction Model',
     description: 'State-of-the-art time series forecasting model for accurate short-term price prediction in financial markets. Leverages multi-scale and multi-resolution approach to capture complex temporal patterns across stocks, ETFs, forex, and crypto.',
@@ -624,12 +659,12 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: '',
-    category: 'Trading',
+    category: ['AI/ML', 'Trading'],
     gradient: 'from-cyan-500 to-blue-500'
   },
-  // Project 23: Multimodal Agentic RAG System - Images: /public/projects/Multimodal Agentic RAG/
+  // Project 24: Multimodal Agentic RAG System - Images: /public/projects/Multimodal Agentic RAG/
   {
-    id: 23,
+    id: 24,
     title: 'Multimodal Agentic RAG System',
     subtitle: 'PDF Document Analysis with AI Agents',
     description: 'An Agentic RAG system that enhances traditional RAG by enabling multimodal PDF analysis. It processes not only text but also images, tables, and combined queries that mix visual and textual information.',
@@ -648,12 +683,12 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: 'https://github.com/simoncampos1022/RAG-System-arXivRAG-Multimodal-Conversational',
-    category: 'AI/ML',
+    category: ['AI/ML'],
     gradient: 'from-indigo-500 to-purple-500'
   },
-  // Project 24: Retail Store Sample App - GitOps with Amazon EKS Auto Mode - Images: /public/projects/Retail-Store-Sample-App-GitOps/ (NO IMAGES YET)
+  // Project 25: Retail Store Sample App - GitOps with Amazon EKS Auto Mode - Images: /public/projects/Retail-Store-Sample-App-GitOps/ (NO IMAGES YET)
   {
-    id: 24,
+    id: 25,
     title: 'Retail Store Sample App - GitOps with Amazon EKS Auto Mode',
     subtitle: 'AWS Containers Retail Sample - GitOps Edition',
     description: 'Modern microservices architecture deployed on AWS EKS using GitOps principles with automated CI/CD pipeline. Features 5 microservices (UI, Catalog, Cart, Orders, Checkout) with full production workflow.',
@@ -683,12 +718,12 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: '',
-    category: 'DevOps',
+    category: ['DevOps'],
     gradient: 'from-blue-600 to-indigo-600'
   },
-  // Project 25: Serverless Todo App - DevOps AWS Project - Images: /public/projects/Serverless-Todo-App-DevOps/ (NO IMAGES YET)
+  // Project 26: Serverless Todo App - DevOps AWS Project - Images: /public/projects/Serverless-Todo-App-DevOps/ (NO IMAGES YET)
   {
-    id: 25,
+    id: 26,
     title: 'Serverless Todo App - DevOps AWS Project',
     subtitle: 'Enterprise-Grade Serverless Architecture with CI/CD',
     description: 'A comprehensive DevOps implementation showcasing modern serverless architecture, automated CI/CD pipelines, and Infrastructure as Code (IaC) practices for a todo application on AWS.',
@@ -712,7 +747,7 @@ export const projects: Project[] = [
     ],
     liveUrl: '',
     githubUrl: '',
-    category: 'DevOps',
+    category: ['DevOps'],
     gradient: 'from-blue-600 to-green-600'
   },
   
