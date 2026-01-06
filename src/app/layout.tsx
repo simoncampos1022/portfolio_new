@@ -39,7 +39,7 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Simon Degala Campos - AI Backend Developer | Backend & Python Expert',
+  title: 'Simon Degala Campos - Senior Software Enigneer | Backend & Python Expert',
   description: 'Senior Software Engineer | Backend & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
   keywords: ['Senior Software Engineer', 'Backend', 'Python', 'Machine Learning', 'Full Stack', 'Portfolio'],
   authors: [{ name: 'Simon Degala Campos' }],
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://simoncampos.dev',
-    title: 'Simon Degala Campos - AI Backend Developer | Backend & Python Expert',
+    title: 'Simon Degala Campos - Senior Software Enigneer | Backend & Python Expert',
     description: 'Senior Software Engineer | Backend & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
     siteName: 'Simon Degala Campos Portfolio',
     images: [

@@ -1,8 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
 import { Calendar, MapPin, Code, Award, BookOpen } from 'lucide-react'
 import Image from 'next/image'
 
@@ -20,70 +17,41 @@ const education = {
 
 const achievements = [
   {
-    title: 'Academic Excellence',
-    description: 'Maintained high academic performance throughout the program',
-    icon: Award
+    title: 'Software Development Projects',
+    description: 'Developed multiple web applications and mobile apps as part of coursework, implementing full-stack solutions with modern technologies',
+    icon: Code
   },
   {
-    title: 'Project Leadership',
-    description: 'Led multiple group projects and collaborative development efforts',
+    title: 'Data Structures & Algorithms',
+    description: 'Completed advanced coursework in data structures, algorithms, and computational complexity, applying these concepts in practical projects',
     icon: BookOpen
   },
   {
-    title: 'Practical Application',
-    description: 'Applied theoretical knowledge in real-world software development projects',
-    icon: Code
+    title: 'Database Systems',
+    description: 'Designed and implemented relational database systems, learning SQL optimization and database management principles',
+    icon: Award
   }
 ]
 
 export function Education() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-
   return (
     <section id="education" className="section-padding night-sky-content">
       <div className="container-custom">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-7xl mx-auto"
-        >
+        <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl md:text-5xl font-bold mb-6"
-            >
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
               Education
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
-            >
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               Foundation in computer science and hands-on project experience
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="w-24 h-1 gradient-bg rounded-full mx-auto mt-6"
-            />
+            </p>
+            <div className="w-24 h-1 gradient-bg rounded-full mx-auto mt-4 sm:mt-6" />
           </div>
 
           <div className="max-w-4xl mx-auto">
             {/* Education Details */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="space-y-8"
-            >
+            <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                   Education Details
@@ -143,12 +111,9 @@ export function Education() {
                   Academic Achievements
                 </h3>
                 <div className="space-y-4">
-                  {achievements.map((achievement, index) => (
-                    <motion.div
+                  {achievements.map((achievement) => (
+                    <div
                       key={achievement.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                       className="flex items-start space-x-3 p-4 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
                     >
                       <achievement.icon className="h-5 w-5 text-primary-600 dark:text-primary-400 mt-0.5" />
@@ -160,28 +125,23 @@ export function Education() {
                           {achievement.description}
                         </p>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Bottom CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="text-center mt-16"
-          >
+          <div className="text-center mt-16">
             <div className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800/30">
               <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
               <span className="text-primary-700 dark:text-primary-300 font-medium">
                 Continuous learning and skill development
               </span>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )

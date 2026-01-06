@@ -1,8 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle } from 'lucide-react'
 import { SiYcombinator } from '@icons-pack/react-simple-icons';
 
@@ -45,7 +43,6 @@ const socialLinks = [
     color: 'from-blue-600 to-blue-700',
     description: 'Connect with me professionally'
   },
-
   {
     name: 'Ycombinator',
     href: 'https://www.startupschool.org/cofounder-matching/candidate/0wDq8Gu1U',
@@ -53,12 +50,9 @@ const socialLinks = [
     color: 'from-blue-500 to-cyan-500',
     description: 'View my cofounder profile'
   },
-  
 ]
 
 export function Contact() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -95,47 +89,21 @@ export function Contact() {
   return (
     <section id="contact" className="section-padding night-sky-content">
       <div className="container-custom">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-6xl mx-auto"
-        >
+        <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl md:text-5xl font-bold mb-6"
-            >
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
               Let's Build Something <span className="gradient-text">Great Together</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
-            >
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               Ready to discuss your next AI or backend project? Let's connect and create something amazing.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="w-24 h-1 gradient-bg rounded-full mx-auto mt-6"
-            />
+            </p>
+            <div className="w-24 h-1 gradient-bg rounded-full mx-auto mt-4 sm:mt-6" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="space-y-8"
-            >
+            <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                   Get In Touch
@@ -149,13 +117,10 @@ export function Contact() {
 
               {/* Contact Details */}
               <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <motion.a
+                {contactInfo.map((info) => (
+                  <a
                     key={info.label}
                     href={info.href}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                     className="flex items-center space-x-4 p-4 rounded-xl bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-300 group"
                   >
                     <div className={`p-3 rounded-lg bg-gradient-to-r ${info.color} group-hover:scale-110 transition-transform duration-300`}>
@@ -167,7 +132,7 @@ export function Contact() {
                         {info.value}
                       </p>
                     </div>
-                  </motion.a>
+                  </a>
                 ))}
               </div>
 
@@ -177,44 +142,30 @@ export function Contact() {
                   Follow Me
                 </h4>
                 <div className="flex flex-wrap gap-3 sm:gap-4">
-                  {socialLinks.map((social, index) => (
-                    <motion.a
+                  {socialLinks.map((social) => (
+                    <a
                       key={social.name}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
                       className="p-3 sm:p-4 rounded-xl bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-300 group"
                       title={social.description}
                     >
                       <social.icon className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200" />
-                    </motion.a>
+                    </a>
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 md:p-8 shadow-lg"
-            >
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 md:p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 Send a Message
               </h3>
 
               {isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-12"
-                >
+                <div className="text-center py-12">
                   <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
                   <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                     Message Sent!
@@ -222,7 +173,7 @@ export function Contact() {
                   <p className="text-gray-600 dark:text-gray-300">
                     Thank you for your message. I'll get back to you soon!
                   </p>
-                </motion.div>
+                </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
@@ -273,11 +224,9 @@ export function Contact() {
                     />
                   </div>
 
-                  <motion.button
+                  <button
                     type="submit"
                     disabled={isSubmitting}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
                     className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
@@ -291,27 +240,22 @@ export function Contact() {
                         <span>Send Message</span>
                       </>
                     )}
-                  </motion.button>
+                  </button>
                 </form>
               )}
-            </motion.div>
+            </div>
           </div>
 
           {/* Bottom CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="text-center mt-16"
-          >
+          <div className="text-center mt-16">
             <div className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800/30">
               <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
               <span className="text-primary-700 dark:text-primary-300 font-medium">
                 Available for freelance projects and full-time opportunities
               </span>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )
