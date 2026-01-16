@@ -14,6 +14,7 @@ const pages = [
   { name: 'projects', label: 'Projects', path: '/projects' },
   { name: 'experience', label: 'Experience', path: '/experience' },
   { name: 'education', label: 'Education', path: '/education' },
+  { name: 'hobby', label: 'Hobby', path: '/hobby' },
   { name: 'contact', label: 'Contact', path: '/contact' },
 ]
 
