@@ -456,7 +456,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Simon Degala Campos** - Senior Software Engineer | Backend & Python Expert
 
 - 📧 **Email**: [simon.campos1022@gmail.com](mailto:simon.campos1022@gmail.com)
-- 💼 **LinkedIn**: [Simon Degala Campos](https://www.linkedin.com/in/simon-degala-campos-08965238a)
+- 💼 **LinkedIn**: [Simon Degala Campos](https://www.linkedin.com/in/simon-campos-35a1733ab/)
 - 💻 **GitHub**: [@simoncampos1022](https://github.com/simoncampos1022)
 - 📱 **Telegram**: [@simoncampos1022](https://t.me/simoncampos1022)
 - 📱 **WhatsApp**: [+639634160157](https://wa.me/639634160157)
@@ -464,7 +464,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### Project Links
 
-- 🌐 **Live Website**: [Portfolio](https://your-portfolio-url.com)
+- 🌐 **Live Website**: [Portfolio](https://simoncampos1022.vercel.app/)
 - 📖 **Documentation**: [Wiki](https://github.com/simoncampos1022/portfolio_new/wiki)
 - 🐛 **Issue Tracker**: [Issues](https://github.com/simoncampos1022/portfolio_new/issues)
 

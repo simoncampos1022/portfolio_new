@@ -38,7 +38,7 @@ const socialLinks = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/simon-degala-campos-08965238a',
+    href: 'https://www.linkedin.com/in/simon-campos-35a1733ab/',
     icon: Linkedin,
     color: 'from-blue-600 to-blue-700',
     description: 'Connect with me professionally'
