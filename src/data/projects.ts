@@ -14,9 +14,129 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  // Project 1: FxUtopia - Forex & Crypto Trading Hub API - Images: /public/projects/FxUtopia/ (NO IMAGES YET)
+  // Projects 1–3: PXI Studio — replace placeholder PNGs in public/projects/PXI-Studio-*/ when you have real screenshots
   {
     id: 1,
+    title: 'PXI Studio — Mobile App',
+    subtitle: 'Expo / React Native client for PXI Studio',
+    description:
+      'Native iOS and Android client for PXI Studio built with Expo and React Native. It is the primary surface for photographers and clients on the go: capture, albums, notifications, and account flows wired to the platform API. The app emphasizes responsive UI, media-heavy workflows, and secure session handling. It complements the web experience by focusing on device capabilities such as camera, background tasks, and push-ready architecture.',
+    image: '/projects/PXI-Studio-Mobile/cover.png',
+    images: [
+      '/projects/PXI-Studio-Mobile/cover.png',
+      '/projects/PXI-Studio-Mobile/gallery-01-albums.png',
+      '/projects/PXI-Studio-Mobile/gallery-02-camera.png',
+      '/projects/PXI-Studio-Mobile/gallery-03-notifications.png',
+    ],
+    technologies: [
+      'Expo',
+      'React Native',
+      'TypeScript',
+      'expo-router',
+      'NativeWind',
+      'Tailwind CSS',
+      'React Native Reanimated',
+      'React Native Gesture Handler',
+      'expo-camera',
+      'react-native-vision-camera',
+      '@shopify/react-native-skia',
+      'Socket.IO Client',
+      'Stripe (React Native)',
+      'Google & Apple sign-in',
+      'expo-secure-store',
+      'axios',
+    ],
+    features: [
+      'File-based navigation and deep linking with expo-router',
+      'Camera- and gallery-driven workflows for shoots and deliverables',
+      'Real-time updates via Socket.IO for live collaboration signals',
+      'Native auth (Google / Apple) with secure token storage',
+      'Payments and subscriptions surfaced in-app with Stripe',
+      'Skia-backed visuals and polished motion where the product calls for it',
+    ],
+    liveUrl: 'https://pxispace.com',
+    githubUrl: '',
+    category: ['Frontend', 'Mobile'],
+    gradient: 'from-cyan-600 to-blue-600',
+  },
+  {
+    id: 2,
+    title: 'PXI Studio — Web App',
+    subtitle: 'Next.js marketing site and product dashboard for PXI Studio',
+    description:
+      'Marketing and authenticated web surface for PXI Studio built with Next.js and React. It introduces the product to new users and hosts the browser-based dashboard for managing studios, billing touchpoints, and analytics-style views. The UI layers Ant Design, motion (Framer Motion / GSAP), and Tailwind for a cohesive brand experience. This project is intentionally separate from the mobile shell: it optimizes for large screens, SEO-friendly pages, and web-first integrations.',
+    image: '/projects/PXI-Studio-Web/web0.png',
+    images: [
+      '/projects/PXI-Studio-Web/web2.png',
+      '/projects/PXI-Studio-Web/web3.png',
+    ],
+    technologies: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Ant Design',
+      'Framer Motion',
+      'GSAP',
+      'Recharts',
+      'Stripe.js',
+      'Google OAuth (web)',
+      'Swiper',
+    ],
+    features: [
+      'Server-rendered marketing and product pages with Next.js App Router patterns',
+      'Dashboard and studio management UI with Ant Design components',
+      'Charts and summaries for operational visibility (Recharts)',
+      'Stripe-powered checkout and billing flows in the browser',
+      'Motion-driven landing and transitions (Framer Motion, GSAP)',
+      'Netlify-friendly deployment story (Next plugin in toolchain)',
+    ],
+    liveUrl: 'https://pxispace.com',
+    githubUrl: '',
+    category: ['Frontend'],
+    gradient: 'from-violet-600 to-fuchsia-600',
+  },
+  {
+    id: 3,
+    title: 'PXI Studio — API & Platform Services',
+    subtitle: 'Node.js / Express API tier for PXI Studio',
+    description:
+      'Central HTTP and real-time service for PXI Studio implemented with Node.js, Express, and TypeScript. It owns authentication bridges, business rules, persistence, file delivery, and integrations (payments, email/SMS, cloud storage). PostgreSQL and Prisma model core data, while Socket.IO powers live channels used by web and mobile clients. This layer is the contract both frontends share: it is not a UI project and deliberately stays focused on reliability, security, and integration boundaries.',
+    image: '/projects/PXI-Studio-API/pxi-backend-diagram.png',
+    images: ['/projects/PXI-Studio-API/pxi-backend-diagram.png'],
+    technologies: [
+      'Node.js',
+      'Express',
+      'TypeScript',
+      'Prisma',
+      'PostgreSQL',
+      'Socket.IO',
+      'AWS S3 (SDK)',
+      'Stripe',
+      'Resend',
+      'Twilio',
+      'PASETO',
+      'bcrypt',
+      'Google & Apple auth libraries',
+      'express-rate-limit',
+      'CORS',
+    ],
+    features: [
+      'REST-style HTTP API with structured middleware and rate limiting',
+      'Prisma-managed PostgreSQL schema and migrations',
+      'Real-time events over Socket.IO aligned with mobile and web clients',
+      'Secure uploads and media workflows via S3-compatible storage',
+      'Stripe, Resend, Twilio, and OAuth-related integrations behind the API',
+      'Typed TypeScript codebase with a clear build/deploy path (tsc + node)',
+    ],
+    liveUrl: 'https://pxispace.com',
+    githubUrl: '',
+    category: ['Backend'],
+    gradient: 'from-emerald-600 to-teal-600',
+  },
+  // Project 4: FxUtopia - Forex & Crypto Trading Hub API - Images: /public/projects/FxUtopia/ (NO IMAGES YET)
+  {
+    id: 4,
     title: 'FxUtopia - Forex & Crypto Trading Hub API',
     subtitle: 'FastAPI Backend for Trading Community Platform',
     description: 'A comprehensive FastAPI backend for a Forex & Crypto trading community platform featuring authentication, community forums, educational content, marketplace, reviews, signals, and economic calendar.',
@@ -50,9 +170,9 @@ export const projects: Project[] = [
     category: ['Backend', 'Trading'],
     gradient: 'from-emerald-600 to-green-600'
   },
-  // Project 2: Jifunze - High-Performance E-Learning Platform - Images: /public/projects/Jifunze/ (NO IMAGES YET)
+  // Project 5: Jifunze - High-Performance E-Learning Platform - Images: /public/projects/Jifunze/ (NO IMAGES YET)
   {
-    id: 2,
+    id: 5,
     title: 'Jifunze - High-Performance E-Learning Platform',
     subtitle: 'Django E-Learning Platform with Real-time Communication',
     description: 'A high-performance, scalable e-learning platform built with Django featuring real-time WebSocket communication, Redis caching, and AI-ready architecture designed to handle thousands of concurrent users.',
@@ -81,9 +201,9 @@ export const projects: Project[] = [
     category: ['Backend'],
     gradient: 'from-blue-600 to-indigo-600'
   },
-  // Project 3: YouTube Analytics ETL Pipeline - Images: /public/projects/YouTube-Analytics-ETL-Pipeline/ (NO IMAGES YET)
+  // Project 6: YouTube Analytics ETL Pipeline - Images: /public/projects/YouTube-Analytics-ETL-Pipeline/ (NO IMAGES YET)
   {
-    id: 3,
+    id: 6,
     title: 'YouTube Analytics ETL Pipeline',
     subtitle: 'Automated ETL Pipeline with Sentiment Analysis & Power BI Visualization',
     description: 'Developed an ETL pipeline for YouTube channel analytics using YouTube API, sentiment analysis with Hugging Face RoBERTa model, and MySQL for data storage. Automated workflows with Apache Airflow and Docker on AWS.',
@@ -116,9 +236,9 @@ export const projects: Project[] = [
     category: ['Backend'],
     gradient: 'from-red-600 to-pink-600'
   },
-  // Project 4: Imaginify - Images: /public/projects/Imaginify/
+  // Project 7: Imaginify - Images: /public/projects/Imaginify/
   {
-    id: 4,
+    id: 7,
     title: 'Imaginify',
     subtitle: 'AI-Powered Image Transformation Platform',
     description: 'A cutting-edge AI-powered SaaS platform that transforms images using advanced machine learning algorithms. Built with modern web technologies, it provides users with powerful image editing capabilities through an intuitive and beautiful interface.',
@@ -146,9 +266,9 @@ export const projects: Project[] = [
     category: ['full-stack'],
     gradient: 'from-purple-500 to-pink-500'
   },
-  // Project 5: Plante AI - Images: /public/projects/Plante AI/
+  // Project 8: Plante AI - Images: /public/projects/Plante AI/
   {
-    id: 5,
+    id: 8,
     title: 'Plante AI',
     subtitle: 'Smart Meal Analysis App',
     description: 'An innovative Flutter application that revolutionizes how we understand and improve our eating habits through advanced AI-powered meal analysis. Simply take a photo of your meal, and our intelligent system will provide comprehensive insights.',
@@ -178,9 +298,9 @@ export const projects: Project[] = [
     category: ['full-stack', 'AI/ML'],
     gradient: 'from-green-500 to-teal-500'
   },
-  // Project 6: Dream Market Landing - Images: /public/projects/Dream-Market-Landing/
+  // Project 9: Dream Market Landing - Images: /public/projects/Dream-Market-Landing/
   {
-    id: 6,
+    id: 9,
     title: 'Dream Market Landing',
     subtitle: 'Modern Trading Platform',
     description: 'Dream Market is a cutting-edge platform that enables users to trade on the outcome of future events using advanced algorithms and real-time data analysis.',
@@ -209,9 +329,9 @@ export const projects: Project[] = [
     category: ['Frontend'],
     gradient: 'from-blue-500 to-cyan-500'
   },
-  // Project 7: AI Body Detection & Measurement - Images: /public/projects/Body-Detection-AI/
+  // Project 10: AI Body Detection & Measurement - Images: /public/projects/Body-Detection-AI/
   {
-    id: 7,
+    id: 10,
     title: 'AI Body Detection & Measurement',
     subtitle: 'Shopify Clothing Fit Finder',
     description: 'Computer vision system that extracts precise body measurements from a single front-facing photo to recommend well-fitting clothes on Shopify. Uses AI to analyze body shape and provide personalized clothing recommendations.',
@@ -239,9 +359,9 @@ export const projects: Project[] = [
     category: ['AI/ML'],
     gradient: 'from-pink-500 to-rose-500'
   },
-  // Project 8: Jobs3 Frontend - Images: /public/projects/jobs3_frontend/
+  // Project 11: Jobs3 Frontend - Images: /public/projects/jobs3_frontend/
   {
-    id: 8,
+    id: 11,
     title: 'Jobs3 Frontend',
     subtitle: 'Next.js Job Marketplace UI',
     description: '2024: Frontend developer for Jobs3. Implemented wallet integrations, responsive UI, admin panel, and high-fidelity designs from Figma.',
@@ -272,9 +392,9 @@ export const projects: Project[] = [
     category: ['Frontend'],
     gradient: 'from-sky-500 to-indigo-500'
   },
-  // Project 9: Jobs3 Backend - Images: /public/projects/jobs3_backend/
+  // Project 12: Jobs3 Backend - Images: /public/projects/jobs3_backend/
   {
-    id: 9,
+    id: 12,
     title: 'Jobs3 Backend',
     subtitle: 'Node.js Backend for Job Marketplace',
     description: '2024: Backend developer for Jobs3. Designed APIs, integrated Pinecone/OpenAI/LangChain, Telegram alerts, and email notifications.',
@@ -303,9 +423,9 @@ export const projects: Project[] = [
     category: ['Backend'],
     gradient: 'from-amber-500 to-orange-600'
   },
-  // Project 10: GoTrip - City Jabber - Images: /public/projects/City-Jabber/
+  // Project 13: GoTrip - City Jabber - Images: /public/projects/City-Jabber/
   {
-    id: 10,
+    id: 13,
     title: 'GoTrip - City Jabber',
     subtitle: 'Travel planning platform',
     description: 'City Jabber is a travel planning platform that helps users discover and explore cities around the world. It offers personalized recommendations for attractions, restaurants, and activities based on user preferences and interests.',
@@ -336,9 +456,9 @@ export const projects: Project[] = [
     category: ['full-stack'],
     gradient: 'from-amber-500 to-orange-600'
   },
-  // Project 11: Real-time Neural Style Transfer - Images: /public/projects/Real-time Neural Style Transfer/
+  // Project 14: Real-time Neural Style Transfer - Images: /public/projects/Real-time Neural Style Transfer/
   {
-    id: 11,
+    id: 14,
     title: 'Real-time Neural Style Transfer',
     subtitle: 'Artistic Image Transformation',
     description: 'A real-time neural style transfer application using feed-forward networks and OpenCV, deployed with Streamlit for instant artistic transformation on video feeds.',
@@ -359,9 +479,9 @@ export const projects: Project[] = [
     category: ['AI/ML'],
     gradient: 'from-rose-500 to-pink-500'
   },
-  // Project 12: Outlook Account Creator Automation - Images: /public/projects/Outlook-Creator/
+  // Project 15: Outlook Account Creator Automation - Images: /public/projects/Outlook-Creator/
   {
-    id: 12,
+    id: 15,
     title: 'Outlook Account Creator Automation',
     subtitle: 'Web scraper and Automation tool',
     description: 'Created a web scraper and automation tool to create the outlook account automatically with using bypassing captcha and turning proxy.',
@@ -380,9 +500,9 @@ export const projects: Project[] = [
     category: ['full-stack'],
     gradient: 'from-rose-500 to-pink-500'
   },
-  // Project 13: Scene Text Recognition System - Images: /public/projects/Scene Text Recognition/
+  // Project 16: Scene Text Recognition System - Images: /public/projects/Scene Text Recognition/
   {
-    id: 13,
+    id: 16,
     title: 'Scene Text Recognition System',
     subtitle: 'OCR with YOLOv11m and CRNN',
     description: 'A scalable OCR system using YOLOv11m and CRNN with CTC loss, deployed via FastAPI + Ray Serve, supporting real-time OCR with GPU acceleration and an interactive Streamlit UI.',
@@ -403,9 +523,9 @@ export const projects: Project[] = [
     category: ['AI/ML'],
     gradient: 'from-cyan-500 to-blue-500'
   },
-  // Project 14: Data Science Salary Prediction - Images: /public/projects/Data Science Salary Prediction/
+  // Project 17: Data Science Salary Prediction - Images: /public/projects/Data Science Salary Prediction/
   {
-    id: 14,
+    id: 17,
     title: 'Data Science Salary Prediction',
     subtitle: 'Glassdoor 2024 Analysis with ML & LLMs',
     description: 'This project predicts data science job salaries using 2024 Glassdoor data with both traditional machine learning and large language models (LLMs). It offers a comparison of predictive methods for salary estimation.',
@@ -427,9 +547,9 @@ export const projects: Project[] = [
     category: ['AI/ML'],
     gradient: 'from-orange-500 to-red-500'
   },
-  // Project 15: Dense Passage Retrieval - Images: /public/projects/Dense Passage Retrieval/
+  // Project 18: Dense Passage Retrieval - Images: /public/projects/Dense Passage Retrieval/
   {
-    id: 15,
+    id: 18,
     title: 'Dense Passage Retrieval',
     subtitle: 'Open-Domain Question Answering',
     description: 'PyTorch reimplementation of the paper "Dense Passage Retrieval for Open-Domain Question Answering" with modular design, low GPU optimization (T4), and accuracy improvements over the original paper.',
@@ -450,9 +570,9 @@ export const projects: Project[] = [
     category: ['AI/ML'],
     gradient: 'from-violet-500 to-purple-500'
   },
-  // Project 16: Botara 3.0 - Advanced Futures Trading Bot
+  // Project 19: Botara 3.0 - Advanced Futures Trading Bot
   {
-    id: 16,
+    id: 19,
     title: 'Botara 3.0 - Advanced Futures Trading Bot',
     subtitle: 'Multi-Indicator Algorithmic Trading System',
     description: 'A sophisticated algorithmic trading system designed for cryptocurrency and forex futures markets. Implements a multi-indicator strategy with Fisher Transform, RSI, Volume Oscillator, and ATR-based risk management. Features Optuna-optimized parameters, dual position support, trailing stops, and real-time monitoring.',
@@ -485,9 +605,9 @@ export const projects: Project[] = [
     category: ['Trading'],
     gradient: 'from-yellow-500 to-orange-500'
   },
-  // Project 17: Chart Pattern Detection YOLO - Images: /public/projects/Chart-Pattern-Detection-YOLO/
+  // Project 20: Chart Pattern Detection YOLO - Images: /public/projects/Chart-Pattern-Detection-YOLO/
   {
-    id: 17,
+    id: 20,
     title: 'Chart Pattern Detection YOLO',
     subtitle: 'AI-Powered Trading Pattern Recognition',
     description: 'YOLO-based pattern detection system for swing trading that identifies chart patterns (Cup-and-Handle, Double Bottom, Head and Shoulders) and candlestick formations (Marubozu, Morning Star, Doji) in real-time.',
@@ -514,9 +634,9 @@ export const projects: Project[] = [
     category: ['AI/ML', 'Trading'],
     gradient: 'from-purple-500 to-pink-500'
   },
-  // Project 18: Forex Trading Strategy Backtester - Images: /public/projects/Forex-Trading-Strategy-Backtester/ (NO IMAGES YET)
+  // Project 21: Forex Trading Strategy Backtester - Images: /public/projects/Forex-Trading-Strategy-Backtester/ (NO IMAGES YET)
   {
-    id: 18,
+    id: 21,
     title: 'Forex Trading Strategy Backtester',
     subtitle: 'EUR/USD Backtesting Framework',
     description: 'Python-based backtesting framework for forex trading strategies on EUR/USD. Simulates trading cycles with take-profit, stop-loss, and dynamic trigger levels (X1, X2) using historical OHLCV data.',
@@ -538,9 +658,9 @@ export const projects: Project[] = [
     category: ['Trading'],
     gradient: 'from-red-500 to-orange-500'
   },
-  // Project 19: Binance Historical Data Fetcher - Images: /public/projects/Binance-Historical-Data-Fetcher/ (NO IMAGES YET)
+  // Project 22: Binance Historical Data Fetcher - Images: /public/projects/Binance-Historical-Data-Fetcher/ (NO IMAGES YET)
   {
-    id: 19,
+    id: 22,
     title: 'Binance Historical Data Fetcher',
     subtitle: 'Free Candlestick Data Downloader',
     description: 'Python script to fetch free historical Binance Futures candlestick (OHLCV) data for any symbol and interval without API keys. Download years of data (2021–2025) for backtesting and analysis.',
@@ -562,9 +682,9 @@ export const projects: Project[] = [
     category: ['Trading'],
     gradient: 'from-orange-500 to-blue-500'
   },
-  // Project 20: Bitget Historical Data Fetcher - Images: /public/projects/Bitget-Historical-Data-Fetcher/ (NO IMAGES YET)
+  // Project 23: Bitget Historical Data Fetcher - Images: /public/projects/Bitget-Historical-Data-Fetcher/ (NO IMAGES YET)
   {
-    id: 20,
+    id: 23,
     title: 'Bitget Historical Data Fetcher',
     subtitle: 'Free Futures Candlestick Downloader',
     description: 'Python script to fetch historical candlestick (OHLCV) data from Bitget Futures API for any trading pair and interval — completely free without API keys.',
@@ -586,9 +706,9 @@ export const projects: Project[] = [
     category: ['Trading'],
     gradient: 'from-blue-500 to-cyan-500'
   },
-  // Project 21: Blofin Historical Data Fetcher - Images: /public/projects/Blofin-Historical-Data-Fetcher/ (NO IMAGES YET)
+  // Project 24: Blofin Historical Data Fetcher - Images: /public/projects/Blofin-Historical-Data-Fetcher/ (NO IMAGES YET)
   {
-    id: 21,
+    id: 24,
     title: 'Blofin Historical Data Fetcher',
     subtitle: 'Free Candlestick Data Tool',
     description: 'Python script to fetch free historical candlestick (OHLCV) data from Blofin exchange for any trading pair and interval without authentication.',
@@ -610,9 +730,9 @@ export const projects: Project[] = [
     category: ['Trading'],
     gradient: 'from-green-500 to-purple-500'
   },
-  // Project 22: Crypto Sentiment Data Ingestion - Images: /public/projects/Crypto-Sentiment-Data-Ingestion/ (NO IMAGES YET)
+  // Project 25: Crypto Sentiment Data Ingestion - Images: /public/projects/Crypto-Sentiment-Data-Ingestion/ (NO IMAGES YET)
   {
-    id: 22,
+    id: 25,
     title: 'Crypto Sentiment Data Ingestion',
     subtitle: 'AI Trading Sentiment Collector',
     description: 'Asynchronous Python system to collect, analyze, and store crypto sentiment data from CryptoPanic, Reddit, CoinMarketCap, and Twitter. Uses FinBERT for financial sentiment analysis with real-time updates every 15 minutes.',
@@ -634,9 +754,9 @@ export const projects: Project[] = [
     category: ['Trading'],
     gradient: 'from-orange-500 to-purple-500'
   },
-  // Project 23: TimeMixer++ Price Forecasting - Images: /public/projects/Timeseries-Forecasting-TimeMixerPlus/
+  // Project 26: TimeMixer++ Price Forecasting - Images: /public/projects/Timeseries-Forecasting-TimeMixerPlus/
   {
-    id: 23,
+    id: 26,
     title: 'TimeMixer++ Price Forecasting',
     subtitle: 'Short-Term Market Prediction Model',
     description: 'State-of-the-art time series forecasting model for accurate short-term price prediction in financial markets. Leverages multi-scale and multi-resolution approach to capture complex temporal patterns across stocks, ETFs, forex, and crypto.',
@@ -662,9 +782,9 @@ export const projects: Project[] = [
     category: ['AI/ML', 'Trading'],
     gradient: 'from-cyan-500 to-blue-500'
   },
-  // Project 24: Multimodal Agentic RAG System - Images: /public/projects/Multimodal Agentic RAG/
+  // Project 27: Multimodal Agentic RAG System - Images: /public/projects/Multimodal Agentic RAG/
   {
-    id: 24,
+    id: 27,
     title: 'Multimodal Agentic RAG System',
     subtitle: 'PDF Document Analysis with AI Agents',
     description: 'An Agentic RAG system that enhances traditional RAG by enabling multimodal PDF analysis. It processes not only text but also images, tables, and combined queries that mix visual and textual information.',
@@ -686,9 +806,9 @@ export const projects: Project[] = [
     category: ['AI/ML'],
     gradient: 'from-indigo-500 to-purple-500'
   },
-  // Project 25: Retail Store Sample App - GitOps with Amazon EKS Auto Mode - Images: /public/projects/Retail-Store-Sample-App-GitOps/ (NO IMAGES YET)
+  // Project 28: Retail Store Sample App - GitOps with Amazon EKS Auto Mode - Images: /public/projects/Retail-Store-Sample-App-GitOps/ (NO IMAGES YET)
   {
-    id: 25,
+    id: 28,
     title: 'Retail Store Sample App - GitOps with Amazon EKS Auto Mode',
     subtitle: 'AWS Containers Retail Sample - GitOps Edition',
     description: 'Modern microservices architecture deployed on AWS EKS using GitOps principles with automated CI/CD pipeline. Features 5 microservices (UI, Catalog, Cart, Orders, Checkout) with full production workflow.',
@@ -721,9 +841,9 @@ export const projects: Project[] = [
     category: ['DevOps'],
     gradient: 'from-blue-600 to-indigo-600'
   },
-  // Project 26: Serverless Todo App - DevOps AWS Project - Images: /public/projects/Serverless-Todo-App-DevOps/ (NO IMAGES YET)
+  // Project 29: Serverless Todo App - DevOps AWS Project - Images: /public/projects/Serverless-Todo-App-DevOps/ (NO IMAGES YET)
   {
-    id: 26,
+    id: 29,
     title: 'Serverless Todo App - DevOps AWS Project',
     subtitle: 'Enterprise-Grade Serverless Architecture with CI/CD',
     description: 'A comprehensive DevOps implementation showcasing modern serverless architecture, automated CI/CD pipelines, and Infrastructure as Code (IaC) practices for a todo application on AWS.',
@@ -750,6 +870,5 @@ export const projects: Project[] = [
     category: ['DevOps'],
     gradient: 'from-blue-600 to-green-600'
   },
-  
 ]
 

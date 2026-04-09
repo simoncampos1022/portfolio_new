@@ -15,13 +15,55 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
+    id: 4,
+    title: 'Founder & CTO',
+    company: 'PXI Labs LLC',
+    location: 'Remote',
+    type: 'Founder',
+    startDate: '2026-02-01',
+    endDate: null,
+    description:
+      'PXI Studio is a social and creative workspace platform: users get a ranked media feed, events and ticketing, albums with threaded discussion, chat, scrapbooks, a vault, notifications, and vendor/event-staff flows—delivered as a native mobile app, a marketing and dashboard web app, and a dedicated API tier.',
+    achievements: [
+      'Led engineering end to end as Founder / CTO / Lead Software Engineer: owned system design across three codebases (Expo/React Native mobile, Next.js web, Node/Express API), data model split (relational + document), auth strategy, media pipeline, payments, and deployment story (e.g. API on EC2 with Docker/CI per repo docs; web on Netlify with Edge middleware)',
+      'Designed and shipped a TypeScript/Express backend with REST APIs for auth, feed, social graph, events, albums, chat, media, scrapbooks, vault, tickets, vendors, safety, and webhooks; PostgreSQL (Prisma) + MongoDB (Mongoose) for the right data on the right store; Socket.io for real-time behavior where the product needs it',
+      'Implemented security-sensitive auth: PASETO v4 token issuance and verification, integration with Next.js Edge middleware and public-key verification for dashboard RBAC without extra round-trips; social login (Google/Apple) and session patterns wired through mobile and web clients',
+      'Built feed and engagement mechanics including Wilson score–based ranking, reactions, and notification flows so discovery and quality signals are first-class in the API and clients',
+      'Owned media and storage architecture using AWS S3 (upload SDKs, presigned flows) so images/video and related assets scale; paired with mobile capture/edit UX and backend media routes',
+      'Integrated monetization and operations: Stripe (including Connect-style flows and a unified webhook surface for platform + connected accounts), plus transactional email (Resend) and SMS/voice (Twilio) where the product requires it',
+      'Shipped the mobile app on Expo / React Native (Expo Router, TypeScript, NativeWind): tabs for core surfaces (e.g. wall, studio, camera, passport), secure token storage, socket.io-client, Stripe React Native, camera stack (react-native-vision-camera), and advanced imaging (React Native Skia shaders/LUT-style processing for the “studio” camera pipeline)',
+      'Delivered the web property on Next.js (App Router) with public marketing/event pages and a middleware-protected dashboard (passport, vendor upgrade, account); Ant Design, charts (Recharts), and Stripe.js for web payments; aligned with backend “soft gate” vs verified-user rules documented in the API guide',
+      'Established how the team ships: API and DB documentation, dev workflow (branching/PR policy), and CI/CD notes so contributors can run, migrate, and deploy consistently—reducing bus factor as the org grows'
+    ],
+    technologies: [
+      'TypeScript',
+      'Node.js',
+      'Express',
+      'PostgreSQL',
+      'Prisma',
+      'MongoDB',
+      'Mongoose',
+      'Socket.io',
+      'PASETO',
+      'Next.js',
+      'Expo',
+      'React Native',
+      'AWS',
+      'Stripe',
+      'Docker',
+      'REST APIs'
+    ],
+    logo: 'X',
+    color: 'from-cyan-500 to-blue-600'
+  },
+  {
     id: 1,
     title: 'AI Full Stack Developer',
     company: 'Upwork',
     location: 'Remote',
     type: 'Freelance',
     startDate: '2024-06-01',
-    endDate: null,
+    endDate: '2026-02-01',
     description: 'Upwork is a leading global freelancing platform headquartered in Palo Alto, California, connecting businesses with independent professionals and agencies across various categories including software development, design, marketing, and more.',
     achievements: [
       'Worked as a freelance full-stack developer on Upwork, completing 10+ client projects ranging from AI-powered web and mobile apps to custom trading tools and automation systems',

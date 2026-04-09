@@ -303,7 +303,7 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 RUN npm run build
-EXPOSE 3000
+EXPOSE 5001
 CMD ["npm", "start"]
 ```
 
@@ -456,7 +456,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Simon Degala Campos** - Senior Software Engineer | Backend & Python Expert
 
 - 📧 **Email**: [simon.campos1022@gmail.com](mailto:simon.campos1022@gmail.com)
-- 💼 **LinkedIn**: [Simon Degala Campos](https://www.linkedin.com/in/simon-campos-35a1733ab/)
+- 💼 **LinkedIn**: [Simon Degala Campos](https://www.linkedin.com/in/simon-campos/)
 - 💻 **GitHub**: [@simoncampos1022](https://github.com/simoncampos1022)
 - 📱 **Telegram**: [@simoncampos1022](https://t.me/simoncampos1022)
 - 📱 **WhatsApp**: [+639634160157](https://wa.me/639634160157)

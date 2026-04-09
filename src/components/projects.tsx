@@ -6,17 +6,18 @@ import { ExternalLink, Github, Eye } from 'lucide-react'
 import Image from 'next/image'
 import { projects } from '@/data/projects'
 
-const categories = ['All', 'AI/ML', 'Frontend', 'Backend', 'FullStack', 'Trading', 'DevOps']
+const categories = ['All', 'AI/ML', 'Frontend', 'Mobile', 'Backend', 'FullStack', 'Trading', 'DevOps']
 
 export function Projects() {
   const router = useRouter()
   const [selectedCategory, setSelectedCategory] = useState('All')
 
-  const mapCategory = (category: string | string[]): 'AI/ML' | 'Frontend' | 'Backend' | 'FullStack' | 'Trading' | 'DevOps' => {
+  const mapCategory = (category: string | string[]): 'AI/ML' | 'Frontend' | 'Mobile' | 'Backend' | 'FullStack' | 'Trading' | 'DevOps' => {
     const categories = Array.isArray(category) ? category : [category]
     const c = categories[0]?.toLowerCase() || ''
     if (c === 'full-stack' || c === 'full stack') return 'FullStack'
     if (c === 'frontend') return 'Frontend'
+    if (c === 'mobile') return 'Mobile'
     if (c === 'backend') return 'Backend'
     if (c === 'trading') return 'Trading'
     if (c === 'devops' || c === 'dev ops') return 'DevOps'
@@ -31,6 +32,8 @@ export function Projects() {
         return 'bg-purple-500 text-white'
       case 'Frontend':
         return 'bg-blue-500 text-white'
+      case 'Mobile':
+        return 'bg-cyan-500 text-white'
       case 'Backend':
         return 'bg-green-500 text-white'
       case 'FullStack':
