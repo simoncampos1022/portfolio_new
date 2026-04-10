@@ -55,9 +55,10 @@ export function Projects() {
     })
   }
 
-  const filteredProjects = selectedCategory === 'All' 
-    ? projects 
-    : projects.filter(project => hasCategory(project.category, selectedCategory))
+  const filteredProjects =
+    selectedCategory === 'All'
+      ? projects
+      : projects.filter((project) => hasCategory(project.category, selectedCategory))
 
   const handleProjectClick = (projectId: number) => {
     router.push(`/projects/${projectId}`)

@@ -1,8 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle } from 'lucide-react'
-import { SiYcombinator } from '@icons-pack/react-simple-icons';
+import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle, CalendarDays } from 'lucide-react'
 
 const contactInfo = [
   {
@@ -44,11 +43,11 @@ const socialLinks = [
     description: 'Connect with me professionally'
   },
   {
-    name: 'Ycombinator',
-    href: 'https://www.startupschool.org/cofounder-matching/candidate/0wDq8Gu1U',
-    icon: SiYcombinator,
-    color: 'from-blue-500 to-cyan-500',
-    description: 'View my cofounder profile'
+    name: 'Calendly',
+    href: 'https://calendly.com/simon-campos1022/30min',
+    icon: CalendarDays,
+    color: 'from-violet-500 to-purple-600',
+    description: 'Book a 30-minute call'
   },
 ]
 
@@ -139,7 +138,7 @@ export function Contact() {
               {/* Social Links */}
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  Follow Me
+                  Connect
                 </h4>
                 <div className="flex flex-wrap gap-3 sm:gap-4">
                   {socialLinks.map((social) => (

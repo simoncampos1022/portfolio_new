@@ -93,7 +93,7 @@ export function Footer() {
           <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-gray-200 dark:border-gray-700">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-3 sm:space-y-4 md:space-y-0 text-center md:text-left">
               <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                © 2025 Simon Degala Campos. All rights reserved.
+                © 2026 Simon Degala Campos. All rights reserved.
               </p>
               <div className="flex items-center justify-center space-x-1 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                 <span>Made with</span>
