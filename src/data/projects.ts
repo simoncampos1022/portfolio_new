@@ -14,19 +14,21 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  // Projects 1–3: PXI Studio — replace placeholder PNGs in public/projects/PXI-Studio-*/ when you have real screenshots
+  // Projects 1–3: PXI Studio — images: public/projects/PXI-Studio-*/
   {
     id: 1,
     title: 'PXI Studio — Mobile App',
     subtitle: 'Expo / React Native client for PXI Studio',
     description:
       'Native iOS and Android client for PXI Studio built with Expo and React Native. It is the primary surface for photographers and clients on the go: capture, albums, notifications, and account flows wired to the platform API. The app emphasizes responsive UI, media-heavy workflows, and secure session handling. It complements the web experience by focusing on device capabilities such as camera, background tasks, and push-ready architecture.',
-    image: '/projects/PXI-Studio-Mobile/cover.png',
+    image:
+      '/projects/PXI-Studio-Mobile/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20-%202026-04-09%20at%2015.29.12.png',
     images: [
-      '/projects/PXI-Studio-Mobile/cover.png',
-      '/projects/PXI-Studio-Mobile/gallery-01-albums.png',
-      '/projects/PXI-Studio-Mobile/gallery-02-camera.png',
-      '/projects/PXI-Studio-Mobile/gallery-03-notifications.png',
+      '/projects/PXI-Studio-Mobile/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20-%202026-04-09%20at%2015.29.12.png',
+      '/projects/PXI-Studio-Mobile/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20-%202026-04-09%20at%2015.29.37.png',
+      '/projects/PXI-Studio-Mobile/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20-%202026-04-09%20at%2015.30.14.png',
+      '/projects/PXI-Studio-Mobile/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20-%202026-04-09%20at%2015.30.38.png',
+      '/projects/PXI-Studio-Mobile/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20-%202026-04-09%20at%2015.31.19.png',
     ],
     technologies: [
       'Expo',
@@ -67,6 +69,7 @@ export const projects: Project[] = [
       'Marketing and authenticated web surface for PXI Studio built with Next.js and React. It introduces the product to new users and hosts the browser-based dashboard for managing studios, billing touchpoints, and analytics-style views. The UI layers Ant Design, motion (Framer Motion / GSAP), and Tailwind for a cohesive brand experience. This project is intentionally separate from the mobile shell: it optimizes for large screens, SEO-friendly pages, and web-first integrations.',
     image: '/projects/PXI-Studio-Web/web0.png',
     images: [
+      '/projects/PXI-Studio-Web/web0.png',
       '/projects/PXI-Studio-Web/web2.png',
       '/projects/PXI-Studio-Web/web3.png',
     ],
@@ -869,6 +872,84 @@ export const projects: Project[] = [
     githubUrl: '',
     category: ['DevOps'],
     gradient: 'from-blue-600 to-green-600'
+  },
+  // Project 30: DnD RAG Chatbot — Images: /public/projects/DnD-Rag-Chatbot/
+  {
+    id: 30,
+    title: 'DnD RAG Chatbot',
+    subtitle: 'RAG assistant for D&D 5e rules (PDFs + local LLM + web/Claude fallback)',
+    description:
+      'An AI-powered assistant that learns Dungeons & Dragons (D&D 5e) rules from PDFs, answers rules questions using a RAG pipeline, and falls back to web search plus a cloud LLM when local context is not enough. Early development: core environment, local LLM (Ollama) and Claude API connectivity, and PDF processing scripts are in place; FastAPI backend and Streamlit/Gradio UI are planned.',
+    image: '/projects/DnD-Rag-Chatbot/dnd-rag-chatbot-diagram.png',
+    images: ['/projects/DnD-Rag-Chatbot/dnd-rag-chatbot-diagram.png'],
+    technologies: [
+      'Python',
+      'Ollama',
+      'Llama 3.1',
+      'Anthropic Claude',
+      'sentence-transformers',
+      'ChromaDB',
+      'FAISS',
+      'LangChain',
+      'LlamaIndex',
+      'PyMuPDF',
+      'FastAPI',
+      'Streamlit',
+      'Gradio',
+      'BeautifulSoup',
+      'python-dotenv',
+    ],
+    features: [
+      'Rule-aware Q&A grounded in D&D 5e PDFs (Player’s Handbook, DMG, etc.) via vector search and RAG',
+      'Hybrid setup: local Llama 3.1 8B via Ollama, embeddings in ChromaDB/FAISS, optional re-ranking',
+      'Low-confidence fallback: web search + scraping, then Claude (Haiku) with combined context; answers marked web-enhanced',
+      'Modular layout: config, LLM tests, PDF processing, and room for a full FastAPI backend + simple UI',
+      'Roadmap toward evaluation: test question sets, accuracy, latency, hallucination checks, and user feedback',
+    ],
+    liveUrl: '',
+    githubUrl: '',
+    category: ['AI/ML'],
+    gradient: 'from-amber-600 to-violet-700',
+  },
+  // Project 31: Enterprise RAG System — Images: /public/projects/Enterprise-Rag-System/
+  {
+    id: 31,
+    title: 'Enterprise RAG System',
+    subtitle: 'Production-grade RAG for document intelligence (hybrid search, guardrails, citations)',
+    description:
+      'Retrieval-augmented generation pipeline that turns large document sets into queryable knowledge: hybrid dense + sparse search, reranking, confidence scoring, and cited answers. Designed for production-style workloads—ingestion loaders, structure-aware chunking, Qdrant-backed hybrid storage, caching, FastAPI and Streamlit surfaces, Dockerized services, and a broad pytest suite with faithfulness-style evaluation.',
+    image: '/projects/Enterprise-Rag-System/enterprise-rag-system.png',
+    images: ['/projects/Enterprise-Rag-System/enterprise-rag-system.png'],
+    technologies: [
+      'Python',
+      'FastAPI',
+      'Streamlit',
+      'Qdrant',
+      'Ollama',
+      'OpenAI API',
+      'FastEmbed',
+      'BM25',
+      'Cross-Encoder',
+      'Docker',
+      'Docker Compose',
+      'pytest',
+      'YAML',
+      'NLI',
+      'DeBERTa',
+      'Cached Embeddings',
+    ],
+    features: [
+      'Hybrid retrieval: semantic embeddings + BM25 fusion (e.g. RRF), cross-encoder reranking, parent–child context expansion',
+      'Guardrails: deterministic confidence tiers, minimum source requirements, and refusal when evidence is insufficient',
+      'Performance: embedding and query caching, structure-aware chunking to cut noise, benchmarks on ingestion and query latency',
+      'Multi-document workflows: registry, metadata filters, and cross-document / cross-entity comparison queries',
+      'Stack: Qdrant hybrid vector store, Ollama/OpenAI-compatible LLMs and embeddings, FastAPI API + Streamlit UI',
+      'Quality: NLI-based faithfulness checks (reported ~97.5% average in project metrics), retrieval metrics (e.g. Precision@5, MRR), 275+ tests',
+    ],
+    liveUrl: '',
+    githubUrl: '',
+    category: ['AI/ML'],
+    gradient: 'from-slate-700 to-cyan-600',
   },
 ]
 

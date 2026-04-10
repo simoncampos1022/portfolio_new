@@ -460,7 +460,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - 💻 **GitHub**: [@simoncampos1022](https://github.com/simoncampos1022)
 - 📱 **Telegram**: [@simoncampos1022](https://t.me/simoncampos1022)
 - 📱 **WhatsApp**: [+639634160157](https://wa.me/639634160157)
-- 🌐 **Discord**: [simoncampos1022](https://discord.com/users/591375710971625598)
+- 🌐 **Discord**: [simoncampos1022](https://discord.com/users/1484636320256233493)
 
 ### Project Links
 

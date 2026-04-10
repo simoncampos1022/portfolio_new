@@ -11,7 +11,7 @@ const socialLinks = [
   },
   {
     name: 'Discord',
-    href: 'https://discord.com/users/591375710971625598',
+    href: 'https://discord.com/users/1484636320256233493',
     icon: SiDiscord,
   },
   {

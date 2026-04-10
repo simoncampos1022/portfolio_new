@@ -185,18 +185,17 @@ export function Projects() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-2">
+                    <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                       {project.liveUrl && (
                         <a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 text-xs sm:text-sm font-medium"
+                          className="flex w-full items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 text-xs sm:text-sm font-medium sm:w-auto"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <Eye className="h-3 w-3 sm:h-4 sm:w-4" />
-                          <span className="hidden sm:inline">Live Demo</span>
-                          <span className="sm:hidden">Live</span>
+                          <span>Live</span>
                         </a>
                       )}
                       {/* Code Button - Always Displayed */}
@@ -205,7 +204,7 @@ export function Projects() {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 text-xs sm:text-sm font-medium"
+                          className="flex w-full items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 text-xs sm:text-sm font-medium sm:w-auto"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <Github className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -214,7 +213,7 @@ export function Projects() {
                       ) : (
                         <button
                           disabled
-                          className="group/code flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-gray-600 text-gray-400 dark:text-gray-500 rounded-lg cursor-not-allowed opacity-60 transition-colors duration-200 text-xs sm:text-sm font-medium"
+                          className="group/code flex w-full items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 dark:border-gray-600 text-gray-400 dark:text-gray-500 rounded-lg cursor-not-allowed opacity-60 transition-colors duration-200 text-xs sm:text-sm font-medium sm:w-auto"
                           onClick={(e) => {
                             e.stopPropagation()
                             e.preventDefault()
@@ -227,7 +226,7 @@ export function Projects() {
                       )}
                       {/* View Details Button - Always Displayed */}
                       <button
-                        className="flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 text-xs sm:text-sm font-medium w-full sm:w-auto"
+                        className="flex w-full items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 text-xs sm:text-sm font-medium sm:w-auto"
                         onClick={(e) => {
                           e.stopPropagation()
                           handleProjectClick(project.id)

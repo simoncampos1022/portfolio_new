@@ -3,7 +3,7 @@
 import { useParams, useRouter } from 'next/navigation'
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
-import { ExternalLink, Github, Zap, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react'
+import { Github, Zap, ChevronLeft, ChevronRight, ArrowLeft, Eye } from 'lucide-react'
 import { projects } from '@/data/projects'
 import { PageNavigation } from '@/components/page-navigation'
 import { ProjectImageLightbox } from '@/components/project-image-lightbox'
@@ -309,28 +309,49 @@ export default function ProjectDetailPage() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
-              {project.liveUrl && (
+            <div className="flex w-full flex-col gap-3 pt-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
+              {project.liveUrl ? (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 font-medium text-sm sm:text-base"
+                  className="flex w-full items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 font-medium text-sm sm:text-base sm:w-auto"
                 >
-                  <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <Eye className="h-4 w-4 sm:h-5 sm:w-5" />
                   <span>View Live</span>
                 </a>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  className="flex w-full cursor-not-allowed items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg border-2 border-gray-200 bg-gray-100 font-medium text-sm text-gray-400 dark:border-gray-600 dark:bg-gray-800/50 dark:text-gray-500 sm:w-auto"
+                  aria-disabled="true"
+                >
+                  <Eye className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <span>View Live</span>
+                </button>
               )}
-              {project.githubUrl && (
+              {project.githubUrl ? (
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 font-medium text-sm sm:text-base"
+                  className="flex w-full items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 font-medium text-sm sm:text-base sm:w-auto"
                 >
                   <Github className="h-4 w-4 sm:h-5 sm:w-5" />
-                  <span>View Code</span>
+                  <span>Code</span>
                 </a>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  className="group/code flex w-full cursor-not-allowed items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg border-2 border-gray-300 font-medium text-sm text-gray-400 opacity-60 dark:border-gray-600 dark:text-gray-500 sm:w-auto"
+                  aria-disabled="true"
+                >
+                  <Github className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <span className="code-text group-hover/code:hidden">Code</span>
+                  <span className="code-hover-text hidden group-hover/code:inline">Private</span>
+                </button>
               )}
             </div>
 
