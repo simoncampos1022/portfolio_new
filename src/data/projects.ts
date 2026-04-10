@@ -56,7 +56,7 @@ export const projects: Project[] = [
       'Payments and subscriptions surfaced in-app with Stripe',
       'Skia-backed visuals and polished motion where the product calls for it',
     ],
-    liveUrl: 'https://pxispace.com',
+    liveUrl: 'https://pxispace.com/beta',
     githubUrl: '',
     category: ['Frontend', 'Mobile'],
     gradient: 'from-cyan-600 to-blue-600',
@@ -419,7 +419,7 @@ export const projects: Project[] = [
     ],
     liveUrl: 'https://drive.google.com/drive/folders/1T0s3laE9Z6iulVpn4Z99IlYFK7xCbErO?usp=sharing',
     githubUrl: 'https://github.com/simoncampos1022/food-ai-app',
-    category: ['full-stack', 'AI/ML'],
+    category: ['Mobile', 'AI/ML', 'full-stack'],
     gradient: 'from-green-500 to-teal-500'
   },
   // Project 10: Dream Market Landing - Images: /public/projects/Dream-Market-Landing/

@@ -1,6 +1,6 @@
 'use client'
 
-import { Mail, Heart } from 'lucide-react'
+import { Mail, Heart, Linkedin, CalendarDays } from 'lucide-react'
 import { SiDiscord, SiTelegram, SiWhatsapp} from '@icons-pack/react-simple-icons';
 
 const socialLinks = [
@@ -8,6 +8,11 @@ const socialLinks = [
     name: 'Email',
     href: 'mailto:simon.campos1022@gmail.com',
     icon: Mail,
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/simon-campos/',
+    icon: Linkedin,
   },
   {
     name: 'Discord',
@@ -23,7 +28,12 @@ const socialLinks = [
     name: 'WhatsApp',
     href: 'https://wa.me/639634160157',
     icon: SiWhatsapp,
-  }
+  },
+  {
+    name: 'Calendly',
+    href: 'https://calendly.com/simon-campos1022/30min',
+    icon: CalendarDays,
+  },
 ]
 
 const quickLinks = [

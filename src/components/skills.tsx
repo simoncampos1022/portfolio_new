@@ -21,6 +21,9 @@ import {
   DollarSign,
   Heart,
   Clock,
+  MousePointer2,
+  Sparkles,
+  LayoutGrid,
 } from 'lucide-react'
 
 import { 
@@ -32,12 +35,12 @@ import {
   SiVuedotjs, SiAngular, SiRedux, SiWebpack, SiVite, SiNpm, SiYarn,
   SiExpress, SiLaravel, SiRubyonrails, SiPhp, SiRust,
   SiJenkins, SiGithubactions, SiPrometheus, SiGrafana,
-  SiElasticsearch, SiFirebase, SiSupabase, SiPlanetscale,
+  SiElasticsearch, SiFirebase, SiSupabase,
   SiJest, SiCypress, SiSelenium, SiFigma, SiBitcoin, SiEthereum,
   SiBinance, SiCoinbase, SiTradingview, SiMeta, SiOpenai, SiMlflow, SiStreamlit,
   SiOpencv, SiKeras, SiHuggingface, SiLangchain, SiPnpm, SiPolars,
   SiCss, SiGooglecloud, SiSolana, SiV0, SiGithubcopilot, SiSlack, SiJira,
-  SiBitbucket
+  SiBitbucket, SiAnthropic
 } from '@icons-pack/react-simple-icons';
 
 
@@ -138,9 +141,12 @@ const skillCategories = [
     title: 'Other',
     icon: Wrench,
     skills: [
-      { name: 'Cursor', icon: SiPlanetscale },
+      { name: 'Claude', icon: SiAnthropic },
+      { name: 'Cursor', icon: MousePointer2 },
       { name: 'Slack', icon: SiSlack },
       { name: 'Jira', icon: SiJira },
+      { name: 'Lovable', icon: Sparkles },
+      { name: 'Monday', icon: LayoutGrid },
       { name: 'Bitbucket', icon: SiBitbucket },
       { name: 'OpenAI', icon: SiOpenai },
       { name: 'Postman', icon: SiPostman },
