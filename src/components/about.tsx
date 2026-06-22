@@ -1,6 +1,6 @@
 'use client'
 
-import { Code, Brain, Database, Cloud, Target, TrendingUp } from 'lucide-react'
+import { Code, Brain, Database, Cloud, Target } from 'lucide-react'
 import { SectionHeader } from '@/components/section-header'
 
 const stats = [
@@ -39,12 +39,6 @@ const highlights = [
     description:
       'Proficient in AWS, Azure, Docker, Kubernetes, and CI/CD pipelines for reliable, scalable deployments.',
   },
-  {
-    icon: TrendingUp,
-    title: 'AI Trading Systems',
-    description:
-      'Passionate about developing AI trading bots and forecasting models using TimeMixer, TimesNet, TabPFN-v2, sentiment analysis, and YOLO pattern detection.',
-  },
 ]
 
 export function About() {
@@ -65,16 +59,13 @@ export function About() {
             <div className="space-y-6 lg:col-span-8">
               <div className="space-y-4 text-sm leading-relaxed sm:text-base">
                 <p className="hyphens-auto text-justify text-neutral-600 dark:text-neutral-400">
-                  I&apos;m a Senior Software Engineer | Backend & Python Expert with 6+ years of experience, passionate about building scalable systems that power intelligent solutions. My journey started with curiosity about algorithms in university, which grew into creating AI-driven products that help businesses innovate.
+                  Senior Software Engineer | Backend &amp; Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems. Skilled AI/ML Engineer with a strong track record in developing robust AI agents and intelligent solutions.
                 </p>
                 <p className="hyphens-auto text-justify text-neutral-600 dark:text-neutral-400">
-                  I thrive at the intersection of backend engineering and applied machine learning. From developing credit management systems at fintech startups to building AI-powered trading algorithms, I&apos;ve consistently delivered robust solutions that drive real business value.
+                  Proficient in creating efficient, scalable architectures that drive innovation and support complex AI workflows. Adept at leveraging cutting-edge technologies to deliver impactful, reliable backend services for demanding applications.
                 </p>
                 <p className="hyphens-auto text-justify text-neutral-600 dark:text-neutral-400">
-                  I&apos;m particularly passionate about AI trading systems and have developed several trading bots and forecasting models. I leverage cutting-edge time series models like TimeMixer, TimeMixer++, TimesNet, TimeXer, and TabPFN-v2, along with sentiment analysis using OpenAI API and Grok. I also use YOLO models for chart pattern detection to enhance trading strategies.
-                </p>
-                <p className="hyphens-auto text-justify text-neutral-600 dark:text-neutral-400">
-                  Currently, I&apos;m focused on creating AI-powered applications that integrate machine learning models for enhanced user interaction and automation, while maintaining the highest standards of code quality and system reliability.
+                  Currently Founder &amp; CTO at PXI Labs LLC, building PXI Studio end to end across mobile, web, and API. Previously I worked in the AI/ML &amp; Full-Stack field as a freelancer and as Senior Backend Developer at Plentina, a BNPL fintech startup in the Philippines.
                 </p>
               </div>
 

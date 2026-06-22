@@ -183,7 +183,7 @@ export function Contact() {
                         onChange={handleInputChange}
                         required
                         rows={5}
-                        className="form-input resize-none rounded-full px-4 py-3"
+                        className="form-input resize-none rounded-2xl px-4 py-3"
                         placeholder="Tell me about your project or just say hello!"
                       />
                     </div>

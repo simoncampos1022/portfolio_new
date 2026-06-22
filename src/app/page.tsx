@@ -6,7 +6,6 @@ import { Experience } from '@/components/experience'
 import { Education } from '@/components/education'
 import { Hobby } from '@/components/hobby'
 import { Contact } from '@/components/contact'
-import { PageNavigation } from '@/components/page-navigation'
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
       <Education />
       <Hobby />
       <Contact />
-      <PageNavigation currentPage="home" />
     </>
   )
 }

@@ -5,7 +5,6 @@ import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { Github, Zap, ChevronLeft, ChevronRight, ArrowLeft, Eye } from 'lucide-react'
 import { projects } from '@/data/projects'
-import { PageNavigation } from '@/components/page-navigation'
 import { ProjectImageLightbox } from '@/components/project-image-lightbox'
 
 export default function ProjectDetailPage() {
@@ -378,8 +377,6 @@ export default function ProjectDetailPage() {
         onNext={project.images.length > 1 ? goNextImage : undefined}
         showSlideNav={project.images.length > 1}
       />
-
-      <PageNavigation currentPage="projects" />
     </>
   )
 }

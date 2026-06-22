@@ -1,6 +1,6 @@
 'use client'
 
-import { Calendar, MapPin, Building } from 'lucide-react'
+import { Calendar, MapPin, Building, ArrowRight } from 'lucide-react'
 import { formatDateRange } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -25,10 +25,10 @@ export function Experience() {
           <div className="relative space-y-8 border-l border-neutral-200 pl-8 dark:border-neutral-800">
             {experiences.map((experience) => (
               <div key={experience.id} className="relative">
-                <div className="absolute -left-[33px] top-2 h-3 w-3 rounded-full border-2 border-white bg-black dark:bg-white dark:border-neutral-950" />
+                <div className="absolute -left-8 top-[3rem] h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-black dark:border-neutral-950 dark:bg-white" />
 
-                <Link href={`/experience/${experience.id}`}>
-                  <div className="group surface-card-hover cursor-pointer p-6">
+                <Link href={`/experience/${experience.id}`} className="group block">
+                  <div className="surface-card-hover flex cursor-pointer flex-col p-6">
                     <div className="mb-4 flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
                       <div className="flex items-center gap-3">
                         {companyLogos[experience.company.toLowerCase()] ? (
@@ -80,6 +80,13 @@ export function Experience() {
                           {tech}
                         </span>
                       ))}
+                    </div>
+
+                    <div className="mt-4 flex justify-end">
+                      <span className="btn-secondary !px-4 !py-2 text-sm">
+                        View details
+                        <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                      </span>
                     </div>
                   </div>
                 </Link>
