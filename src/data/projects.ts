@@ -21,14 +21,16 @@ export const projects: Project[] = [
     subtitle: 'Expo / React Native client for PXI Studio',
     description:
       'Native iOS and Android client for PXI Studio built with Expo and React Native. It is the primary surface for photographers and clients on the go: capture, albums, notifications, and account flows wired to the platform API. The app emphasizes responsive UI, media-heavy workflows, and secure session handling. It complements the web experience by focusing on device capabilities such as camera, background tasks, and push-ready architecture.',
-    image:
-      '/projects/PXI-Studio-Mobile/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20-%202026-04-09%20at%2015.29.12.png',
+    image: '/projects/PXI-Studio-Mobile/Wall.jpg',
     images: [
-      '/projects/PXI-Studio-Mobile/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20-%202026-04-09%20at%2015.29.12.png',
-      '/projects/PXI-Studio-Mobile/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20-%202026-04-09%20at%2015.29.37.png',
-      '/projects/PXI-Studio-Mobile/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20-%202026-04-09%20at%2015.30.14.png',
-      '/projects/PXI-Studio-Mobile/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20-%202026-04-09%20at%2015.30.38.png',
-      '/projects/PXI-Studio-Mobile/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20-%202026-04-09%20at%2015.31.19.png',
+      '/projects/PXI-Studio-Mobile/Wall.jpg',
+      '/projects/PXI-Studio-Mobile/Camera.jpg',
+      '/projects/PXI-Studio-Mobile/Album.jpg',
+      '/projects/PXI-Studio-Mobile/Event.jpg',
+      '/projects/PXI-Studio-Mobile/Passport.jpg',
+      '/projects/PXI-Studio-Mobile/Scrapbook.jpg',
+      '/projects/PXI-Studio-Mobile/Notification.jpg',
+      '/projects/PXI-Studio-Mobile/Vaul.jpg',
     ],
     technologies: [
       'Expo',
@@ -56,7 +58,7 @@ export const projects: Project[] = [
       'Payments and subscriptions surfaced in-app with Stripe',
       'Skia-backed visuals and polished motion where the product calls for it',
     ],
-    liveUrl: 'https://pxispace.com/beta',
+    liveUrl: 'https://apps.apple.com/app/pxi/id6751762197',
     githubUrl: '',
     category: ['Frontend', 'Mobile'],
     gradient: 'from-cyan-600 to-blue-600',

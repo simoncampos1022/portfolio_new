@@ -1,12 +1,5 @@
-import { Contact } from '@/components/contact'
-import { PageNavigation } from '@/components/page-navigation'
+import { redirect } from 'next/navigation'
 
 export default function ContactPage() {
-  return (
-    <>
-      <Contact />
-      <PageNavigation currentPage="contact" />
-    </>
-  )
+  redirect('/#contact')
 }
-

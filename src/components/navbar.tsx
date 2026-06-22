@@ -1,154 +1,172 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useSyncExternalStore, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { Menu, X, Sun, Moon, Download } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { navigateToSection, scrollToSection, sectionNavItems, type SectionId } from '@/lib/scroll-to-section'
 
-const navItems = [
-  { name: 'About', href: '/about' },
-  { name: 'Skills', href: '/skills' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Experience', href: '/experience' },
-  { name: 'Education', href: '/education' },
-  { name: 'Hobby', href: '/hobby' },
-  { name: 'Contact', href: '/contact' },
-]
+const navItems = sectionNavItems.map((item) => ({
+  name: item.name,
+  id: item.id as SectionId,
+}))
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState<SectionId>('home')
+  const pathname = usePathname()
   const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  )
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    if (pathname !== '/') return
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+    const hash = window.location.hash.replace('#', '') as SectionId
+    if (hash && document.getElementById(hash)) {
+      requestAnimationFrame(() => scrollToSection(hash))
+      setActiveSection(hash)
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+
+    const sectionIds: SectionId[] = ['home', ...navItems.map((item) => item.id)]
+    const observers: IntersectionObserver[] = []
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id)
+      if (!element) return
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveSection(id)
+            }
+          })
+        },
+        { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
+      )
+
+      observer.observe(element)
+      observers.push(observer)
+    })
+
+    return () => observers.forEach((observer) => observer.disconnect())
+  }, [pathname])
 
   if (!mounted) return null
 
+  const isActive = (id: SectionId) => pathname === '/' && activeSection === id
+
+  const handleNavClick = (id: SectionId) => {
+    navigateToSection(id, pathname)
+    setIsOpen(false)
+  }
+
   return (
-    <nav
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled
-          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200/20 dark:border-gray-700/20 shadow-sm'
-          : 'bg-transparent'
-      )}
-    >
-      <div className="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
-            <div className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold gradient-text">
-              <span className="hidden sm:inline">Simon Degala Campos</span>
-              <span className="sm:hidden">Simon Campos</span>
+    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur-lg dark:border-neutral-800 dark:bg-black/90">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <Link
+            href="/"
+            onClick={(e) => {
+              if (pathname === '/') {
+                e.preventDefault()
+                handleNavClick('home')
+              }
+            }}
+            className="group flex items-center gap-3"
+          >
+            <div className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 bg-black text-sm font-semibold text-white dark:border-neutral-700 dark:bg-white dark:text-black">
+              SC
+            </div>
+            <div>
+              <span className="block font-heading text-base font-semibold text-black dark:text-white">
+                Simon Campos
+              </span>
+              <span className="block text-xs text-neutral-500 dark:text-neutral-400">Software Engineer</span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+          <div className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => (
-              <Link
+              <button
                 key={item.name}
-                href={item.href}
-                className="px-3 py-2 text-sm xl:text-base text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all duration-200 font-medium whitespace-nowrap"
+                type="button"
+                onClick={() => handleNavClick(item.id)}
+                className={cn(isActive(item.id) ? 'nav-link-active' : 'nav-link')}
               >
                 {item.name}
-              </Link>
+              </button>
             ))}
           </div>
 
-          {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center space-x-2 xl:space-x-3">
-            {/* Resume Button */}
-            <a
-              href="/resume/Simon_Campos_Resume.pdf"
-              download
-              className="btn-primary flex items-center space-x-1 xl:space-x-2 text-sm xl:text-base px-3 xl:px-4 py-2"
+          <div className="hidden items-center gap-2 sm:flex">
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              aria-label="Toggle theme"
+              className="rounded-lg border border-neutral-200 p-2 text-neutral-600 transition-colors hover:bg-neutral-100 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-900"
             >
-              <Download className="h-3 w-3 xl:h-4 xl:w-4" />
-              <span className="hidden xl:inline">Resume</span>
-              <span className="xl:hidden">CV</span>
+              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+            <a href="/resume/Simon_Campos_Resume.pdf" download className="btn-primary !px-4 !py-2 text-sm">
+              <Download className="mr-2 inline h-4 w-4" />
+              Resume
             </a>
           </div>
 
-          {/* Tablet Navigation */}
-          <div className="hidden md:flex lg:hidden items-center space-x-1">
-            {navItems.slice(0, 4).map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="px-2 py-2 text-xs text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all duration-200 font-medium"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Mobile/Tablet Actions */}
-          <div className="flex items-center space-x-1 sm:space-x-2">
-            {/* Theme Toggle - Always visible */}
+          <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              className="rounded-lg border border-neutral-200 p-2 dark:border-neutral-700"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? (
-                <Sun className="h-4 w-4 sm:h-5 sm:w-5" />
-              ) : (
-                <Moon className="h-4 w-4 sm:h-5 sm:w-5" />
-              )}
+              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
-
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              className="rounded-lg border border-neutral-200 p-2 dark:border-neutral-700"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X className="h-4 w-4 sm:h-5 sm:w-5" /> : <Menu className="h-4 w-4 sm:h-5 sm:w-5" />}
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="lg:hidden border-t rounded-lg border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-lg transition-all duration-200 bg-white dark:bg-gray-900">
-            <div className="py-4 space-y-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-left px-4 py-3 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200 font-medium"
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="px-4 pt-4 border-t border-gray-200/20 dark:border-gray-700/20 mt-4">
-                <a
-                  href="/resume/Simon_Campos_Resume.pdf"
-                  download
-                  className="btn-primary flex items-center justify-center space-x-2 w-full"
-                >
-                  <Download className="h-4 w-4" />
-                  <span>Download Resume</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
+
+      {isOpen && (
+        <div className="border-t border-neutral-200 bg-white px-4 py-4 dark:border-neutral-800 dark:bg-black lg:hidden">
+          <div className="space-y-1">
+            {navItems.map((item) => (
+              <button
+                key={item.name}
+                type="button"
+                onClick={() => handleNavClick(item.id)}
+                className={cn(
+                  'block w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium',
+                  isActive(item.id)
+                    ? 'bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white'
+                    : 'text-neutral-600 dark:text-neutral-400'
+                )}
+              >
+                {item.name}
+              </button>
+            ))}
+            <a
+              href="/resume/Simon_Campos_Resume.pdf"
+              download
+              className="btn-primary mt-3 flex w-full justify-center"
+            >
+              <Download className="mr-2 h-4 w-4" />
+              Download resume
+            </a>
+          </div>
+        </div>
+      )}
     </nav>
   )
 }

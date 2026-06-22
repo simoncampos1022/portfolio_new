@@ -1,12 +1,5 @@
-import { Experience } from '@/components/experience'
-import { PageNavigation } from '@/components/page-navigation'
+import { redirect } from 'next/navigation'
 
 export default function ExperiencePage() {
-  return (
-    <>
-      <Experience />
-      <PageNavigation currentPage="experience" />
-    </>
-  )
+  redirect('/#experience')
 }
-

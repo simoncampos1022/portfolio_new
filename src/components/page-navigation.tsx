@@ -1,62 +1,55 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { navigateToSection, type SectionId } from '@/lib/scroll-to-section'
 
 interface PageNavigationProps {
   currentPage: string
 }
 
-const pages = [
-  { name: 'home', label: 'Home', path: '/' },
-  { name: 'about', label: 'About', path: '/about' },
-  { name: 'skills', label: 'Skills', path: '/skills' },
-  { name: 'projects', label: 'Projects', path: '/projects' },
-  { name: 'experience', label: 'Experience', path: '/experience' },
-  { name: 'education', label: 'Education', path: '/education' },
-  { name: 'hobby', label: 'Hobby', path: '/hobby' },
-  { name: 'contact', label: 'Contact', path: '/contact' },
+const pages: { name: string; label: string; id: SectionId }[] = [
+  { name: 'home', label: 'Home', id: 'home' },
+  { name: 'about', label: 'About', id: 'about' },
+  { name: 'skills', label: 'Skills', id: 'skills' },
+  { name: 'projects', label: 'Projects', id: 'projects' },
+  { name: 'experience', label: 'Experience', id: 'experience' },
+  { name: 'education', label: 'Education', id: 'education' },
+  { name: 'hobby', label: 'Hobby', id: 'hobby' },
+  { name: 'contact', label: 'Contact', id: 'contact' },
 ]
 
 export function PageNavigation({ currentPage }: PageNavigationProps) {
-  const router = useRouter()
-  
-  const currentIndex = pages.findIndex(page => page.name === currentPage)
+  const pathname = usePathname()
+
+  const currentIndex = pages.findIndex((page) => page.name === currentPage)
   const previousPage = currentIndex > 0 ? pages[currentIndex - 1] : null
   const nextPage = currentIndex < pages.length - 1 ? pages[currentIndex + 1] : null
 
-  return (
-    <div className="fixed bottom-8 left-0 right-0 z-50 flex justify-between items-center px-4 sm:px-8 pointer-events-none">
-      {/* Previous Button */}
-      <button
-        onClick={() => previousPage && router.push(previousPage.path)}
-        disabled={!previousPage}
-        className={`flex items-center space-x-2 px-4 sm:px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 transition-all duration-300 pointer-events-auto ${
-          previousPage 
-            ? 'hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:border-primary-300 dark:hover:border-primary-700 cursor-pointer' 
-            : 'cursor-not-allowed opacity-50'
-        }`}
-      >
-        <ChevronLeft className="h-5 w-5 text-gray-700 dark:text-gray-300" />
-        <span className="text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 hidden sm:inline">
-          {previousPage?.label || 'Previous'}
-        </span>
-      </button>
+  const goToSection = (id: SectionId) => {
+    navigateToSection(id, pathname)
+  }
 
-      {/* Next Button */}
+  return (
+    <div className="pointer-events-none fixed bottom-6 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 rounded-full border border-neutral-200 bg-white/90 px-2 py-1.5 text-sm shadow-lg backdrop-blur dark:border-neutral-700 dark:bg-black/90">
       <button
-        onClick={() => nextPage && router.push(nextPage.path)}
-        disabled={!nextPage}
-        className={`flex items-center space-x-2 px-4 sm:px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 transition-all duration-300 pointer-events-auto ${
-          nextPage 
-            ? 'hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:border-primary-300 dark:hover:border-primary-700 cursor-pointer' 
-            : 'cursor-not-allowed opacity-50'
-        }`}
+        onClick={() => previousPage && goToSection(previousPage.id)}
+        disabled={!previousPage}
+        className="pointer-events-auto flex items-center gap-1 rounded-full px-3 py-1.5 text-neutral-600 transition-colors hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-40 dark:text-neutral-400 dark:hover:bg-neutral-900"
       >
-        <span className="text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 hidden sm:inline">
-          {nextPage?.label || 'Next'}
-        </span>
-        <ChevronRight className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+        <ChevronLeft className="h-4 w-4" />
+        <span className="hidden sm:inline">{previousPage?.label ?? 'Previous'}</span>
+      </button>
+      <span className="px-2 text-xs font-medium text-neutral-400 dark:text-neutral-500">
+        {pages[currentIndex]?.label}
+      </span>
+      <button
+        onClick={() => nextPage && goToSection(nextPage.id)}
+        disabled={!nextPage}
+        className="pointer-events-auto flex items-center gap-1 rounded-full px-3 py-1.5 text-neutral-600 transition-colors hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-40 dark:text-neutral-400 dark:hover:bg-neutral-900"
+      >
+        <span className="hidden sm:inline">{nextPage?.label ?? 'Next'}</span>
+        <ChevronRight className="h-4 w-4" />
       </button>
     </div>
   )

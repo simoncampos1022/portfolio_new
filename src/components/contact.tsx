@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle, CalendarDays } from 'lucide-react'
+import { SectionHeader } from '@/components/section-header'
 
 const contactInfo = [
   {
@@ -9,22 +10,19 @@ const contactInfo = [
     label: 'Email',
     value: 'simon.campos1022@gmail.com',
     href: 'mailto:simon.campos1022@gmail.com',
-    color: 'from-red-500 to-pink-500'
   },
   {
     icon: Phone,
     label: 'Phone',
     value: '+639634160157',
     href: 'tel:+639634160157',
-    color: 'from-green-500 to-emerald-500'
   },
   {
     icon: MapPin,
     label: 'Location',
     value: 'Tanay, Rizal, Philippines',
     href: '#',
-    color: 'from-blue-500 to-cyan-500'
-  }
+  },
 ]
 
 const socialLinks = [
@@ -32,53 +30,38 @@ const socialLinks = [
     name: 'GitHub',
     href: 'https://github.com/simoncampos1022',
     icon: Github,
-    color: 'from-gray-800 to-gray-900',
-    description: 'View my code repositories and contributions'
+    description: 'View my code repositories and contributions',
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/simon-campos/',
+    href: 'https://www.linkedin.com/in/simon-dc-288aab410',
     icon: Linkedin,
-    color: 'from-blue-600 to-blue-700',
-    description: 'Connect with me professionally'
+    description: 'Connect with me professionally',
   },
   {
     name: 'Calendly',
     href: 'https://calendly.com/simon-campos1022/30min',
     icon: CalendarDays,
-    color: 'from-violet-500 to-purple-600',
-    description: 'Book a 30-minute call'
+    description: 'Book a 30-minute call',
   },
 ]
 
 export function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
+    await new Promise((resolve) => setTimeout(resolve, 2000))
     setIsSubmitting(false)
     setIsSubmitted(true)
-    
-    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false)
       setFormData({ name: '', email: '', message: '' })
@@ -86,172 +69,144 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding night-sky-content">
+    <section id="contact" className="section-padding">
       <div className="container-custom">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-              Let's Build Something <span className="gradient-text">Great Together</span>
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-              Ready to discuss your next AI or backend project? Let's connect and create something amazing.
-            </p>
-            <div className="w-24 h-1 gradient-bg rounded-full mx-auto mt-4 sm:mt-6" />
-          </div>
+        <div className="mx-auto max-w-6xl">
+          <SectionHeader
+            title={
+              <>
+                Let&apos;s build something <span className="gradient-text">great together</span>
+              </>
+            }
+            subtitle="Ready to discuss your next AI or backend project? Let's connect and create something amazing."
+            accent="blue"
+          />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div className="space-y-8">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
+            <div className="space-y-6 lg:col-span-5">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                  Get In Touch
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                  I'm always interested in hearing about new opportunities and exciting projects. 
-                  Whether you have a question, want to collaborate, or just want to say hi, 
-                  feel free to reach out!
+                <h3 className="mb-4 font-heading text-xl font-semibold text-neutral-900 dark:text-white">Get in touch</h3>
+                <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                  I&apos;m always interested in hearing about new opportunities and exciting projects. Whether you have a question, want to collaborate, or just want to say hi, feel free to reach out!
                 </p>
               </div>
 
-              {/* Contact Details */}
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {contactInfo.map((info) => (
                   <a
                     key={info.label}
                     href={info.href}
-                    className="flex items-center space-x-4 p-4 rounded-xl bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-300 group"
+                    className="surface-card-hover flex items-center gap-3 p-4"
                   >
-                    <div className={`p-3 rounded-lg bg-gradient-to-r ${info.color} group-hover:scale-110 transition-transform duration-300`}>
-                      <info.icon className="h-5 w-5 text-white" />
-                    </div>
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white">
+                      <info.icon className="h-5 w-5" />
+                    </span>
                     <div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{info.label}</p>
-                      <p className="font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200">
-                        {info.value}
-                      </p>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400">{info.label}</p>
+                      <p className="text-sm font-medium text-neutral-900 dark:text-white">{info.value}</p>
                     </div>
                   </a>
                 ))}
               </div>
 
-              {/* Social Links */}
               <div>
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  Connect
-                </h4>
-                <div className="flex flex-wrap gap-3 sm:gap-4">
+                <h4 className="mb-3 text-sm font-medium text-neutral-700 dark:text-neutral-300">Connect</h4>
+                <div className="flex flex-wrap gap-2">
                   {socialLinks.map((social) => (
                     <a
                       key={social.name}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 sm:p-4 rounded-xl bg-white dark:bg-gray-800 hover:shadow-lg transition-all duration-300 group"
+                      className="surface-card flex h-11 w-11 items-center justify-center text-neutral-600 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white"
                       title={social.description}
                     >
-                      <social.icon className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200" />
+                      <social.icon className="h-5 w-5" />
                     </a>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 md:p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Send a Message
-              </h3>
+            <div className="lg:col-span-7">
+              <div className="surface-card p-6 sm:p-8">
+                <h3 className="mb-6 font-heading text-lg font-semibold text-neutral-900 dark:text-white">Send a message</h3>
 
-              {isSubmitted ? (
-                <div className="text-center py-12">
-                  <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    Message Sent!
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Thank you for your message. I'll get back to you soon!
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-                      placeholder="Your name"
-                    />
+                {isSubmitted ? (
+                  <div className="space-y-4 py-12 text-center">
+                    <CheckCircle className="mx-auto h-16 w-16 text-black dark:text-white" />
+                    <h4 className="font-heading text-lg font-semibold text-black dark:text-white">Message sent!</h4>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                      Thank you for your message. I&apos;ll get back to you soon!
+                    </p>
                   </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      rows={5}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
-                      placeholder="Tell me about your project or just say hello!"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        <span>Sending...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send className="h-4 w-4" />
-                        <span>Send Message</span>
-                      </>
-                    )}
-                  </button>
-                </form>
-              )}
-            </div>
-          </div>
-
-          {/* Bottom CTA */}
-          <div className="text-center mt-16">
-            <div className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800/30">
-              <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
-              <span className="text-primary-700 dark:text-primary-300 font-medium">
-                Available for freelance projects and full-time opportunities
-              </span>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="form-input rounded-full px-4 py-2.5"
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="form-input rounded-full px-4 py-2.5"
+                        placeholder="your.email@example.com"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="message" className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                        Message
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                        rows={5}
+                        className="form-input resize-none rounded-full px-4 py-3"
+                        placeholder="Tell me about your project or just say hello!"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn-primary flex w-full items-center justify-center gap-2 rounded-full disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-neutral-950 border-t-transparent" />
+                          <span>Sending...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="h-4 w-4" />
+                          <span>Send Message</span>
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
         </div>

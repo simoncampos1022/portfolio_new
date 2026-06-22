@@ -2,7 +2,6 @@
 
 import { useParams, useRouter } from 'next/navigation'
 import { Calendar, MapPin, Building, ArrowLeft, CheckCircle2 } from 'lucide-react'
-import { SiUpwork } from '@icons-pack/react-simple-icons'
 import Image from 'next/image'
 import { formatDateRange } from '@/lib/utils'
 import { experiences, companyLogos } from '@/data/experiences'
@@ -11,19 +10,18 @@ export default function ExperienceDetailPage() {
   const params = useParams()
   const router = useRouter()
   const id = parseInt(params.id as string)
-  
-  const experience = experiences.find(exp => exp.id === id)
+
+  const experience = experiences.find((exp) => exp.id === id)
 
   if (!experience) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Experience not found</h1>
-          <button
-            onClick={() => router.push('/experience')}
-            className="btn-primary"
-          >
-            Back to Experience
+          <h1 className="mb-4 font-heading text-2xl font-semibold text-neutral-900 dark:text-white">
+            Experience not found
+          </h1>
+          <button onClick={() => router.push('/#experience')} className="btn-primary">
+            Back to experience
           </button>
         </div>
       </div>
@@ -31,122 +29,96 @@ export default function ExperienceDetailPage() {
   }
 
   return (
-    <section className="section-padding night-sky-content">
+    <section className="section-padding">
       <div className="container-custom">
-        <div className="max-w-5xl mx-auto">
-          {/* Back Button */}
+        <div className="mx-auto max-w-5xl">
           <button
-            onClick={() => router.push('/experience')}
-            className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 mb-8 transition-colors"
+            onClick={() => router.push('/#experience')}
+            className="mb-8 flex items-center gap-2 text-sm font-medium text-neutral-600 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white"
           >
             <ArrowLeft className="h-5 w-5" />
-            <span>Back to Experience</span>
+            <span>Back to experience</span>
           </button>
 
-          {/* Header Card */}
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-6 sm:p-8 shadow-lg border border-gray-200 dark:border-gray-700 mb-8">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
-              {/* Company Logo */}
-              {experience.company.toLowerCase() === 'upwork' ? (
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center flex-shrink-0">
-                  <SiUpwork className="w-10 h-10 sm:w-12 sm:h-12 text-[#6fda44]" aria-label="Upwork" />
-                </div>
-              ) : companyLogos[experience.company.toLowerCase()] ? (
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center flex-shrink-0">
+          <div className="surface-card mb-8 p-6 sm:p-8">
+            <div className="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+              {companyLogos[experience.company.toLowerCase()] ? (
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-700 dark:bg-neutral-800 sm:h-20 sm:w-20">
                   <Image
                     src={companyLogos[experience.company.toLowerCase()]}
                     alt={`${experience.company} logo`}
                     width={80}
                     height={80}
-                    className="object-contain w-14 h-14 sm:w-16 sm:h-16"
+                    className="h-14 w-14 object-contain sm:h-16 sm:w-16"
                   />
                 </div>
               ) : (
-                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-r ${experience.color} flex items-center justify-center text-white font-bold text-2xl sm:text-3xl flex-shrink-0`}>
+                <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-900 font-heading text-2xl font-semibold text-black dark:text-white sm:h-20 sm:w-20 sm:text-3xl">
                   {experience.logo}
-                </div>
+                </span>
               )}
 
-              {/* Title and Company */}
               <div className="flex-1">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+                <h1 className="mb-2 font-heading text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl">
                   {experience.title}
                 </h1>
-                <p className="text-lg sm:text-xl text-primary-600 dark:text-primary-400 font-medium mb-4">
-                  {experience.company}
-                </p>
-
-                {/* Meta Information */}
-                <div className="flex flex-wrap items-center gap-4 text-sm sm:text-base text-gray-600 dark:text-gray-400">
-                  <div className="flex items-center space-x-2">
-                    <Calendar className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <span>{formatDateRange(experience.startDate, experience.endDate)}</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <MapPin className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <span>{experience.location}</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Building className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <span>{experience.type}</span>
-                  </div>
+                <p className="mb-4 text-lg font-medium text-black dark:text-white sm:text-xl">{experience.company}</p>
+                <div className="flex flex-wrap items-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
+                  <span className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    {formatDateRange(experience.startDate, experience.endDate)}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4" />
+                    {experience.location}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Building className="h-4 w-4" />
+                    {experience.type}
+                  </span>
                 </div>
               </div>
             </div>
 
-            {/* Description */}
-            <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                About the Company
+            <div className="border-t border-neutral-200 pt-6 dark:border-neutral-800">
+              <h2 className="mb-3 font-heading text-lg font-semibold text-neutral-900 dark:text-white">
+                About the company
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                {experience.description}
-              </p>
+              <p className="leading-relaxed text-neutral-600 dark:text-neutral-400">{experience.description}</p>
             </div>
           </div>
 
-          {/* Key Achievements */}
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-6 sm:p-8 shadow-lg border border-gray-200 dark:border-gray-700 mb-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Key Achievements & Responsibilities
+          <div className="surface-card mb-8 p-6 sm:p-8">
+            <h2 className="mb-6 font-heading text-xl font-semibold text-neutral-900 dark:text-white sm:text-2xl">
+              Key achievements & responsibilities
             </h2>
-            <ul className="space-y-4">
+            <div className="space-y-3">
               {experience.achievements.map((achievement, index) => (
-                <li key={index} className="flex items-start space-x-3">
-                  <CheckCircle2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {achievement}
-                  </span>
-                </li>
+                <div key={index} className="flex items-start gap-3 rounded-lg bg-neutral-50 p-4 dark:bg-neutral-800/50">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-black dark:text-white" />
+                  <span className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">{achievement}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Technologies */}
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-6 sm:p-8 shadow-lg border border-gray-200 dark:border-gray-700">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Technologies & Tools
+          <div className="surface-card p-6 sm:p-8">
+            <h2 className="mb-6 font-heading text-xl font-semibold text-neutral-900 dark:text-white sm:text-2xl">
+              Technologies & tools
             </h2>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {experience.technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-4 py-2 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 border border-primary-200 dark:border-primary-800/30 text-gray-700 dark:text-gray-300 rounded-lg font-medium"
-                >
+                <span key={tech} className="tag">
                   {tech}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-between items-center mt-12">
-            <button
-              onClick={() => router.push('/experience')}
-              className="btn-secondary flex items-center space-x-2"
-            >
+          <div className="mt-12">
+            <button onClick={() => router.push('/#experience')} className="btn-secondary flex items-center gap-2">
               <ArrowLeft className="h-4 w-4" />
-              <span>Back to All Experience</span>
+              <span>Back to all experience</span>
             </button>
           </div>
         </div>

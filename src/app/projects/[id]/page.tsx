@@ -15,20 +15,27 @@ export default function ProjectDetailPage() {
   const project = projects.find(p => p.id === projectId)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [galleryProjectId, setGalleryProjectId] = useState(projectId)
+
+  if (galleryProjectId !== projectId) {
+    setGalleryProjectId(projectId)
+    setCurrentImageIndex(0)
+    setLightboxOpen(false)
+  }
 
   const goPrevImage = useCallback(() => {
     if (!project?.images?.length) return
     setCurrentImageIndex((prev) =>
       prev === 0 ? project.images.length - 1 : prev - 1
     )
-  }, [project?.images])
+  }, [project])
 
   const goNextImage = useCallback(() => {
     if (!project?.images?.length) return
     setCurrentImageIndex((prev) =>
       prev === project.images.length - 1 ? 0 : prev + 1
     )
-  }, [project?.images])
+  }, [project])
 
   useEffect(() => {
     if (!lightboxOpen) return
@@ -53,11 +60,6 @@ export default function ProjectDetailPage() {
     }
   }, [lightboxOpen, project?.images, goPrevImage, goNextImage])
 
-  useEffect(() => {
-    setLightboxOpen(false)
-    setCurrentImageIndex(0)
-  }, [projectId])
-
   // Find current project index and calculate previous/next projects
   const currentIndex = projects.findIndex(p => p.id === projectId)
   const previousProject = currentIndex > 0 ? projects[currentIndex - 1] : null
@@ -69,7 +71,7 @@ export default function ProjectDetailPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Project Not Found</h1>
           <button
-            onClick={() => router.push('/projects')}
+            onClick={() => router.push('/#projects')}
             className="btn-primary"
           >
             Back to Projects
@@ -92,67 +94,44 @@ export default function ProjectDetailPage() {
     return 'AI/ML'
   }
 
-  const getCategoryColor = (category: string | string[]): string => {
-    const mappedCategory = mapCategory(category)
-    switch (mappedCategory) {
-      case 'AI/ML':
-        return 'bg-purple-500 text-white'
-      case 'Frontend':
-        return 'bg-blue-500 text-white'
-      case 'Mobile':
-        return 'bg-cyan-500 text-white'
-      case 'Backend':
-        return 'bg-green-500 text-white'
-      case 'FullStack':
-        return 'bg-orange-500 text-white'
-      case 'Trading':
-        return 'bg-yellow-500 text-white'
-      case 'DevOps':
-        return 'bg-indigo-500 text-white'
-      default:
-        return 'bg-gray-500 text-white'
-    }
-  }
-
   return (
     <>
-      <section className="section-padding night-sky-content min-h-screen">
+      <section className="section-padding min-h-screen">
         <div className="container-custom">
           <div className="max-w-5xl mx-auto">
             {/* Navigation Bar */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
               {/* Back Button */}
               <button
-                onClick={() => router.push('/projects')}
-                className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                onClick={() => router.push('/#projects')}
+                className="flex items-center gap-2 text-sm font-medium text-neutral-600 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white"
               >
                 <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="text-sm sm:text-base font-medium">Back to Projects</span>
+                <span>Back to projects</span>
               </button>
 
-              {/* Previous/Next Project Navigation */}
-              <div className="flex items-center gap-2 sm:gap-3 ml-auto">
+              <div className="ml-auto flex items-center gap-2 sm:gap-3">
                 {previousProject && (
                   <button
                     onClick={() => {
                       router.push(`/projects/${previousProject.id}`)
                       setCurrentImageIndex(0)
                     }}
-                    className="flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 py-2 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 font-medium text-xs sm:text-sm"
+                    className="btn-secondary px-3 py-2 text-sm sm:px-4"
                     title={`Previous: ${previousProject.title}`}
                   >
                     <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                     <span className="hidden sm:inline">Previous</span>
                   </button>
                 )}
-                
+
                 {nextProject && (
                   <button
                     onClick={() => {
                       router.push(`/projects/${nextProject.id}`)
                       setCurrentImageIndex(0)
                     }}
-                    className="flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 py-2 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 font-medium text-xs sm:text-sm"
+                    className="btn-secondary px-3 py-2 text-sm sm:px-4"
                     title={`Next: ${nextProject.title}`}
                   >
                     <span className="hidden sm:inline">Next</span>
@@ -164,27 +143,24 @@ export default function ProjectDetailPage() {
 
             {/* Project Header */}
             <div className="mb-8 sm:mb-12">
-              <div className="flex items-center flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <div className="mb-4 flex flex-wrap items-center gap-2 sm:mb-6">
                 {project.category.map((cat, idx) => (
-                  <span 
-                    key={idx}
-                    className={`px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium ${getCategoryColor(cat)}`}
-                  >
+                  <span key={idx} className="tag">
                     {mapCategory(cat)}
                   </span>
                 ))}
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 break-words">
+              <h1 className="mb-4 break-words font-heading text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:mb-6 sm:text-4xl md:text-5xl">
                 {project.title}
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-primary-600 dark:text-primary-400 font-medium mb-6 sm:mb-8 break-words">
+              <p className="mb-6 break-words text-lg text-neutral-600 dark:text-neutral-400 sm:mb-8 sm:text-xl md:text-2xl">
                 {project.subtitle}
               </p>
             </div>
 
             {/* Project Description */}
             <div className="mb-6 sm:mb-8">
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p className="text-base leading-relaxed sm:text-lg dark:text-neutral-300 text-neutral-700">
                 {project.description}
               </p>
             </div>
@@ -192,8 +168,8 @@ export default function ProjectDetailPage() {
             {/* Image Gallery */}
             {project.images && project.images.length > 0 && (
               <div className="mb-6 sm:mb-8">
-                <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
-                  Project Screenshots
+                <h2 className="mb-4 font-heading text-xl font-semibold text-neutral-900 dark:text-white sm:mb-6 sm:text-2xl">
+                  Project screenshots
                 </h2>
                 <div className="relative">
                   <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px]">
@@ -207,7 +183,7 @@ export default function ProjectDetailPage() {
                           setLightboxOpen(true)
                         }
                       }}
-                      className="relative h-full w-full rounded-lg sm:rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700 cursor-zoom-in group outline-none ring-offset-2 focus-visible:ring-2 focus-visible:ring-primary-500"
+                      className="group relative h-full w-full cursor-zoom-in overflow-hidden rounded-xl border border-neutral-200 bg-neutral-100 outline-none ring-offset-2 focus-visible:ring-2 focus-visible:ring-neutral-500 dark:border-neutral-800 dark:bg-neutral-900"
                       aria-label={`View image ${currentImageIndex + 1} fullscreen`}
                     >
                       <Image
@@ -260,10 +236,10 @@ export default function ProjectDetailPage() {
                             e.stopPropagation()
                             setCurrentImageIndex(index)
                           }}
-                          className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-colors duration-200 ${
-                            index === currentImageIndex 
-                              ? 'bg-primary-500 w-6 sm:w-8' 
-                              : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                          className={`h-2 rounded-full transition-all duration-200 sm:h-2.5 ${
+                            index === currentImageIndex
+                              ? 'w-6 bg-black dark:bg-white sm:w-8'
+                              : 'w-2 bg-neutral-300 hover:bg-neutral-400 dark:bg-neutral-600 dark:hover:bg-neutral-500'
                           }`}
                           aria-label={`Go to image ${index + 1}`}
                         />
@@ -276,16 +252,14 @@ export default function ProjectDetailPage() {
 
             {/* Key Features */}
             <div className="mb-6 sm:mb-8">
-              <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
-                Key Features
+              <h2 className="mb-4 font-heading text-xl font-semibold text-neutral-900 dark:text-white sm:mb-6 sm:text-2xl">
+                Key features
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 {project.features.map((feature, index) => (
-                  <div key={index} className="flex items-start space-x-2 sm:space-x-3 p-3 sm:p-4 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
-                    <Zap className="h-4 w-4 sm:h-5 sm:w-5 text-primary-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-                      {feature}
-                    </span>
+                  <div key={index} className="surface-card flex items-start gap-3 p-4">
+                    <Zap className="mt-0.5 h-4 w-4 shrink-0 text-black dark:text-white sm:h-5 sm:w-5" />
+                    <span className="text-sm text-neutral-600 dark:text-neutral-400 sm:text-base">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -293,15 +267,12 @@ export default function ProjectDetailPage() {
 
             {/* Technologies Used */}
             <div className="mb-6 sm:mb-8">
-              <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
-                Technologies Used
+              <h2 className="mb-4 font-heading text-xl font-semibold text-neutral-900 dark:text-white sm:mb-6 sm:text-2xl">
+                Technologies used
               </h2>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs sm:text-sm rounded-full font-medium"
-                  >
+                  <span key={tech} className="tag text-xs sm:text-sm">
                     {tech}
                   </span>
                 ))}
@@ -309,13 +280,13 @@ export default function ProjectDetailPage() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex w-full flex-col gap-3 pt-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex w-full flex-col gap-3 border-t border-neutral-200 pt-6 sm:flex-row sm:items-center sm:justify-between sm:gap-4 dark:border-neutral-800">
               {project.liveUrl ? (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-200 font-medium text-sm sm:text-base sm:w-auto"
+                  className="btn-primary flex w-full items-center justify-center space-x-2 sm:w-auto"
                 >
                   <Eye className="h-4 w-4 sm:h-5 sm:w-5" />
                   <span>View Live</span>
@@ -336,7 +307,7 @@ export default function ProjectDetailPage() {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 font-medium text-sm sm:text-base sm:w-auto"
+                  className="btn-secondary flex w-full items-center justify-center space-x-2 sm:w-auto"
                 >
                   <Github className="h-4 w-4 sm:h-5 sm:w-5" />
                   <span>Code</span>
@@ -356,35 +327,35 @@ export default function ProjectDetailPage() {
             </div>
 
             {/* Project Navigation - Bottom */}
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6 mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200 dark:border-gray-700">
+            <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-neutral-200 pt-8 sm:mt-12 sm:flex-row sm:gap-6 dark:border-neutral-800">
               {previousProject ? (
                 <button
                   onClick={() => {
                     router.push(`/projects/${previousProject.id}`)
                     setCurrentImageIndex(0)
                   }}
-                  className="flex items-center space-x-2 sm:space-x-3 px-4 sm:px-6 py-2 sm:py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 font-medium text-sm sm:text-base w-full sm:w-auto"
+                  className="btn-secondary flex w-full items-center gap-3 sm:w-auto"
                 >
                   <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                   <div className="flex flex-col items-start">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Previous Project</span>
+                    <span className="text-xs text-neutral-500 dark:text-neutral-400">Previous project</span>
                     <span className="font-semibold">{previousProject.title}</span>
                   </div>
                 </button>
               ) : (
                 <div className="w-full sm:w-auto" />
               )}
-              
+
               {nextProject ? (
                 <button
                   onClick={() => {
                     router.push(`/projects/${nextProject.id}`)
                     setCurrentImageIndex(0)
                   }}
-                  className="flex items-center space-x-2 sm:space-x-3 px-4 sm:px-6 py-2 sm:py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 font-medium text-sm sm:text-base w-full sm:w-auto ml-auto"
+                  className="btn-secondary ml-auto flex w-full items-center gap-3 sm:w-auto"
                 >
                   <div className="flex flex-col items-end">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Next Project</span>
+                    <span className="text-xs text-neutral-500 dark:text-neutral-400">Next project</span>
                     <span className="font-semibold">{nextProject.title}</span>
                   </div>
                   <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />

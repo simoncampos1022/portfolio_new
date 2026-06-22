@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import type { ReactZoomPanPinchContentRef } from 'react-zoom-pan-pinch'
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch'
 import {
@@ -76,39 +76,30 @@ function LightboxToolbar({
   )
 }
 
-type ProjectImageLightboxProps = {
-  open: boolean
-  onClose: () => void
+type LightboxImageViewerProps = {
   imageSrc: string
   imageAlt: string
   imageKey: string | number
+  onClose: () => void
   onPrev?: () => void
   onNext?: () => void
   showSlideNav?: boolean
 }
 
-export function ProjectImageLightbox({
-  open,
-  onClose,
+function LightboxImageViewer({
   imageSrc,
   imageAlt,
   imageKey,
+  onClose,
   onPrev,
   onNext,
   showSlideNav = false,
-}: ProjectImageLightboxProps) {
+}: LightboxImageViewerProps) {
   const [rotation, setRotation] = useState(0)
-
-  useEffect(() => {
-    if (!open) return
-    setRotation(0)
-  }, [imageKey, open])
-
-  if (!open) return null
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/55 p-2 sm:p-4 backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-black/45"
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 p-2 backdrop-blur-xl sm:p-4"
       role="dialog"
       aria-modal="true"
       aria-label="Fullscreen image viewer"
@@ -116,7 +107,7 @@ export function ProjectImageLightbox({
     >
       <button
         type="button"
-        className="absolute right-3 top-3 z-[210] rounded-full border border-white/15 bg-black/40 p-2.5 text-white shadow-lg backdrop-blur-md transition-colors hover:bg-black/55 focus:outline-none focus:ring-2 focus:ring-white/50"
+        className="absolute right-3 top-3 z-[210] rounded-lg bg-black/50 p-2.5 text-white backdrop-blur-md transition-colors hover:bg-black/70"
         onClick={(e) => {
           e.stopPropagation()
           onClose()
@@ -205,5 +196,42 @@ export function ProjectImageLightbox({
         </TransformWrapper>
       </div>
     </div>
+  )
+}
+
+type ProjectImageLightboxProps = {
+  open: boolean
+  onClose: () => void
+  imageSrc: string
+  imageAlt: string
+  imageKey: string | number
+  onPrev?: () => void
+  onNext?: () => void
+  showSlideNav?: boolean
+}
+
+export function ProjectImageLightbox({
+  open,
+  onClose,
+  imageSrc,
+  imageAlt,
+  imageKey,
+  onPrev,
+  onNext,
+  showSlideNav = false,
+}: ProjectImageLightboxProps) {
+  if (!open) return null
+
+  return (
+    <LightboxImageViewer
+      key={imageKey}
+      imageSrc={imageSrc}
+      imageAlt={imageAlt}
+      imageKey={imageKey}
+      onClose={onClose}
+      onPrev={onPrev}
+      onNext={onNext}
+      showSlideNav={showSlideNav}
+    />
   )
 }

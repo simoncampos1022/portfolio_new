@@ -1,12 +1,5 @@
-import { Skills } from '@/components/skills'
-import { PageNavigation } from '@/components/page-navigation'
+import { redirect } from 'next/navigation'
 
 export default function SkillsPage() {
-  return (
-    <>
-      <Skills />
-      <PageNavigation currentPage="skills" />
-    </>
-  )
+  redirect('/#skills')
 }
-

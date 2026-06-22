@@ -58,15 +58,16 @@ export const experiences: Experience[] = [
   },
   {
     id: 1,
-    title: 'AI Full Stack Developer',
-    company: 'Upwork',
+    title: 'AI/ML Engineer',
+    company: 'Freelance',
     location: 'Remote',
     type: 'Freelance',
     startDate: '2024-06-01',
     endDate: '2026-02-01',
-    description: 'Upwork is a leading global freelancing platform headquartered in Palo Alto, California, connecting businesses with independent professionals and agencies across various categories including software development, design, marketing, and more.',
+    description:
+      'Worked independently as a freelance AI/ML engineer for clients across platforms and direct engagements, delivering AI-powered products, full-stack applications, trading systems, and automation tooling end to end.',
     achievements: [
-      'Worked as a freelance full-stack developer on Upwork, completing 10+ client projects ranging from AI-powered web and mobile apps to custom trading tools and automation systems',
+      'Completed 10+ client projects ranging from AI-powered web and mobile apps to custom trading tools and automation systems',
       'Built end-to-end web applications with React/Next.js on the frontend and Node.js or Python backends, exposing REST/GraphQL APIs and integrating real-time features where needed',
       'Developed AI-driven features such as chatbots, recommendation flows, and predictive dashboards by wiring custom or third-party models into backend services and frontend UX',
       'Created cross-platform mobile apps using Flutter and/or React Native, integrating backend APIs and, in some cases, lightweight on-device inference or remote model calls for AI functionality',
@@ -76,7 +77,7 @@ export const experiences: Experience[] = [
       'Collaborated closely with non-technical clients to clarify requirements, propose technical approaches, estimate work, and provide regular progress updates, ensuring projects were delivered on time and within scope'
     ],
     technologies: ['Python', 'React', 'Next.js', 'Node.js', 'Flutter', 'React Native', 'Go', 'AWS', 'GCP', 'Docker', 'TensorFlow', 'PyTorch', 'GraphQL', 'REST APIs'],
-    logo: 'U',
+    logo: 'F',
     color: 'from-green-500 to-emerald-500'
   },
   {
@@ -132,6 +133,7 @@ export const experiences: Experience[] = [
 ]
 
 export const companyLogos: Record<string, string> = {
+  'pxi labs llc': '/experience/pxi_labs_llc.ico',
   'truelancer': '/experience/truelancer.ico',
   'plentina vn': '/experience/plentina_vn.ico',
   'converge ict': '/experience/converge_ict.ico',

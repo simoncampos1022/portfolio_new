@@ -1,44 +1,27 @@
 import type { Metadata } from 'next'
-import { Inter, Poppins, Playfair_Display, Source_Code_Pro, Space_Grotesk } from 'next/font/google'
+import { Nunito_Sans, Quicksand } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { NightSky } from '@/components/night-sky'
+import { SiteBackground } from '@/components/site-background'
 import { ProgressSidebar } from '@/components/progress-sidebar'
 
-const inter = Inter({ 
+const nunitoSans = Nunito_Sans({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-nunito-sans',
   display: 'swap',
 })
 
-const poppins = Poppins({ 
+const quicksand = Quicksand({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-poppins',
-  display: 'swap',
-})
-
-const playfair = Playfair_Display({ 
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-})
-
-const sourceCodePro = Source_Code_Pro({ 
-  subsets: ['latin'],
-  variable: '--font-source-code',
-  display: 'swap',
-})
-
-const spaceGrotesk = Space_Grotesk({ 
-  subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  weight: ['500', '600', '700'],
+  variable: '--font-quicksand',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://simoncampos1022.vercel.app'),
   title: 'Simon Degala Campos - Senior Software Enigneer | Backend & Python Expert',
   description: 'Senior Software Engineer | Backend & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
   keywords: ['Senior Software Engineer', 'Backend', 'Python', 'Machine Learning', 'Full Stack', 'Portfolio'],
@@ -52,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://simoncampos.dev',
+    url: 'https://simoncampos1022.vercel.app',
     title: 'Simon Degala Campos - Senior Software Enigneer | Backend & Python Expert',
     description: 'Senior Software Engineer | Backend & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
     siteName: 'Simon Degala Campos Portfolio',
@@ -91,22 +74,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${poppins.variable} ${playfair.variable} ${sourceCodePro.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NightSky />
-          <ProgressSidebar />
-          <div className="min-h-screen flex flex-col relative z-10">
-            <Navbar />
-            <main className="flex-1">
-              {children}
-            </main>
-            <Footer />
-          </div>
+      <body className={`${nunitoSans.variable} ${quicksand.variable} font-sans antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <SiteBackground>
+            <ProgressSidebar />
+            <div className="relative z-10 flex min-h-screen flex-col pt-16">
+              <Navbar />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+          </SiteBackground>
         </ThemeProvider>
       </body>
     </html>

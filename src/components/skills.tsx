@@ -1,227 +1,194 @@
 'use client'
 
-import { 
-  Brain, 
-  Database, 
-  Cloud, 
-  Wrench,
-  Server,
-  Cpu,
-  Globe,
-  Monitor,
-  MessageSquare,
-  TrendingUp,
-  Palette,
-  BarChart3,
-  Activity,
-  Calculator,
-  Coins,
-  Wifi,
-  Bot,
-  DollarSign,
-  Heart,
-  Clock,
-  MousePointer2,
-  Sparkles,
-  LayoutGrid,
-} from 'lucide-react'
+import { SectionHeader } from '@/components/section-header'
 
-import { 
-  SiMongodb, SiPostgresql, SiMysql, SiRedis, 
-  SiDocker, SiKubernetes, SiTerraform, SiApachekafka, SiRabbitmq, SiPython, SiJavascript, 
-  SiTypescript, SiReact, SiNextdotjs, SiNodedotjs, SiGo, SiDjango, SiFastapi, 
-  SiFlask, SiTailwindcss, SiHtml5, SiGit, SiGithub, SiGitlab, SiPostman,
-  SiTensorflow, SiPytorch, SiScikitlearn, SiBoost, SiNumpy, SiPandas, SiJupyter,
-  SiVuedotjs, SiAngular, SiRedux, SiWebpack, SiVite, SiNpm, SiYarn,
-  SiExpress, SiLaravel, SiRubyonrails, SiPhp, SiRust,
-  SiJenkins, SiGithubactions, SiPrometheus, SiGrafana,
-  SiElasticsearch, SiFirebase, SiSupabase,
-  SiJest, SiCypress, SiSelenium, SiFigma, SiBitcoin, SiEthereum,
-  SiBinance, SiCoinbase, SiTradingview, SiMeta, SiOpenai, SiMlflow, SiStreamlit,
-  SiOpencv, SiKeras, SiHuggingface, SiLangchain, SiPnpm, SiPolars,
-  SiCss, SiGooglecloud, SiSolana, SiV0, SiGithubcopilot, SiSlack, SiJira,
-  SiBitbucket, SiAnthropic
-} from '@icons-pack/react-simple-icons';
+type SkillIcon = {
+  name: string
+  icon: string
+}
 
+type SkillCategory = {
+  title: string
+  skills: SkillIcon[]
+}
 
-const skillCategories = [
+/** Primary icon source — https://skillicons.dev */
+const skillIcon = (id: string) => `https://skillicons.dev/icons?i=${id}`
+
+/** Fallback for skills missing from skillicons.dev (Simple Icons, official logos, etc.) */
+const localIcon = (file: string) => `/skills/${file}`
+
+const skillCategories: SkillCategory[] = [
   {
-    title: 'AI/ML',
-    icon: Brain,
+    title: 'Programming Languages',
     skills: [
-      { name: 'PyTorch', icon: SiPytorch },
-      { name: 'TensorFlow', icon: SiTensorflow },
-      { name: 'Hugging Face', icon: SiHuggingface },
-      { name: 'LangChain', icon: SiLangchain },
-      { name: 'RAG', icon: Brain },
-      { name: 'LlamaIndex', icon: Brain },
-      { name: 'Scikit-learn', icon: SiScikitlearn },
-      { name: 'Jupyter', icon: SiJupyter },
-      { name: 'OpenCV', icon: SiOpencv },
-      { name: 'XGBoost', icon: SiBoost },
-      { name: 'Transformers', icon: Brain },
-      { name: 'MLflow', icon: SiMlflow },
-      { name: 'Streamlit', icon: SiStreamlit },
-    ]
+      { name: 'Python', icon: skillIcon('python') },
+      { name: 'JavaScript', icon: skillIcon('javascript') },
+      { name: 'TypeScript', icon: skillIcon('typescript') },
+      { name: 'Go', icon: skillIcon('golang') },
+      { name: 'C++', icon: skillIcon('cpp') },
+      { name: 'C#', icon: skillIcon('cs') },
+    ],
+  },
+  {
+    title: 'AI & Machine Learning',
+    skills: [
+      { name: 'PyTorch', icon: skillIcon('pytorch') },
+      { name: 'TensorFlow', icon: skillIcon('tensorflow') },
+      { name: 'Scikit-learn', icon: skillIcon('sklearn') },
+      { name: 'OpenCV', icon: skillIcon('opencv') },
+      { name: 'Hugging Face', icon: localIcon('huggingface.svg') },
+      { name: 'Transformers', icon: localIcon('huggingface.svg') },
+      { name: 'LangChain', icon: localIcon('langchain.svg') },
+      { name: 'LangGraph', icon: localIcon('langgraph.png') },
+      { name: 'OpenAI', icon: localIcon('openai.svg') },
+      { name: 'NumPy', icon: localIcon('numpy.svg') },
+      { name: 'Pandas', icon: localIcon('pandas.svg') },
+      { name: 'XGBoost', icon: localIcon('xgboost.png') },
+      { name: 'YOLO', icon: localIcon('yolo.png') },
+      { name: 'FAISS', icon: localIcon('faiss.svg') },
+      { name: 'Jupyter', icon: localIcon('jupyter.svg') },
+      { name: 'Ollama', icon: localIcon('ollama.svg') },
+      { name: 'Streamlit', icon: localIcon('streamlit.svg') },
+    ],
   },
   {
     title: 'Frontend',
-    icon: Palette,
     skills: [
-      { name: 'React', icon: SiReact },
-      { name: 'Next.js', icon: SiNextdotjs },
-      { name: 'JavaScript', icon: SiJavascript },
-      { name: 'TypeScript', icon: SiTypescript },
-      { name: 'HTML', icon: SiHtml5 },
-      { name: 'CSS', icon: SiCss },
-      { name: 'Tailwind CSS', icon: SiTailwindcss },
-      { name: 'Redux', icon: SiRedux },
-      { name: 'Vite', icon: SiVite },
-      { name: 'Yarn', icon: SiYarn },
-      { name: 'Figma', icon: SiFigma },
-    ]
+      { name: 'React', icon: skillIcon('react') },
+      { name: 'Next.js', icon: skillIcon('nextjs') },
+      { name: 'HTML', icon: skillIcon('html') },
+      { name: 'CSS', icon: skillIcon('css') },
+      { name: 'Tailwind CSS', icon: skillIcon('tailwind') },
+      { name: 'Redux', icon: skillIcon('redux') },
+      { name: 'Vite', icon: skillIcon('vite') },
+      { name: 'Figma', icon: skillIcon('figma') },
+    ],
   },
   {
-    title: 'Backend',
-    icon: Database,
+    title: 'Backend & APIs',
     skills: [
-      { name: 'Python', icon: SiPython },
-      { name: 'FastAPI', icon: SiFastapi },
-      { name: 'Django', icon: SiDjango },
-      { name: 'Node.js', icon: SiNodedotjs },
-      { name: 'Go', icon: SiGo },
-      { name: 'REST API', icon: Globe },
-      { name: 'GraphQL', icon: Database },
-      { name: 'WebSockets', icon: Wifi },
-      { name: 'Microservices', icon: Server },
-      { name: 'MySQL', icon: SiMysql },
-      { name: 'PostgreSQL', icon: SiPostgresql },
-      { name: 'MongoDB', icon: SiMongodb },
-      { name: 'Redis', icon: SiRedis },
-      { name: 'Supabase', icon: SiSupabase },
-      { name: 'Serverless', icon: Cloud },
-    ]
+      { name: 'Django', icon: skillIcon('django') },
+      { name: 'FastAPI', icon: skillIcon('fastapi') },
+      { name: 'Flask', icon: skillIcon('flask') },
+      { name: 'Node.js', icon: skillIcon('nodejs') },
+      { name: 'REST API', icon: localIcon('rest-api.svg') },
+      { name: 'GraphQL', icon: skillIcon('graphql') },
+      { name: 'Postman', icon: skillIcon('postman') },
+    ],
   },
   {
-    title: 'DevOps',
-    icon: Cloud,
+    title: 'Databases',
     skills: [
-      { name: 'AWS', icon: Cloud },
-      { name: 'Azure', icon: Cloud },
-      { name: 'Google Cloud', icon: SiGooglecloud },
-      { name: 'Kubernetes', icon: SiKubernetes },
-      { name: 'GitHub Actions', icon: SiGithubactions },
-      { name: 'Docker', icon: SiDocker },
-      { name: 'Terraform', icon: SiTerraform },
-      { name: 'Grafana', icon: SiGrafana },
-      { name: 'Kafka', icon: SiApachekafka },
-      { name: 'RabbitMQ', icon: SiRabbitmq },
-      { name: 'Git', icon: SiGit },
-      { name: 'Github', icon: SiGithub },
-      { name: 'GitLab', icon: SiGitlab },
-    ]
+      { name: 'MySQL', icon: skillIcon('mysql') },
+      { name: 'PostgreSQL', icon: skillIcon('postgresql') },
+      { name: 'MongoDB', icon: skillIcon('mongodb') },
+      { name: 'Redis', icon: skillIcon('redis') },
+      { name: 'Supabase', icon: skillIcon('supabase') },
+      { name: 'Pinecone', icon: localIcon('pinecone.png') },
+    ],
   },
   {
-    title: 'Trading',
-    icon: TrendingUp,
+    title: 'Cloud',
     skills: [
-      { name: 'Timeseries Forecasting', icon: Clock },
-      { name: 'Sentiment Analysis', icon: Heart },
-      { name: 'Pattern Detection', icon: TrendingUp },
-      { name: 'Algorithm Trading', icon: MessageSquare },
-      { name: 'Backtesting', icon: BarChart3 },
-      { name: 'Optimization', icon: Activity },
-      { name: 'API Integration', icon: Globe },
-      { name: 'Trading Automation', icon: Bot },
-      { name: 'Crypto Trading', icon: SiBitcoin },
-      { name: 'Forex Trading', icon: DollarSign },
-    ]
+      { name: 'AWS', icon: skillIcon('aws') },
+      { name: 'Azure', icon: skillIcon('azure') },
+      { name: 'Google Cloud', icon: skillIcon('gcp') },
+    ],
   },
   {
-    title: 'Other',
-    icon: Wrench,
+    title: 'DevOps & Infrastructure',
     skills: [
-      { name: 'Claude', icon: SiAnthropic },
-      { name: 'Cursor', icon: MousePointer2 },
-      { name: 'Slack', icon: SiSlack },
-      { name: 'Jira', icon: SiJira },
-      { name: 'Lovable', icon: Sparkles },
-      { name: 'Monday', icon: LayoutGrid },
-      { name: 'Bitbucket', icon: SiBitbucket },
-      { name: 'OpenAI', icon: SiOpenai },
-      { name: 'Postman', icon: SiPostman },
-      { name: 'Cypress', icon: SiCypress },
-      { name: 'Selenium', icon: SiSelenium },
-      { name: 'Adobe XD', icon: Palette },
-      { name: 'V0', icon: SiV0 },
-      { name: 'Github Copilot', icon: SiGithubcopilot },
-    ]
-  }
+      { name: 'Docker', icon: skillIcon('docker') },
+      { name: 'Kubernetes', icon: skillIcon('kubernetes') },
+      { name: 'Terraform', icon: skillIcon('terraform') },
+      { name: 'Kafka', icon: skillIcon('kafka') },
+      { name: 'RabbitMQ', icon: skillIcon('rabbitmq') },
+      { name: 'Grafana', icon: skillIcon('grafana') },
+      { name: 'GitHub Actions', icon: skillIcon('githubactions') },
+    ],
+  },
+  {
+    title: 'Version Control',
+    skills: [
+      { name: 'Git', icon: skillIcon('git') },
+      { name: 'GitHub', icon: skillIcon('github') },
+      { name: 'GitLab', icon: skillIcon('gitlab') },
+      { name: 'Bitbucket', icon: skillIcon('bitbucket') },
+    ],
+  },
+  {
+    title: 'Testing & Developer Tools',
+    skills: [
+      { name: 'Cypress', icon: skillIcon('cypress') },
+      { name: 'Selenium', icon: skillIcon('selenium') },
+      { name: 'Yarn', icon: skillIcon('yarn') },
+      { name: 'VS Code', icon: skillIcon('vscode') },
+      { name: 'Cursor', icon: localIcon('cursor.png') },
+      { name: 'Claude Code', icon: localIcon('claude-code.svg') },
+    ],
+  },
 ]
+
+/** Simple Icons SVGs are monochrome — invert in dark mode so they stay visible */
+const MONOCHROME_SKILL_ICONS = new Set([
+  '/skills/langchain.svg',
+  '/skills/openai.svg',
+  '/skills/numpy.svg',
+  '/skills/pandas.svg',
+  '/skills/jupyter.svg',
+  '/skills/ollama.svg',
+  '/skills/streamlit.svg',
+  '/skills/faiss.svg',
+])
+
+function SkillCard({ name, icon }: SkillIcon) {
+  const isMonochromeSvg = MONOCHROME_SKILL_ICONS.has(icon)
+
+  return (
+    <div className="group surface-card-hover flex flex-col items-center gap-3 p-4 sm:p-5">
+      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-neutral-50 transition-colors group-hover:bg-neutral-100 dark:bg-neutral-900 dark:group-hover:bg-neutral-800">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={icon}
+          alt={name}
+          width={48}
+          height={48}
+          className={`h-10 w-10 object-contain${isMonochromeSvg ? ' dark:brightness-0 dark:invert' : ''}`}
+          loading="lazy"
+        />
+      </div>
+      <span className="text-center text-xs font-medium leading-tight text-neutral-700 dark:text-neutral-300">
+        {name}
+      </span>
+    </div>
+  )
+}
 
 export function Skills() {
   return (
-    <section id="skills" className="section-padding night-sky-content">
+    <section id="skills" className="section-padding">
       <div className="container-custom">
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-              Skills & <span className="gradient-text">Technologies</span>
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-              A comprehensive toolkit for building scalable, intelligent systems and AI trading solutions
-            </p>
-            <div className="w-24 h-1 gradient-bg rounded-full mx-auto mt-4 sm:mt-6" />
-          </div>
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            title={<>🛠️ Skills & technologies</>}
+            subtitle="Languages, frameworks, and tools I use to build scalable systems and AI solutions"
+            accent="teal"
+          />
 
-          {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="space-y-10">
             {skillCategories.map((category) => (
-              <div
-                key={category.title}
-                className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700"
-              >
-                {/* Category Header */}
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="p-3 rounded-lg bg-gradient-to-r from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30 group-hover:from-primary-200 group-hover:to-secondary-200 dark:group-hover:from-primary-800/40 dark:group-hover:to-secondary-800/40 transition-all duration-300">
-                    <category.icon className="h-7 w-7 text-primary-600 dark:text-primary-400" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
-                    {category.title}
-                  </h3>
-                </div>
-
-                {/* Skills List */}
-                <div className="grid grid-cols-2 gap-2 sm:gap-4">
+              <div key={category.title}>
+                <h3 className="mb-4 font-heading text-lg font-semibold text-neutral-900 dark:text-white">
+                  {category.title}
+                </h3>
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
                   {category.skills.map((skill) => (
-                    <div
-                      key={skill.name}
-                      className="group/skill"
-                    >
-                      <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 hover:shadow-md">
-                        <div className="flex-shrink-0">
-                          <skill.icon className="h-5 w-5 sm:h-6 sm:w-6 group-hover/skill:scale-110 transition-all duration-200" style={{ color: 'inherit' }} />
-                        </div>
-                        <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 group-hover/skill:text-gray-900 dark:group-hover/skill:text-white transition-colors duration-200 truncate">
-                          {skill.name}
-                        </span>
-                      </div>
-                    </div>
+                    <SkillCard key={skill.name} {...skill} />
                   ))}
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Bottom CTA */}
-          <div className="text-center mt-16">
-            <div className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800/30">
-              <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
-              <span className="text-primary-700 dark:text-primary-300 font-medium">
-                Always learning and adapting to new technologies
-              </span>
-            </div>
           </div>
         </div>
       </div>

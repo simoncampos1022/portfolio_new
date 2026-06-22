@@ -1,12 +1,5 @@
-import { About } from '@/components/about'
-import { PageNavigation } from '@/components/page-navigation'
+import { redirect } from 'next/navigation'
 
 export default function AboutPage() {
-  return (
-    <>
-      <About />
-      <PageNavigation currentPage="about" />
-    </>
-  )
+  redirect('/#about')
 }
-

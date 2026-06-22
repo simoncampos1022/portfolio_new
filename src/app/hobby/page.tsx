@@ -1,11 +1,5 @@
-import { Hobby } from '@/components/hobby'
-import { PageNavigation } from '@/components/page-navigation'
+import { redirect } from 'next/navigation'
 
 export default function HobbyPage() {
-  return (
-    <>
-      <Hobby />
-      <PageNavigation currentPage="hobby" />
-    </>
-  )
+  redirect('/#hobby')
 }
