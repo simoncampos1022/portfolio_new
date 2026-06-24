@@ -2,10 +2,11 @@
 
 import { useParams, useRouter } from 'next/navigation'
 import { useState, useEffect, useCallback } from 'react'
-import Image from 'next/image'
-import { Github, Zap, ChevronLeft, ChevronRight, ArrowLeft, Eye } from 'lucide-react'
+import { Github, Zap, ChevronLeft, ChevronRight, ArrowLeft, Eye, Smartphone } from 'lucide-react'
 import { projects } from '@/data/projects'
 import { ProjectImageLightbox } from '@/components/project-image-lightbox'
+import { ProjectMedia } from '@/components/project-media'
+import { isEmbedMedia, isSvgImage } from '@/lib/utils'
 
 export default function ProjectDetailPage() {
   const params = useParams()
@@ -173,29 +174,45 @@ export default function ProjectDetailPage() {
                 <div className="relative">
                   <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px]">
                     <div
-                      role="button"
-                      tabIndex={0}
-                      onClick={() => setLightboxOpen(true)}
+                      className={`group relative h-full w-full overflow-hidden rounded-xl border border-neutral-200 bg-neutral-100 outline-none ring-offset-2 focus-visible:ring-2 focus-visible:ring-neutral-500 dark:border-neutral-800 dark:bg-neutral-900 ${
+                        isEmbedMedia(project.images[currentImageIndex]) ? '' : 'cursor-zoom-in'
+                      }`}
+                      aria-label={`View media ${currentImageIndex + 1} fullscreen`}
+                      onClick={() => {
+                        if (!isEmbedMedia(project.images[currentImageIndex])) {
+                          setLightboxOpen(true)
+                        }
+                      }}
                       onKeyDown={(e) => {
+                        if (isEmbedMedia(project.images[currentImageIndex])) return
                         if (e.key === 'Enter' || e.key === ' ') {
                           e.preventDefault()
                           setLightboxOpen(true)
                         }
                       }}
-                      className="group relative h-full w-full cursor-zoom-in overflow-hidden rounded-xl border border-neutral-200 bg-neutral-100 outline-none ring-offset-2 focus-visible:ring-2 focus-visible:ring-neutral-500 dark:border-neutral-800 dark:bg-neutral-900"
-                      aria-label={`View image ${currentImageIndex + 1} fullscreen`}
+                      role={isEmbedMedia(project.images[currentImageIndex]) ? undefined : 'button'}
+                      tabIndex={isEmbedMedia(project.images[currentImageIndex]) ? undefined : 0}
                     >
-                      <Image
+                      <ProjectMedia
                         src={project.images[currentImageIndex]}
-                        alt={`${project.title} - Image ${currentImageIndex + 1}`}
+                        alt={`${project.title} - Media ${currentImageIndex + 1}`}
                         fill
-                        className="object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                        controls={isEmbedMedia(project.images[currentImageIndex])}
+                        className={
+                          isSvgImage(project.images[currentImageIndex])
+                            ? 'object-contain transition-transform duration-300 group-hover:scale-[1.01]'
+                            : isEmbedMedia(project.images[currentImageIndex])
+                              ? 'object-contain'
+                              : 'object-contain transition-transform duration-300 group-hover:scale-[1.01]'
+                        }
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
                         priority
                       />
-                      <span className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-3 py-1 text-xs text-white/90 opacity-0 transition-opacity group-hover:opacity-100 sm:bottom-3">
-                        Click to view fullscreen
-                      </span>
+                      {!isEmbedMedia(project.images[currentImageIndex]) && (
+                        <span className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-3 py-1 text-xs text-white/90 opacity-0 transition-opacity group-hover:opacity-100 sm:bottom-3">
+                          Click to view fullscreen
+                        </span>
+                      )}
                     </div>
                     {project.images.length > 1 && (
                       <>
@@ -279,7 +296,7 @@ export default function ProjectDetailPage() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex w-full flex-col gap-3 border-t border-neutral-200 pt-6 sm:flex-row sm:items-center sm:justify-between sm:gap-4 dark:border-neutral-800">
+            <div className="flex w-full flex-col gap-3 border-t border-neutral-200 pt-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 dark:border-neutral-800">
               {project.liveUrl ? (
                 <a
                   href={project.liveUrl}
@@ -301,6 +318,28 @@ export default function ProjectDetailPage() {
                   <span>View Live</span>
                 </button>
               )}
+              {project.appStoreUrl ? (
+                <a
+                  href={project.appStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary flex w-full items-center justify-center space-x-2 sm:w-auto"
+                >
+                  <Smartphone className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <span>App Store</span>
+                </a>
+              ) : null}
+              {project.playStoreUrl ? (
+                <a
+                  href={project.playStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary flex w-full items-center justify-center space-x-2 sm:w-auto"
+                >
+                  <Smartphone className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <span>Google Play</span>
+                </a>
+              ) : null}
               {project.githubUrl ? (
                 <a
                   href={project.githubUrl}
@@ -368,7 +407,11 @@ export default function ProjectDetailPage() {
       </section>
 
       <ProjectImageLightbox
-        open={lightboxOpen && project.images.length > 0}
+        open={
+          lightboxOpen &&
+          project.images.length > 0 &&
+          !isEmbedMedia(project.images[currentImageIndex])
+        }
         onClose={() => setLightboxOpen(false)}
         imageSrc={project.images[currentImageIndex]}
         imageAlt={`${project.title} - Image ${currentImageIndex + 1} (fullscreen)`}

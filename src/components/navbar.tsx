@@ -2,6 +2,7 @@
 
 import { useState, useSyncExternalStore, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { Menu, X, Sun, Moon, Download } from 'lucide-react'
@@ -81,8 +82,15 @@ export function Navbar() {
             }}
             className="group flex items-center gap-3"
           >
-            <div className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 bg-black text-sm font-semibold text-white dark:border-neutral-700 dark:bg-white dark:text-black">
-              SC
+            <div className="relative h-9 w-9 overflow-hidden rounded-full border border-neutral-300 dark:border-neutral-700">
+              <Image
+                src="/photo/photo (2).png"
+                alt="Simon Degala Campos"
+                fill
+                className="object-cover object-top grayscale"
+                sizes="36px"
+                priority
+              />
             </div>
             <div>
               <span className="block font-heading text-base font-semibold text-black dark:text-white">

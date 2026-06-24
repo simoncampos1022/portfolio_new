@@ -15,7 +15,7 @@ const socialLinks = [
 ]
 
 const quickLinks = [
-  { name: 'About', id: 'about' },
+  { name: 'About', id: 'home' },
   { name: 'Projects', id: 'projects' },
   { name: 'Contact', id: 'contact' },
 ] as const

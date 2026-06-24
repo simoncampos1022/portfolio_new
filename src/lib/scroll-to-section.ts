@@ -1,5 +1,4 @@
 export const sectionNavItems = [
-  { name: 'About', id: 'about' },
   { name: 'Skills', id: 'skills' },
   { name: 'Projects', id: 'projects' },
   { name: 'Experience', id: 'experience' },

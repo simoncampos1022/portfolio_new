@@ -43,13 +43,12 @@ export default function ExperienceDetailPage() {
           <div className="surface-card mb-8 p-6 sm:p-8">
             <div className="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
               {companyLogos[experience.company.toLowerCase()] ? (
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-700 dark:bg-neutral-800 sm:h-20 sm:w-20">
+                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-700 dark:bg-neutral-800 sm:h-20 sm:w-20">
                   <Image
                     src={companyLogos[experience.company.toLowerCase()]}
                     alt={`${experience.company} logo`}
-                    width={80}
-                    height={80}
-                    className="h-14 w-14 object-contain sm:h-16 sm:w-16"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               ) : (

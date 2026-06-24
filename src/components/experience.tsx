@@ -32,13 +32,12 @@ export function Experience() {
                     <div className="mb-4 flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
                       <div className="flex items-center gap-3">
                         {companyLogos[experience.company.toLowerCase()] ? (
-                          <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-neutral-200 bg-white dark:border-neutral-700 dark:bg-neutral-800">
+                          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-lg border border-neutral-200 bg-white dark:border-neutral-700 dark:bg-neutral-800">
                             <Image
                               src={companyLogos[experience.company.toLowerCase()]}
                               alt={`${experience.company} logo`}
-                              width={44}
-                              height={44}
-                              className="h-8 w-8 object-contain"
+                              fill
+                              className="object-cover"
                             />
                           </div>
                         ) : (

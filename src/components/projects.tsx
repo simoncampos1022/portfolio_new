@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Github, Eye, Search, ArrowDownUp, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Github, Eye, Search, ArrowDownUp, ChevronLeft, ChevronRight, Smartphone } from 'lucide-react'
 import Image from 'next/image'
 import { projects } from '@/data/projects'
 import { SectionHeader } from '@/components/section-header'
+import { ProjectMedia } from '@/components/project-media'
+import { isEmbedMedia, isSvgImage } from '@/lib/utils'
 
 const categories = ['All', 'AI/ML', 'Frontend', 'Mobile', 'Backend', 'FullStack', 'Trading', 'DevOps']
 const sortOptions = ['Time', 'A-Z', 'Size'] as const
@@ -21,6 +23,10 @@ function getProjectSize(project: (typeof projects)[number]) {
     project.images.length +
     project.description.length
   )
+}
+
+function hasMobileTriplePreview(project: (typeof projects)[number]) {
+  return project.category.some((cat) => cat.toLowerCase() === 'mobile') && project.images.length >= 3
 }
 
 export function Projects() {
@@ -173,13 +179,33 @@ export function Projects() {
               onClick={() => router.push(`/projects/${project.id}`)}
               className="group surface-card-hover flex cursor-pointer flex-col overflow-hidden"
             >
-              <div className="relative h-44 overflow-hidden">
-                {project.image ? (
-                  <Image
+              <div className="relative h-56 overflow-hidden sm:h-60">
+                {hasMobileTriplePreview(project) ? (
+                  <div className="absolute inset-0 flex items-center justify-center gap-1.5 bg-black px-3 py-4 sm:gap-2 sm:px-4">
+                    {project.images.slice(0, 3).map((src) => (
+                      <div key={src} className="relative h-full min-w-0 flex-1">
+                        <Image
+                          src={src}
+                          alt={`${project.title} preview`}
+                          fill
+                          className="object-contain object-center transition-transform duration-300 group-hover:scale-105"
+                          sizes="(max-width: 768px) 28vw, 10vw"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : project.image ? (
+                  <ProjectMedia
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className={
+                      isSvgImage(project.image)
+                        ? 'object-contain p-10 transition-transform duration-300 group-hover:scale-105'
+                        : isEmbedMedia(project.image)
+                          ? 'object-cover transition-transform duration-300 group-hover:scale-105'
+                          : 'object-cover transition-transform duration-300 group-hover:scale-105'
+                    }
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 ) : (
@@ -191,7 +217,13 @@ export function Projects() {
 
               <div className="flex flex-1 flex-col justify-between gap-4 p-5">
                 <div className="space-y-2">
-                  <span className="tag">{mapCategory(project.category)}</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.category.map((cat) => (
+                      <span key={cat} className="tag w-fit text-[11px]">
+                        {mapCategory(cat)}
+                      </span>
+                    ))}
+                  </div>
                   <h3 className="font-heading text-lg font-semibold text-neutral-900 transition-colors group-hover:text-black dark:text-white dark:group-hover:text-white">
                     {project.title}
                   </h3>
@@ -219,6 +251,28 @@ export function Projects() {
                         title="Live"
                       >
                         <Eye className="h-4 w-4" />
+                      </a>
+                    )}
+                    {project.appStoreUrl && (
+                      <a
+                        href={project.appStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-lg p-1.5 text-neutral-500 hover:bg-neutral-100 hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
+                        title="App Store"
+                      >
+                        <Smartphone className="h-4 w-4" />
+                      </a>
+                    )}
+                    {project.playStoreUrl && (
+                      <a
+                        href={project.playStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-lg p-1.5 text-neutral-500 hover:bg-neutral-100 hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
+                        title="Google Play"
+                      >
+                        <Smartphone className="h-4 w-4" />
                       </a>
                     )}
                     {project.githubUrl && (

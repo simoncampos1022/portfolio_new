@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { getYouTubeEmbedUrl, isSvgImage, isVideoMedia, isYouTubeMedia } from '@/lib/utils'
 import { useState } from 'react'
 import type { ReactZoomPanPinchContentRef } from 'react-zoom-pan-pinch'
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch'
@@ -96,6 +97,8 @@ function LightboxImageViewer({
   showSlideNav = false,
 }: LightboxImageViewerProps) {
   const [rotation, setRotation] = useState(0)
+  const isVideo = isVideoMedia(imageSrc)
+  const isYouTube = isYouTubeMedia(imageSrc)
 
   return (
     <div
@@ -148,6 +151,26 @@ function LightboxImageViewer({
         className="relative mx-auto h-[min(92vh,calc(100vh-4rem))] w-full max-w-[min(96vw,1600px)]"
         onClick={(e) => e.stopPropagation()}
       >
+        {isYouTube ? (
+          <iframe
+            key={String(imageKey)}
+            src={getYouTubeEmbedUrl(imageSrc, false, true) ?? undefined}
+            className="mx-auto h-full w-full object-contain"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            title={imageAlt}
+          />
+        ) : isVideo ? (
+          <video
+            key={String(imageKey)}
+            src={imageSrc}
+            className="mx-auto h-full w-full object-contain"
+            controls
+            autoPlay
+            playsInline
+            aria-label={imageAlt}
+          />
+        ) : (
         <TransformWrapper
           key={String(imageKey)}
           initialScale={1}
@@ -177,6 +200,7 @@ function LightboxImageViewer({
                       src={imageSrc}
                       alt={imageAlt}
                       fill
+                      unoptimized={isSvgImage(imageSrc)}
                       className="object-contain select-none"
                       sizes="96vw"
                       priority
@@ -194,6 +218,7 @@ function LightboxImageViewer({
             </>
           )}
         </TransformWrapper>
+        )}
       </div>
     </div>
   )
