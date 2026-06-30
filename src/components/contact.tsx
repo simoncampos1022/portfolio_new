@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle, CalendarDays } from 'lucide-react'
+import { Mail, MapPin, Linkedin, Send, CheckCircle, CalendarDays } from 'lucide-react'
+import { SiTelegram } from '@icons-pack/react-simple-icons'
 import { SectionHeader } from '@/components/section-header'
 
 const contactInfo = [
@@ -10,12 +11,6 @@ const contactInfo = [
     label: 'Email',
     value: 'simon.campos1022@gmail.com',
     href: 'mailto:simon.campos1022@gmail.com',
-  },
-  {
-    icon: Phone,
-    label: 'Phone',
-    value: '+639634160157',
-    href: 'tel:+639634160157',
   },
   {
     icon: MapPin,
@@ -27,16 +22,22 @@ const contactInfo = [
 
 const socialLinks = [
   {
-    name: 'GitHub',
-    href: 'https://github.com/simoncampos1022',
-    icon: Github,
-    description: 'View my code repositories and contributions',
+    name: 'Email',
+    href: 'mailto:simon.campos1022@gmail.com',
+    icon: Mail,
+    description: 'Send me an email',
   },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/simon-dc-288aab410',
     icon: Linkedin,
     description: 'Connect with me professionally',
+  },
+  {
+    name: 'Telegram',
+    href: 'https://t.me/simoncampos1022',
+    icon: SiTelegram,
+    description: 'Message me on Telegram',
   },
   {
     name: 'Calendly',

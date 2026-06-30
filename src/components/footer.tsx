@@ -2,15 +2,13 @@
 
 import { usePathname } from 'next/navigation'
 import { Mail, Linkedin, CalendarDays, Heart } from 'lucide-react'
-import { SiDiscord, SiTelegram, SiWhatsapp } from '@icons-pack/react-simple-icons'
+import { SiTelegram } from '@icons-pack/react-simple-icons'
 import { navigateToSection, type SectionId } from '@/lib/scroll-to-section'
 
 const socialLinks = [
   { name: 'Email', href: 'mailto:simon.campos1022@gmail.com', icon: Mail },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/simon-dc-288aab410', icon: Linkedin },
-  { name: 'Discord', href: 'https://discord.com/users/1484636320256233493', icon: SiDiscord },
   { name: 'Telegram', href: 'https://t.me/simoncampos1022', icon: SiTelegram },
-  { name: 'WhatsApp', href: 'https://wa.me/639634160157', icon: SiWhatsapp },
   { name: 'Calendly', href: 'https://calendly.com/simon-campos1022/30min', icon: CalendarDays },
 ]
 

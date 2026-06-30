@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { Menu, X, Sun, Moon, Download } from 'lucide-react'
+import { Menu, X, Sun, Moon, Download, Github } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { navigateToSection, scrollToSection, sectionNavItems, type SectionId } from '@/lib/scroll-to-section'
 
@@ -121,6 +121,15 @@ export function Navbar() {
             >
               {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
+            <a
+              href="https://github.com/simoncampos1022"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile"
+              className="rounded-lg border border-neutral-200 p-2 text-neutral-600 transition-colors hover:bg-neutral-100 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-900"
+            >
+              <Github className="h-4 w-4" />
+            </a>
             <a href="/resume/Simon_Campos_Resume.pdf" download className="btn-primary !px-4 !py-2 text-sm">
               <Download className="mr-2 inline h-4 w-4" />
               Resume
