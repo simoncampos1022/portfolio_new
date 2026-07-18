@@ -27,7 +27,7 @@ const stats = [
 
 export function Hero() {
   return (
-    <section id="home" className="section-padding">
+    <section id="home" className="section-padding !pt-16 sm:!pt-20 lg:!pt-24">
       <div className="container-custom">
         <div className="mx-auto max-w-6xl space-y-12">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
