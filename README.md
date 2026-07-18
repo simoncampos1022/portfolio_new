@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=next.js)
+![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38bdf8?style=for-the-badge&logo=tailwind-css)
 ![React](https://img.shields.io/badge/React-18.3-61dafb?style=for-the-badge&logo=react)
@@ -38,7 +38,7 @@ This portfolio website is a comprehensive showcase of professional experience, t
 
 ### Key Highlights
 
-- **Modern Architecture**: Built with Next.js 15 App Router for optimal performance
+- **Modern Architecture**: Built with Next.js 16 App Router for optimal performance
 - **Type-Safe**: Full TypeScript implementation for robust code quality
 - **Responsive Design**: Mobile-first approach with seamless cross-device compatibility
 - **SEO Optimized**: Server-side rendering and meta tag optimization
@@ -103,7 +103,7 @@ This portfolio website is a comprehensive showcase of professional experience, t
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| **Next.js** | 15.5.3 | React framework with App Router |
+| **Next.js** | 16.2.9 | React framework with App Router |
 | **React** | 18.3.1 | UI library |
 | **TypeScript** | 5.7.2 | Type-safe JavaScript |
 | **Tailwind CSS** | 3.4.15 | Utility-first CSS framework |
