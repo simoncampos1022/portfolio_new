@@ -5,7 +5,6 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { SiteBackground } from '@/components/site-background'
-import { ProgressSidebar } from '@/components/progress-sidebar'
 
 const nunitoSans = Nunito_Sans({
   subsets: ['latin'],
@@ -77,7 +76,6 @@ export default function RootLayout({
       <body className={`${nunitoSans.variable} ${quicksand.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <SiteBackground>
-            <ProgressSidebar />
             <div className="relative z-10 flex min-h-screen flex-col pt-16">
               <Navbar />
               <main className="flex-1">{children}</main>

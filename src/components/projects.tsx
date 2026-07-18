@@ -213,6 +213,11 @@ export function Projects() {
                     <h3 className="text-center text-lg font-semibold text-white">{project.title}</h3>
                   </div>
                 )}
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span className="rounded-full border border-white/25 bg-black/40 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
+                    Click to see more details
+                  </span>
+                </div>
               </div>
 
               <div className="flex flex-1 flex-col justify-between gap-4 p-5">

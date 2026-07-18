@@ -16,13 +16,13 @@ const stats = [
       'Junior Backend Developer • Employee',
       'Backend Developer • Intern',
     ],
-    tagsLayout: 'col' as const,
+    tagsLayout: 'row' as const,
   },
   {
     label: 'Projects Completed',
     value: '47+',
     icon: Code,
-    tags: ['AI/ML', 'Frontend', 'Backend', 'Full-stack'],
+    tags: ['AI/ML', 'Frontend', 'Backend', 'Full-stack', 'Mobile', 'DevOps', 'Trading'],
     tagsLayout: 'row' as const,
   },
 ]
@@ -43,10 +43,7 @@ export function Hero() {
 
               <div className="space-y-4 text-sm leading-relaxed sm:text-base">
                 <p className="hyphens-auto text-justify text-neutral-600 dark:text-neutral-400">
-                  Senior Software Engineer | Backend &amp; Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems. Skilled AI/ML Engineer with a strong track record in developing robust AI agents and intelligent solutions.
-                </p>
-                <p className="hyphens-auto text-justify text-neutral-600 dark:text-neutral-400">
-                  Currently Founder &amp; CTO at PXI Labs LLC, building PXI Studio end to end across mobile, web, and API. Previously I worked in the AI/ML &amp; Full-Stack field as a freelancer and as Senior Backend Developer at Plentina, a BNPL fintech startup in the Philippines.
+                  Senior Software Engineer | Backend &amp; Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems. Skilled AI/ML Engineer with a strong track record in developing robust AI agents and intelligent solutions. Proficient in creating efficient, scalable architectures that drive innovation and support complex AI workflows. Adept at leveraging cutting-edge technologies to deliver impactful, reliable backend services for demanding applications.
                 </p>
               </div>
 

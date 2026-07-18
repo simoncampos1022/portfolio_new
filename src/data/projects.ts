@@ -62,12 +62,7 @@ export const projects: Project[] = [
     ],
     liveUrl: 'https://apps.apple.com/app/pxi/id6751762197',
     githubUrl: '',
-    category: ['Frontend', 'Mobile'],
-    gradient: 'from-cyan-600 to-blue-600',
-  },
-  {
-    id: 2,
-    title: 'PXI Studio — Web App',
+    category: ['Mobile'],
     subtitle: 'Next.js marketing site and product dashboard for PXI Studio',
     description:
       'Marketing and authenticated web surface for PXI Studio built with Next.js and React. It introduces the product to new users and hosts the browser-based dashboard for managing studios, billing touchpoints, and analytics-style views. The UI layers Ant Design, motion (Framer Motion / GSAP), and Tailwind for a cohesive brand experience. This project is intentionally separate from the mobile shell: it optimizes for large screens, SEO-friendly pages, and web-first integrations.',
