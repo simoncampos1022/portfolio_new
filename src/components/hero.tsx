@@ -16,14 +16,12 @@ const stats = [
       'Junior Backend Developer • Employee',
       'Backend Developer • Intern',
     ],
-    tagsLayout: 'row' as const,
   },
   {
     label: 'Projects Completed',
     value: '47+',
     icon: Code,
     tags: ['AI/ML', 'Frontend', 'Backend', 'Full-stack', 'Mobile', 'DevOps', 'Trading'],
-    tagsLayout: 'row' as const,
   },
 ]
 
@@ -85,11 +83,7 @@ export function Hero() {
                     <div className="text-sm text-neutral-600 dark:text-neutral-400">{stat.label}</div>
                   </div>
                 </div>
-                <div
-                  className={
-                    stat.tagsLayout === 'col' ? 'flex flex-col gap-1.5 pl-9' : 'flex flex-wrap gap-1.5 pl-9'
-                  }
-                >
+                <div className="flex flex-wrap gap-1.5 pl-9">
                   {stat.tags.map((tag) => (
                     <span key={tag} className="tag w-fit text-[11px]">
                       {tag}
