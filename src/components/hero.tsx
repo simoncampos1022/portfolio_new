@@ -4,26 +4,14 @@ import Image from 'next/image'
 import { ArrowRight, Code, Target } from 'lucide-react'
 import { scrollToSection } from '@/lib/scroll-to-section'
 import { RedGlow } from '@/components/red-glow'
+import { cn } from '@/lib/utils'
+
+const summary =
+  'I design and build scalable, high-performance backend systems and robust AI agents. My focus: efficient architectures for complex AI workflows and reliable services for demanding applications.'
 
 const stats = [
-  {
-    label: 'Years Experience',
-    value: '6',
-    icon: Target,
-    tags: [
-      'Chief Technology Officer • Founder',
-      'AI/ML & Full-Stack • Freelancer',
-      'Senior Backend Developer • Employee',
-      'Junior Backend Developer • Employee',
-      'Backend Developer • Intern',
-    ],
-  },
-  {
-    label: 'Projects Completed',
-    value: '47',
-    icon: Code,
-    tags: ['AI/ML', 'Frontend', 'Backend', 'Full-stack', 'Mobile', 'DevOps', 'Trading'],
-  },
+  { label: 'Years Experience', value: '6', icon: Target },
+  { label: 'Projects Completed', value: '47', icon: Code },
 ]
 
 const portrait = '/photo/photo (2).png'
@@ -34,7 +22,7 @@ export function Hero() {
   return (
     <section id="home" className="section-dark px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:px-8 lg:pb-20 lg:pt-40">
       {/* Portrait backdrop, faded into black on the text side */}
-      <div aria-hidden="true" className="absolute right-0 top-0 -z-20 hidden h-[75%] w-[39%] lg:block">
+      <div aria-hidden="true" className="absolute right-0 top-0 -z-20 hidden h-[58rem] max-h-full w-[39%] lg:block">
         <Image src={portrait} alt="" fill priority sizes="39vw" className={`object-cover object-[50%_15%] ${portraitTone}`} />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/55 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/70" />
@@ -51,10 +39,6 @@ export function Hero() {
               Senior Software Engineer
               <span className="mt-2 block text-brand">Backend &amp; Python Expert</span>
             </h1>
-
-            <p className="max-w-2xl text-base font-medium leading-relaxed text-white/70 sm:text-lg">
-              Senior Software Engineer | Backend &amp; Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems. Skilled AI/ML Engineer with a strong track record in developing robust AI agents and intelligent solutions. Proficient in creating efficient, scalable architectures that drive innovation and support complex AI workflows. Adept at leveraging cutting-edge technologies to deliver impactful, reliable backend services for demanding applications.
-            </p>
 
             <div className="flex flex-col gap-4 pt-2 sm:flex-row">
               <button onClick={() => scrollToSection('projects')} className="btn-primary w-full sm:w-auto">
@@ -75,30 +59,27 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-24">
-          {stats.map((stat) => (
-            <div key={stat.label} className="rounded-2xl border border-white/10 bg-ink-700/80 p-6 backdrop-blur-sm">
-              <div className="flex items-center gap-4">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-brand/60 bg-brand/15 text-brand-glow">
-                  <stat.icon className="h-5 w-5" />
-                </span>
-                <div>
-                  <div className="font-display text-4xl font-bold leading-none text-white">
-                    {stat.value}
-                    <span className="text-brand">+</span>
-                  </div>
-                  <div className="mt-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white/60">{stat.label}</div>
-                </div>
-              </div>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {stat.tags.map((tag) => (
-                  <span key={tag} className="tag-dark text-[11px]">
-                    {tag}
+        <div className="mt-16 rounded-2xl border border-white/10 bg-ink-700/80 p-6 backdrop-blur-sm sm:p-8 lg:mt-24">
+          <div className="flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-between xl:gap-12">
+            <p className="max-w-2xl text-base font-medium leading-relaxed text-white/75 sm:text-lg">{summary}</p>
+
+            <div className="grid shrink-0 grid-cols-2 divide-x divide-white/10 border-t border-white/10 pt-6 xl:border-l xl:border-t-0 xl:pl-12 xl:pt-0">
+              {stats.map((stat, index) => (
+                <div key={stat.label} className={cn('flex items-center gap-4', index === 0 ? 'pr-5 sm:pr-10' : 'pl-5 sm:pl-10')}>
+                  <span className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-brand/60 bg-brand/15 text-brand-glow sm:flex">
+                    <stat.icon className="h-5 w-5" />
                   </span>
-                ))}
-              </div>
+                  <div>
+                    <div className="font-display text-4xl font-bold leading-none text-white">
+                      {stat.value}
+                      <span className="text-brand">+</span>
+                    </div>
+                    <div className="mt-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white/60">{stat.label}</div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
