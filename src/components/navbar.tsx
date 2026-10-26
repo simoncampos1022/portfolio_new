@@ -1,8 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Download, Github } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -35,7 +33,7 @@ export function Navbar() {
       setActiveSection(hash)
     }
 
-    const sectionIds: SectionId[] = ['home', ...navItems.map((item) => item.id)]
+    const sectionIds: SectionId[] = navItems.map((item) => item.id)
     const observers: IntersectionObserver[] = []
 
     sectionIds.forEach((id) => {
@@ -77,36 +75,6 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8">
-        <Link
-          href="/"
-          onClick={(e) => {
-            if (pathname === '/') {
-              e.preventDefault()
-              handleNavClick('home')
-            }
-          }}
-          className="group flex items-center gap-3"
-        >
-          <div className="relative h-10 w-10 overflow-hidden rounded-lg border border-brand/70 shadow-glow-sm">
-            <Image
-              src="/photo/photo (2).png"
-              alt="Simon Degala Campos"
-              fill
-              className="object-cover object-top grayscale"
-              sizes="40px"
-              priority
-            />
-          </div>
-          <div className="leading-tight">
-            <span className="block font-display text-base font-bold uppercase tracking-wide text-white transition-colors group-hover:text-brand">
-              Simon Campos
-            </span>
-            <span className="block text-[11px] font-medium uppercase tracking-[0.18em] text-white/50">
-              Software Engineer
-            </span>
-          </div>
-        </Link>
-
         <div className="hidden items-center gap-x-8 xl:flex">
           {navItems.map((item) => (
             <button
@@ -120,7 +88,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 sm:flex">
+        <div className="ml-auto hidden items-center gap-3 sm:flex">
           <a
             href="https://github.com/simoncampos1022"
             target="_blank"
@@ -145,7 +113,7 @@ export function Navbar() {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="rounded-lg border border-white/15 p-2.5 text-white transition-colors hover:border-brand sm:hidden"
+          className="ml-auto rounded-lg border border-white/15 p-2.5 text-white transition-colors hover:border-brand sm:hidden"
           aria-label="Toggle menu"
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

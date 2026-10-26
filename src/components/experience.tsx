@@ -34,7 +34,7 @@ export function Experience() {
             <div className="space-y-8">
               {experiences.map((experience) => (
                 <div key={experience.id} className="relative pl-10 sm:pl-12">
-                  <span className="absolute left-0 top-9 h-[15px] w-[15px] rounded-full border-2 border-white bg-brand shadow-glow-sm" />
+                  <span className="absolute left-0 top-1/2 h-[15px] w-[15px] -translate-y-1/2 rounded-full border-2 border-white bg-brand shadow-glow-sm" />
 
                   <Link href={`/experience/${experience.id}`} className="group block">
                     <article className="card-light p-6 group-hover:border-brand/60 group-hover:shadow-lg sm:p-8">
