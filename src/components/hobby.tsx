@@ -33,44 +33,43 @@ const hobbies = [
 
 export function Hobby() {
   return (
-    <section id="hobby" className="section-padding">
+    <section id="hobby" className="section-light section-padding">
       <div className="container-custom">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeader
-            title={
-              <>
-                Hobbies & <span className="gradient-text">interests</span>
-              </>
-            }
-            subtitle="What I do in my free time to stay balanced and inspired"
-            accent="blue"
-          />
+        <SectionHeader
+          tone="light"
+          title={
+            <>
+              Hobbies &amp; <span className="text-brand">interests</span>
+            </>
+          }
+          subtitle="What I do in my free time to stay balanced and inspired"
+        />
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {hobbies.map((hobby) => (
-              <div key={hobby.id} className="group surface-card-hover overflow-hidden">
-                <div className="relative m-4 aspect-square overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800/50">
-                  <Image
-                    src={hobby.image}
-                    alt={hobby.title}
-                    fill
-                    className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="border-t border-neutral-200 p-5 dark:border-neutral-800">
-                  <div className="mb-2 flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white">
-                      <hobby.icon className="h-4 w-4" />
-                    </span>
-                    <h3 className="font-heading text-base font-semibold text-neutral-900 dark:text-white">
-                      {hobby.title}
-                    </h3>
-                  </div>
-                  <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">{hobby.description}</p>
-                </div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {hobbies.map((hobby) => (
+            <div
+              key={hobby.id}
+              className="group card-light overflow-hidden hover:-translate-y-1 hover:border-brand/60 hover:shadow-lg"
+            >
+              <div className="relative m-4 aspect-square overflow-hidden rounded-xl bg-neutral-100">
+                <Image
+                  src={hobby.image}
+                  alt={hobby.title}
+                  fill
+                  className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
-            ))}
-          </div>
+              <div className="border-t border-neutral-200 p-6">
+                <div className="mb-3 flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-brand/50 bg-brand/10 text-brand">
+                    <hobby.icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="font-display text-lg font-bold uppercase tracking-wide text-black">{hobby.title}</h3>
+                </div>
+                <p className="text-sm leading-relaxed text-neutral-600">{hobby.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

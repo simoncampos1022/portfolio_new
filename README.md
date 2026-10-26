@@ -43,7 +43,7 @@ This portfolio website is a comprehensive showcase of professional experience, t
 - **Responsive Design**: Mobile-first approach with seamless cross-device compatibility
 - **SEO Optimized**: Server-side rendering and meta tag optimization
 - **Accessible**: WCAG 2.1 compliant with semantic HTML and ARIA labels
-- **Dark Mode**: System-aware theme switching with persistent user preferences
+- **Bold, High-Contrast Design**: Alternating black and white sections with a single red accent
 
 ---
 
@@ -52,22 +52,16 @@ This portfolio website is a comprehensive showcase of professional experience, t
 ### Core Features
 
 - **🎨 Modern UI/UX**
-  - Clean, professional design with gradient accents
-  - Smooth page transitions and micro-interactions
-  - Interactive hover effects and animations
-  - Custom night sky background with animated stars
+  - Black and white sections with a red (`#e60000`) accent and neon glow
+  - Uppercase display headings (Outfit) with Inter body text
+  - Glowing red call-to-action buttons and hover effects
+  - Full-bleed hero with a faded grayscale portrait and soft red light
 
 - **📱 Fully Responsive**
   - Mobile-first responsive design
   - Optimized layouts for tablets and desktops
   - Touch-friendly navigation and interactions
   - Adaptive typography and spacing
-
-- **🌓 Theme Support**
-  - Light and dark mode toggle
-  - System preference detection
-  - Persistent theme selection
-  - Smooth theme transitions
 
 - **⚡ Performance Optimized**
   - Server-side rendering (SSR)
@@ -108,7 +102,6 @@ This portfolio website is a comprehensive showcase of professional experience, t
 | **TypeScript** | 5.7.2 | Type-safe JavaScript |
 | **Tailwind CSS** | 3.4.15 | Utility-first CSS framework |
 | **Framer Motion** | 11.18.2 | Animation library |
-| **next-themes** | 0.4.6 | Theme management |
 
 ### Icons & UI Components
 

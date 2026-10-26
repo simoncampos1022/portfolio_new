@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import { Mail, Linkedin, CalendarDays, Heart } from 'lucide-react'
 import { SiTelegram } from '@icons-pack/react-simple-icons'
 import { navigateToSection, type SectionId } from '@/lib/scroll-to-section'
+import { RedGlow } from '@/components/red-glow'
 
 const socialLinks = [
   { name: 'Email', href: 'mailto:simon.campos1022@gmail.com', icon: Mail },
@@ -26,44 +27,41 @@ export function Footer() {
   }
 
   return (
-    <footer className="mt-16 border-t border-neutral-200 bg-white pb-24 pt-12 dark:border-neutral-800 dark:bg-black">
+    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-black px-4 pb-10 pt-20 text-white sm:px-6 lg:px-8">
+      <RedGlow className="-bottom-96 -right-72 h-[52rem] w-[52rem]" />
+
       <div className="container-custom">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-          <div className="space-y-3">
-            <span className="block font-heading text-lg font-semibold text-black dark:text-white">
-              Simon Degala Campos
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+          <div className="space-y-4">
+            <span className="block font-display text-2xl font-bold uppercase tracking-tight text-white">
+              Simon Degala <span className="text-brand">Campos</span>
             </span>
-            <p className="max-w-sm text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+            <p className="max-w-sm text-sm leading-relaxed text-white/60">
               Senior Software Engineer | Backend & Python Expert building scalable systems and intelligent AI solutions.
             </p>
           </div>
 
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-black dark:text-white">Quick links</h3>
-            <div className="flex flex-col gap-2">
+          <div className="space-y-4">
+            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white/50">Quick links</h3>
+            <div className="flex flex-col items-start gap-3">
               {quickLinks.map((link) => (
-                <button
-                  key={link.name}
-                  type="button"
-                  onClick={() => handleQuickLink(link.id)}
-                  className="text-left text-sm text-neutral-600 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white"
-                >
+                <button key={link.name} type="button" onClick={() => handleQuickLink(link.id)} className="nav-link text-sm">
                   {link.name}
                 </button>
               ))}
             </div>
           </div>
 
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-black dark:text-white">Connect</h3>
-            <div className="flex flex-wrap gap-2">
+          <div className="space-y-4">
+            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white/50">Connect</h3>
+            <div className="flex flex-wrap gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-lg border border-neutral-200 p-2.5 text-neutral-600 transition-colors hover:border-black hover:text-black dark:border-neutral-700 dark:text-neutral-400 dark:hover:border-white dark:hover:text-white"
+                  className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/15 bg-ink-700 text-white transition-all hover:border-brand hover:text-brand hover:shadow-glow-sm"
                   aria-label={social.name}
                   title={social.name}
                 >
@@ -74,10 +72,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-neutral-200 pt-6 text-sm text-neutral-500 sm:flex-row dark:border-neutral-800 dark:text-neutral-400">
+        <div className="mt-16 flex flex-col items-center justify-between gap-2 border-t border-white/10 pt-6 text-sm text-white/50 sm:flex-row">
           <span>© 2026 Simon Degala Campos. All rights reserved.</span>
           <span className="flex items-center gap-1">
-            Made with <Heart className="h-3.5 w-3.5 fill-neutral-400 text-neutral-400" /> in the Philippines
+            Made with <Heart className="h-3.5 w-3.5 fill-brand text-brand" /> in the Philippines
           </span>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Mail, MapPin, Linkedin, Send, CheckCircle, CalendarDays } from 'lucide-react'
 import { SiTelegram } from '@icons-pack/react-simple-icons'
 import { SectionHeader } from '@/components/section-header'
+import { RedGlow } from '@/components/red-glow'
 
 const contactInfo = [
   {
@@ -70,56 +71,53 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding">
+    <section id="contact" className="section-dark section-padding">
+      <RedGlow className="left-1/2 top-[55%] h-[56rem] w-[56rem] -translate-x-1/2 -translate-y-1/2" />
+
       <div className="container-custom">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             title={
               <>
-                Let&apos;s build something <span className="gradient-text">great together</span>
+                Let&apos;s build something <span className="text-brand">great together</span>
               </>
             }
             subtitle="Ready to discuss your next AI or backend project? Let's connect and create something amazing."
-            accent="blue"
           />
 
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
-            <div className="space-y-6 lg:col-span-5">
+            <div className="space-y-8 lg:col-span-5">
               <div>
-                <h3 className="mb-4 font-heading text-xl font-semibold text-neutral-900 dark:text-white">Get in touch</h3>
-                <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                <h3 className="subheading mb-4 text-white">Get in touch</h3>
+                <p className="text-sm leading-relaxed text-white/70 sm:text-base">
                   I&apos;m always interested in hearing about new opportunities and exciting projects. Whether you have a question, want to collaborate, or just want to say hi, feel free to reach out!
                 </p>
               </div>
 
               <div className="space-y-3">
                 {contactInfo.map((info) => (
-                  <a
-                    key={info.label}
-                    href={info.href}
-                    className="surface-card-hover flex items-center gap-3 p-4"
-                  >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white">
+                  <a key={info.label} href={info.href} className="card-dark-hover flex items-center gap-4 p-4">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-brand/60 bg-brand/15 text-brand-glow">
                       <info.icon className="h-5 w-5" />
                     </span>
                     <div>
-                      <p className="text-xs text-neutral-500 dark:text-neutral-400">{info.label}</p>
-                      <p className="text-sm font-medium text-neutral-900 dark:text-white">{info.value}</p>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">{info.label}</p>
+                      <p className="text-sm font-medium text-white">{info.value}</p>
                     </div>
                   </a>
                 ))}
               </div>
 
               <div>
-                <h4 className="mb-3 text-sm font-medium text-neutral-700 dark:text-neutral-300">Connect</h4>
-                <div className="flex flex-wrap gap-2">
+                <h4 className="mb-3 font-display text-sm font-semibold uppercase tracking-[0.18em] text-white/50">Connect</h4>
+                <div className="flex flex-wrap gap-3">
                   {socialLinks.map((social) => (
                     <a
                       key={social.name}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="surface-card flex h-11 w-11 items-center justify-center text-neutral-600 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white"
+                      className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/15 bg-ink-700 text-white transition-all hover:border-brand hover:text-brand hover:shadow-glow-sm"
                       title={social.description}
                     >
                       <social.icon className="h-5 w-5" />
@@ -130,21 +128,19 @@ export function Contact() {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="surface-card p-6 sm:p-8">
-                <h3 className="mb-6 font-heading text-lg font-semibold text-neutral-900 dark:text-white">Send a message</h3>
+              <div className="card-dark p-6 sm:p-8">
+                <h3 className="subheading mb-8 text-white">Send a message</h3>
 
                 {isSubmitted ? (
                   <div className="space-y-4 py-12 text-center">
-                    <CheckCircle className="mx-auto h-16 w-16 text-black dark:text-white" />
-                    <h4 className="font-heading text-lg font-semibold text-black dark:text-white">Message sent!</h4>
-                    <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                      Thank you for your message. I&apos;ll get back to you soon!
-                    </p>
+                    <CheckCircle className="mx-auto h-16 w-16 text-brand-glow" />
+                    <h4 className="heading-display text-xl text-white">Message sent!</h4>
+                    <p className="text-sm text-white/70">Thank you for your message. I&apos;ll get back to you soon!</p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                      <label htmlFor="name" className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
                         Name
                       </label>
                       <input
@@ -154,12 +150,12 @@ export function Contact() {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="form-input rounded-full px-4 py-2.5"
+                        className="form-input"
                         placeholder="Your name"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                      <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
                         Email
                       </label>
                       <input
@@ -169,12 +165,12 @@ export function Contact() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="form-input rounded-full px-4 py-2.5"
+                        className="form-input"
                         placeholder="your.email@example.com"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="message" className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                      <label htmlFor="message" className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
                         Message
                       </label>
                       <textarea
@@ -184,18 +180,14 @@ export function Contact() {
                         onChange={handleInputChange}
                         required
                         rows={5}
-                        className="form-input resize-none rounded-2xl px-4 py-3"
+                        className="form-input resize-none"
                         placeholder="Tell me about your project or just say hello!"
                       />
                     </div>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="btn-primary flex w-full items-center justify-center gap-2 rounded-full disabled:cursor-not-allowed disabled:opacity-50"
-                    >
+                    <button type="submit" disabled={isSubmitting} className="btn-primary w-full">
                       {isSubmitting ? (
                         <>
-                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-neutral-950 border-t-transparent" />
+                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
                           <span>Sending...</span>
                         </>
                       ) : (

@@ -130,66 +130,49 @@ const skillCategories: SkillCategory[] = [
   },
 ]
 
-/** Simple Icons SVGs are monochrome — invert in dark mode so they stay visible */
-const MONOCHROME_SKILL_ICONS = new Set([
-  '/skills/langchain.svg',
-  '/skills/openai.svg',
-  '/skills/numpy.svg',
-  '/skills/pandas.svg',
-  '/skills/jupyter.svg',
-  '/skills/ollama.svg',
-  '/skills/streamlit.svg',
-  '/skills/faiss.svg',
-])
-
 function SkillCard({ name, icon }: SkillIcon) {
-  const isMonochromeSvg = MONOCHROME_SKILL_ICONS.has(icon)
-
   return (
-    <div className="group surface-card-hover flex flex-col items-center gap-3 p-4 sm:p-5">
-      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-neutral-50 transition-colors group-hover:bg-neutral-100 dark:bg-neutral-900 dark:group-hover:bg-neutral-800">
+    <div className="group card-light flex flex-col items-center gap-3 p-4 hover:-translate-y-1 hover:border-brand hover:shadow-[0_10px_28px_-12px_rgba(230,0,0,0.45)] sm:p-5">
+      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-neutral-100 transition-colors group-hover:bg-brand/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={icon}
-          alt={name}
-          width={48}
-          height={48}
-          className={`h-10 w-10 object-contain${isMonochromeSvg ? ' dark:brightness-0 dark:invert' : ''}`}
-          loading="lazy"
-        />
+        <img src={icon} alt={name} width={48} height={48} className="h-10 w-10 object-contain" loading="lazy" />
       </div>
-      <span className="text-center text-xs font-medium leading-tight text-neutral-700 dark:text-neutral-300">
-        {name}
-      </span>
+      <span className="text-center text-xs font-semibold leading-tight text-neutral-800">{name}</span>
     </div>
   )
 }
 
 export function Skills() {
   return (
-    <section id="skills" className="section-padding">
+    <section id="skills" className="section-light section-padding">
       <div className="container-custom">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeader
-            title={<>🛠️ Skills & technologies</>}
-            subtitle="Languages, frameworks, and tools I use to build scalable systems and AI solutions"
-            accent="teal"
-          />
+        <SectionHeader
+          tone="light"
+          title={
+            <>
+              Skills &amp; <span className="text-brand">technologies</span>
+            </>
+          }
+          subtitle="Languages, frameworks, and tools I use to build scalable systems and AI solutions"
+        />
 
-          <div className="space-y-10">
-            {skillCategories.map((category) => (
-              <div key={category.title}>
-                <h3 className="mb-4 font-heading text-lg font-semibold text-neutral-900 dark:text-white">
-                  {category.title}
-                </h3>
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-                  {category.skills.map((skill) => (
-                    <SkillCard key={skill.name} {...skill} />
-                  ))}
-                </div>
+        <div className="space-y-12">
+          {skillCategories.map((category) => (
+            <div key={category.title}>
+              <div className="mb-5 flex items-center gap-4">
+                <h3 className="font-display text-lg font-bold uppercase tracking-wide text-black">{category.title}</h3>
+                <span className="h-px flex-1 bg-line" />
+                <span className="font-display text-sm font-semibold text-brand">
+                  {String(category.skills.length).padStart(2, '0')}
+                </span>
               </div>
-            ))}
-          </div>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                {category.skills.map((skill) => (
+                  <SkillCard key={skill.name} {...skill} />
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

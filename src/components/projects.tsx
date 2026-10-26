@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Github, Eye, Search, ArrowDownUp, ChevronLeft, ChevronRight, Smartphone } from 'lucide-react'
+import { Github, Eye, Search, ArrowDownUp, ArrowRight, ChevronLeft, ChevronRight, Smartphone } from 'lucide-react'
 import Image from 'next/image'
 import { projects } from '@/data/projects'
 import { SectionHeader } from '@/components/section-header'
 import { ProjectMedia } from '@/components/project-media'
-import { isEmbedMedia, isSvgImage } from '@/lib/utils'
+import { RedGlow } from '@/components/red-glow'
+import { cn, isSvgImage } from '@/lib/utils'
 
 const categories = ['All', 'AI/ML', 'Frontend', 'Mobile', 'Backend', 'FullStack', 'Trading', 'DevOps']
 const sortOptions = ['Time', 'A-Z', 'Size'] as const
@@ -28,6 +29,14 @@ function getProjectSize(project: (typeof projects)[number]) {
 function hasMobileTriplePreview(project: (typeof projects)[number]) {
   return project.category.some((cat) => cat.toLowerCase() === 'mobile') && project.images.length >= 3
 }
+
+const segmentClass = (isActive: boolean) =>
+  cn(
+    'whitespace-nowrap font-display font-semibold uppercase tracking-wide transition-colors',
+    isActive ? 'bg-brand text-white' : 'bg-ink-700 text-white/70 hover:bg-ink-600 hover:text-white'
+  )
+
+const cardLinkClass = 'rounded-lg p-1.5 text-neutral-500 transition-colors hover:bg-brand/10 hover:text-brand'
 
 export function Projects() {
   const router = useRouter()
@@ -95,91 +104,98 @@ export function Projects() {
   )
 
   return (
-    <section id="projects" className="section-padding">
+    <section id="projects" className="section-dark section-padding">
+      <RedGlow className="-right-56 -top-40 h-[44rem] w-[44rem]" />
+      <RedGlow className="-bottom-48 -left-56 h-[40rem] w-[40rem] opacity-70" />
+
       <div className="container-custom">
         <SectionHeader
           title={
             <>
-              Featured <span className="gradient-text">projects</span>
+              Featured <span className="text-brand">projects</span>
             </>
           }
           subtitle="Showcasing my expertise in AI, backend development, and full-stack solutions"
-          accent="purple"
+          action={
+            <a
+              href="https://github.com/simoncampos1022"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              <Github className="h-4 w-4" />
+              View GitHub
+            </a>
+          }
         />
 
-        <div className="surface-card mb-8 space-y-4 p-5">
+        <div className="mb-10 space-y-4">
+          <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+            <div className="flex min-w-max divide-x divide-white/10 overflow-hidden rounded-lg border border-white/10 lg:min-w-0">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setSelectedCategory(category)}
+                  className={cn('flex-1 px-5 py-3.5 text-sm', segmentClass(selectedCategory === category))}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="relative w-full sm:max-w-md sm:flex-1">
-              <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
+              <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search projects or technologies..."
-                className="form-input rounded-full py-2.5 pl-11 pr-4"
+                className="form-input pl-11"
               />
             </div>
-            <div className="flex shrink-0 items-center gap-2">
-              {sortOptions.map((option) => {
-                const isActive = sortBy === option
-                return (
+            <div className="flex shrink-0 items-center gap-3">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">Sort</span>
+              <div className="flex divide-x divide-white/10 overflow-hidden rounded-lg border border-white/10">
+                {sortOptions.map((option) => (
                   <button
                     key={option}
                     type="button"
                     onClick={() => setSortBy(option)}
-                    className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-                      isActive
-                        ? 'bg-black text-white dark:bg-white dark:text-black'
-                        : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700'
-                    }`}
+                    className={cn('px-4 py-2.5 text-xs', segmentClass(sortBy === option))}
                   >
                     {option}
                   </button>
-                )
-              })}
+                ))}
+              </div>
               <button
                 type="button"
                 onClick={() => setSortReverse((prev) => !prev)}
                 aria-label={sortReverse ? 'Sort ascending' : 'Sort descending'}
                 title={sortReverse ? 'Reverse to ascending' : 'Reverse to descending'}
-                className={`rounded-full p-2 transition-colors ${
+                className={cn(
+                  'rounded-lg border p-2.5 transition-colors',
                   sortReverse
-                    ? 'bg-black text-white dark:bg-white dark:text-black'
-                    : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700'
-                }`}
+                    ? 'border-brand bg-brand text-white'
+                    : 'border-white/10 bg-ink-700 text-white/70 hover:bg-ink-600 hover:text-white'
+                )}
               >
                 <ArrowDownUp className="h-4 w-4" />
               </button>
             </div>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => {
-              const isActive = selectedCategory === category
-              return (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-                    isActive
-                      ? 'bg-black text-white dark:bg-white dark:text-black'
-                      : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700'
-                  }`}
-                >
-                  {category}
-                </button>
-              )
-            })}
-          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {paginatedProjects.map((project) => (
-            <div
+            <article
               key={project.id}
               onClick={() => router.push(`/projects/${project.id}`)}
-              className="group surface-card-hover flex cursor-pointer flex-col overflow-hidden"
+              className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-white text-black transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#e60000,0_0_28px_rgba(230,0,0,0.45)]"
             >
-              <div className="relative h-56 overflow-hidden sm:h-60">
+              <div className="relative h-56 overflow-hidden bg-neutral-100 sm:h-60">
                 {hasMobileTriplePreview(project) ? (
                   <div className="absolute inset-0 flex items-center justify-center gap-1.5 bg-black px-3 py-4 sm:gap-2 sm:px-4">
                     {project.images.slice(0, 3).map((src) => (
@@ -199,62 +215,49 @@ export function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className={
-                      isSvgImage(project.image)
-                        ? 'object-contain p-10 transition-transform duration-300 group-hover:scale-105'
-                        : isEmbedMedia(project.image)
-                          ? 'object-cover transition-transform duration-300 group-hover:scale-105'
-                          : 'object-cover transition-transform duration-300 group-hover:scale-105'
-                    }
+                    className={cn(
+                      'transition-transform duration-300 group-hover:scale-105',
+                      isSvgImage(project.image) ? 'object-contain p-10' : 'object-cover'
+                    )}
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 ) : (
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} flex items-center justify-center p-4`}>
-                    <h3 className="text-center text-lg font-semibold text-white">{project.title}</h3>
+                  <div className="absolute inset-0 isolate flex items-center justify-center overflow-hidden bg-black p-6">
+                    <RedGlow className="-bottom-40 -right-32 h-80 w-80" />
+                    <h3 className="heading-display text-center text-xl text-white">{project.title}</h3>
                   </div>
                 )}
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <span className="rounded-full border border-white/25 bg-black/40 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
-                    Click to see more details
-                  </span>
-                </div>
               </div>
 
-              <div className="flex flex-1 flex-col justify-between gap-4 p-5">
+              <div className="flex flex-1 flex-col gap-4 p-6">
+                <div className="flex flex-wrap gap-1.5">
+                  {project.category.map((cat) => (
+                    <span key={cat} className="tag-brand">
+                      {mapCategory(cat)}
+                    </span>
+                  ))}
+                </div>
                 <div className="space-y-2">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.category.map((cat) => (
-                      <span key={cat} className="tag w-fit text-[11px]">
-                        {mapCategory(cat)}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="font-heading text-lg font-semibold text-neutral-900 transition-colors group-hover:text-black dark:text-white dark:group-hover:text-white">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400">{project.subtitle}</p>
-                  <p className="line-clamp-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
-                    {project.description}
-                  </p>
+                  <h3 className="font-display text-xl font-bold leading-snug tracking-tight text-black">{project.title}</h3>
+                  <p className="text-sm font-medium text-neutral-500">{project.subtitle}</p>
+                  <p className="line-clamp-2 text-sm leading-relaxed text-neutral-600">{project.description}</p>
+                </div>
+                <div className="mt-auto flex flex-wrap gap-1.5">
+                  {project.technologies.slice(0, 5).map((tech) => (
+                    <span key={tech} className="tag-light text-[11px]">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
 
-                <div className="flex items-start justify-between gap-3 border-t border-neutral-200 pt-4 dark:border-neutral-800">
-                  <div className="flex flex-1 flex-wrap gap-1.5">
-                    {project.technologies.slice(0, 6).map((tech) => (
-                      <span key={tech} className="tag w-fit text-[11px]">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
+                <div className="flex items-center justify-between gap-3 border-t border-neutral-200 pt-4">
+                  <span className="inline-flex items-center gap-1.5 font-display text-sm font-semibold uppercase tracking-wide text-brand">
+                    View project
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                  <div className="flex gap-1" onClick={(e) => e.stopPropagation()}>
                     {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="rounded-lg p-1.5 text-neutral-500 hover:bg-neutral-100 hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
-                        title="Live"
-                      >
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={cardLinkClass} title="Live">
                         <Eye className="h-4 w-4" />
                       </a>
                     )}
@@ -263,7 +266,7 @@ export function Projects() {
                         href={project.appStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded-lg p-1.5 text-neutral-500 hover:bg-neutral-100 hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
+                        className={cardLinkClass}
                         title="App Store"
                       >
                         <Smartphone className="h-4 w-4" />
@@ -274,37 +277,31 @@ export function Projects() {
                         href={project.playStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded-lg p-1.5 text-neutral-500 hover:bg-neutral-100 hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
+                        className={cardLinkClass}
                         title="Google Play"
                       >
                         <Smartphone className="h-4 w-4" />
                       </a>
                     )}
                     {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="rounded-lg p-1.5 text-neutral-500 hover:bg-neutral-100 hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
-                        title="Code"
-                      >
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className={cardLinkClass} title="Code">
                         <Github className="h-4 w-4" />
                       </a>
                     )}
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
         {sortedProjects.length === 0 && (
-          <p className="py-12 text-center text-neutral-500">No projects found matching your search.</p>
+          <p className="py-12 text-center text-white/50">No projects found matching your search.</p>
         )}
 
         {sortedProjects.length > 0 && totalPages > 1 && (
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">
+          <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+            <p className="text-sm text-white/50">
               Showing {(safePage - 1) * PROJECTS_PER_PAGE + 1}–
               {Math.min(safePage * PROJECTS_PER_PAGE, sortedProjects.length)} of {sortedProjects.length} projects
             </p>
@@ -313,7 +310,7 @@ export function Projects() {
                 type="button"
                 onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
                 disabled={safePage === 1}
-                className="rounded-full p-2 transition-colors disabled:cursor-not-allowed disabled:opacity-40 bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-ink-700 text-white/70 transition-colors hover:border-brand/60 hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
                 aria-label="Previous page"
               >
                 <ChevronLeft className="h-4 w-4" />
@@ -323,11 +320,12 @@ export function Projects() {
                   key={page}
                   type="button"
                   onClick={() => setCurrentPage(page)}
-                  className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
+                  className={cn(
+                    'h-10 min-w-10 rounded-lg border px-3 font-display text-sm font-semibold transition-colors',
                     safePage === page
-                      ? 'bg-black text-white dark:bg-white dark:text-black'
-                      : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700'
-                  }`}
+                      ? 'border-brand bg-brand text-white shadow-glow-sm'
+                      : 'border-white/10 bg-ink-700 text-white/70 hover:border-brand/60 hover:text-white'
+                  )}
                 >
                   {page}
                 </button>
@@ -336,7 +334,7 @@ export function Projects() {
                 type="button"
                 onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
                 disabled={safePage === totalPages}
-                className="rounded-full p-2 transition-colors disabled:cursor-not-allowed disabled:opacity-40 bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-ink-700 text-white/70 transition-colors hover:border-brand/60 hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
                 aria-label="Next page"
               >
                 <ChevronRight className="h-4 w-4" />
