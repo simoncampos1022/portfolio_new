@@ -1,27 +1,29 @@
-import type { Metadata } from 'next'
-import { Nunito_Sans, Quicksand } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import { Inter, Outfit } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { SiteBackground } from '@/components/site-background'
 
-const nunitoSans = Nunito_Sans({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-nunito-sans',
+  variable: '--font-inter',
   display: 'swap',
 })
 
-const quicksand = Quicksand({
+const outfit = Outfit({
   subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-quicksand',
+  weight: ['500', '600', '700', '800'],
+  variable: '--font-outfit',
   display: 'swap',
 })
+
+export const viewport: Viewport = {
+  themeColor: '#000000',
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://simoncampos1022.vercel.app'),
-  title: 'Simon Degala Campos - Senior Software Enigneer | Backend & Python Expert',
+  title: 'Simon Degala Campos - Senior Software Engineer | Backend & Python Expert',
   description: 'Senior Software Engineer | Backend & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
   keywords: ['Senior Software Engineer', 'Backend', 'Python', 'Machine Learning', 'Full Stack', 'Portfolio'],
   authors: [{ name: 'Simon Degala Campos' }],
@@ -35,7 +37,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://simoncampos1022.vercel.app',
-    title: 'Simon Degala Campos - Senior Software Enigneer | Backend & Python Expert',
+    title: 'Simon Degala Campos - Senior Software Engineer | Backend & Python Expert',
     description: 'Senior Software Engineer | Backend & Python Expert with 6+ years of specialization in designing and building scalable, high-performance backend systems.',
     siteName: 'Simon Degala Campos Portfolio',
     images: [
@@ -72,17 +74,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${nunitoSans.variable} ${quicksand.variable} font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <SiteBackground>
-            <div className="relative z-10 flex min-h-screen flex-col pt-16">
-              <Navbar />
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </div>
-          </SiteBackground>
-        </ThemeProvider>
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+      <body className="font-sans antialiased">
+        <div className="flex min-h-screen flex-col overflow-x-hidden">
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   )

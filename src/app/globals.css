@@ -12,13 +12,13 @@
   }
 
   body {
-    @apply bg-white text-black antialiased transition-colors duration-300;
+    @apply bg-black font-sans text-white antialiased;
     font-feature-settings: 'liga' 1, 'kern' 1;
     line-height: 1.65;
   }
 
-  html.dark body {
-    @apply bg-black text-white;
+  ::selection {
+    @apply bg-brand text-white;
   }
 
   ::-webkit-scrollbar {
@@ -27,90 +27,115 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-neutral-100;
+    @apply bg-ink-900;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply rounded bg-neutral-400;
+    @apply rounded bg-ink-600;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-neutral-600;
-  }
-
-  .dark ::-webkit-scrollbar-track {
-    @apply bg-neutral-950;
-  }
-
-  .dark ::-webkit-scrollbar-thumb {
-    @apply bg-neutral-600;
-  }
-
-  .dark ::-webkit-scrollbar-thumb:hover {
-    @apply bg-neutral-400;
+    @apply bg-brand;
   }
 }
 
 @layer components {
-  .page-bg {
-    @apply bg-white dark:bg-black;
-  }
-
-  .gradient-text {
-    @apply text-neutral-500 dark:text-neutral-400;
-  }
-
-  .gradient-bg {
-    @apply bg-black dark:bg-white;
-  }
-
   .section-padding {
-    @apply px-4 pb-20 pt-10 sm:px-6 lg:px-8;
+    @apply px-4 py-20 sm:px-6 sm:py-24 lg:px-8;
   }
 
   .container-custom {
-    @apply mx-auto max-w-6xl;
+    @apply mx-auto w-full max-w-7xl;
   }
 
-  .surface-card {
-    @apply rounded-2xl border border-neutral-200 bg-white shadow-sm transition-all duration-200 dark:border-neutral-800 dark:bg-neutral-950;
+  /* Page sections alternate between solid black and solid white bands */
+  .section-dark {
+    @apply relative isolate overflow-hidden bg-black text-white;
   }
 
-  .surface-card-hover {
-    @apply surface-card hover:border-neutral-400 hover:shadow-md dark:hover:border-neutral-600 dark:hover:bg-neutral-900;
+  .section-light {
+    @apply relative isolate overflow-hidden bg-white text-black;
   }
 
-  .stat-card {
-    @apply surface-card flex items-center gap-4 px-5 py-4;
+  .heading-display {
+    @apply font-display font-bold uppercase leading-tight tracking-tight;
+  }
+
+  .subheading {
+    @apply border-l-4 border-brand pl-4 font-display text-xl font-bold uppercase tracking-tight sm:text-2xl;
+  }
+
+  .eyebrow {
+    @apply inline-block border-b-2 border-brand pb-1.5 font-display text-sm font-semibold uppercase tracking-[0.18em] text-brand-glow;
+  }
+
+  .card-light {
+    @apply rounded-2xl border border-line bg-white transition-all duration-200;
+  }
+
+  .card-dark {
+    @apply rounded-2xl border border-white/10 bg-ink-700 transition-all duration-200;
+  }
+
+  .card-dark-hover {
+    @apply card-dark hover:border-brand/70 hover:shadow-glow-sm;
+  }
+
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border px-7 py-3 font-display text-base font-semibold uppercase tracking-wide shadow-glow-sm transition duration-300 ease-in-out hover:scale-105 hover:shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-glow focus-visible:ring-offset-2 focus-visible:ring-offset-black disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100;
   }
 
   .btn-primary {
-    @apply inline-flex cursor-pointer items-center justify-center rounded-lg bg-black px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-white dark:text-black dark:hover:bg-neutral-200 dark:focus-visible:ring-neutral-600;
+    @apply btn border-brand bg-brand text-white;
   }
 
   .btn-secondary {
-    @apply inline-flex cursor-pointer items-center justify-center rounded-lg border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-black shadow-sm transition-all hover:border-neutral-500 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-neutral-700 dark:bg-black dark:text-white dark:hover:border-neutral-500 dark:hover:bg-neutral-950 dark:focus-visible:ring-neutral-600;
+    @apply btn border-brand bg-transparent text-white;
   }
 
-  .tag {
-    @apply inline-flex items-center rounded-full border border-neutral-200 bg-neutral-100 px-2.5 py-1 text-xs font-medium text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300;
+  .btn-secondary-light {
+    @apply btn border-brand bg-transparent text-brand focus-visible:ring-offset-white;
+  }
+
+  .btn-tint {
+    @apply btn border-brand bg-brand/25 px-5 py-2 text-sm text-white;
+  }
+
+  .tag-dark {
+    @apply inline-flex items-center rounded-md border border-white/15 bg-white/5 px-2.5 py-1 text-xs font-medium text-white/80;
+  }
+
+  .tag-light {
+    @apply inline-flex items-center rounded-md border border-line bg-neutral-100 px-2.5 py-1 text-xs font-medium text-neutral-700;
+  }
+
+  .tag-brand {
+    @apply inline-flex items-center rounded-md border border-brand/50 bg-brand/10 px-2.5 py-1 font-display text-[11px] font-semibold uppercase tracking-wider text-brand;
+  }
+
+  .tag-brand-dark {
+    @apply tag-brand border-brand/70 bg-brand/15 text-brand-glow;
   }
 
   .form-input {
-    @apply w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-sm text-black transition-colors placeholder:text-neutral-400 focus:border-black focus:outline-none focus:ring-2 focus:ring-neutral-300 dark:border-neutral-700 dark:bg-black dark:text-white dark:placeholder:text-neutral-500 dark:focus:border-white dark:focus:ring-neutral-700;
+    @apply w-full rounded-lg border border-white/15 bg-ink-800 px-4 py-3 text-sm text-white transition placeholder:text-white/40 focus:border-brand focus:shadow-glow-sm focus:outline-none;
   }
 
   .nav-link {
-    @apply rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:text-black dark:text-neutral-400 dark:hover:text-white;
+    @apply font-display text-[0.8rem] font-bold uppercase tracking-wider text-white transition-colors duration-150 hover:text-brand hover:text-glow;
   }
 
   .nav-link-active {
-    @apply nav-link bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white;
+    @apply nav-link text-brand text-glow;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px #ff3c3c;
   }
 }
