@@ -34,8 +34,8 @@ export function Hero() {
   return (
     <section id="home" className="section-dark px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:px-8 lg:pb-20 lg:pt-40">
       {/* Portrait backdrop, faded into black on the text side */}
-      <div aria-hidden="true" className="absolute inset-y-0 right-0 -z-20 hidden w-[52%] lg:block">
-        <Image src={portrait} alt="" fill priority sizes="52vw" className={`object-cover object-[50%_15%] ${portraitTone}`} />
+      <div aria-hidden="true" className="absolute right-0 top-0 -z-20 hidden h-[75%] w-[39%] lg:block">
+        <Image src={portrait} alt="" fill priority sizes="39vw" className={`object-cover object-[50%_15%] ${portraitTone}`} />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/55 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/70" />
       </div>
@@ -67,9 +67,9 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-xs lg:hidden">
+          <div className="relative mx-auto w-full max-w-[15rem] lg:hidden">
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-brand/40 shadow-glow-sm">
-              <Image src={portrait} alt={portraitAlt} fill priority sizes="320px" className={`object-cover object-top ${portraitTone}`} />
+              <Image src={portrait} alt={portraitAlt} fill priority sizes="240px" className={`object-cover object-top ${portraitTone}`} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
             </div>
           </div>
