@@ -20,7 +20,8 @@ export function scrollToSection(sectionId: SectionId) {
 export function navigateToSection(sectionId: SectionId, pathname: string) {
   if (pathname === '/') {
     scrollToSection(sectionId)
-    window.history.pushState(null, '', sectionId === 'home' ? '/' : `#${sectionId}`)
+    // Keep the query string, or the projects page and filters in the address bar would be lost
+    window.history.pushState(null, '', sectionId === 'home' ? `/${window.location.search}` : `${window.location.search}#${sectionId}`)
     return
   }
 
