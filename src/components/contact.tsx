@@ -30,7 +30,7 @@ const socialLinks = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/simon-dc-288aab410',
+    href: 'https://www.linkedin.com/in/simon-campos-b66967444/',
     icon: Linkedin,
     description: 'Connect with me professionally',
   },
