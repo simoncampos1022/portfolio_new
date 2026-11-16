@@ -1,8 +1,8 @@
 'use client'
 
-import Image from 'next/image'
 import { ArrowRight, Code, Target } from 'lucide-react'
 import { scrollToSection } from '@/lib/scroll-to-section'
+import { HeroLight } from '@/components/hero-light'
 import { RedGlow } from '@/components/red-glow'
 import { cn } from '@/lib/utils'
 
@@ -14,19 +14,10 @@ const stats = [
   { label: 'Projects Completed', value: '47', icon: Code },
 ]
 
-const portrait = '/photo/photo (2).png'
-const portraitAlt = 'Simon Degala Campos - Senior Software Engineer | Backend & Python Expert'
-const portraitTone = 'grayscale contrast-125 brightness-[0.7]'
-
 export function Hero() {
   return (
     <section id="home" className="section-dark px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:px-8 lg:pb-20 lg:pt-40">
-      {/* Portrait backdrop, faded into black on the text side */}
-      <div aria-hidden="true" className="absolute right-0 top-0 -z-20 hidden h-[58rem] max-h-full w-[39%] lg:block">
-        <Image src={portrait} alt="" fill priority sizes="39vw" className={`object-cover object-[50%_15%] ${portraitTone}`} />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/55 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/70" />
-      </div>
+      <HeroLight />
       <RedGlow className="-left-60 top-1/4 h-[48rem] w-[48rem]" />
       <RedGlow className="right-[14%] top-[58%] hidden h-[32rem] w-[32rem] opacity-60 lg:block" />
 
@@ -51,12 +42,6 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[15rem] lg:hidden">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-brand/40 shadow-glow-sm">
-              <Image src={portrait} alt={portraitAlt} fill priority sizes="240px" className={`object-cover object-top ${portraitTone}`} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            </div>
-          </div>
         </div>
 
         <div className="mt-16 rounded-2xl border border-white/10 bg-ink-700/80 p-6 backdrop-blur-sm sm:p-8 lg:mt-24">
