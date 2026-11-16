@@ -33,8 +33,24 @@ module.exports = {
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
+        'beam-sway': 'beamSway 9s ease-in-out infinite alternate',
+        'glow-breathe': 'glowBreathe 7s ease-in-out infinite',
+        'ember-rise': 'emberRise 8s ease-in infinite',
       },
       keyframes: {
+        beamSway: {
+          '0%': { transform: 'rotate(var(--beam-from, -16deg))', opacity: '0.55' },
+          '100%': { transform: 'rotate(var(--beam-to, -4deg))', opacity: '1' },
+        },
+        glowBreathe: {
+          '0%, 100%': { transform: 'scale(0.92)', opacity: '0.7' },
+          '50%': { transform: 'scale(1.08)', opacity: '1' },
+        },
+        emberRise: {
+          '0%': { transform: 'translateY(0) scale(0.6)', opacity: '0' },
+          '15%': { opacity: '0.9' },
+          '100%': { transform: 'translateY(-170px) scale(1)', opacity: '0' },
+        },
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
