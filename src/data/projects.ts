@@ -777,27 +777,6 @@ export const projects: Project[] = [
     category: ['AI/ML'],
     gradient: 'from-rose-500 to-pink-500'
   },
-  // Project 16: Outlook Account Creator Automation - Images: /public/projects/Outlook-Creator/
-  {
-    id: 16,
-    title: 'Outlook Account Creator Automation',
-    subtitle: 'Web scraper and Automation tool',
-    description: 'Created a web scraper and automation tool to create the outlook account automatically with using bypassing captcha and turning proxy.',
-    image: '/projects/Outlook-Creator/outlook-creator.png',
-    images: [
-      '/projects/Outlook-Creator/outlook-creator.png'
-    ],
-    technologies: ['Puppeteer', 'Node.js', 'JavaScript', 'Proxy', 'Captcha', 'Outlook API'],
-    features: [
-      'Web scraper and automation tool to create the outlook account automatically with using bypassing captcha and turning proxy.',
-      'Bypassing captcha and turning proxy',
-      'Creating the outlook account automatically',
-    ],
-    liveUrl: 'https://drive.google.com/file/d/1JeCRS-JJ2K1p13_XWFFa1BCS1qOrMMdl/view?usp=drive_link',
-    githubUrl: 'https://github.com/simoncampos1022/Outlook-auto-creator-puppeteer',
-    category: ['full-stack'],
-    gradient: 'from-rose-500 to-pink-500'
-  },
   // Project 17: Scene Text Recognition System - Images: /public/projects/Scene Text Recognition/
   {
     id: 17,
