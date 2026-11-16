@@ -8,7 +8,7 @@ import { RedGlow } from '@/components/red-glow'
 
 const socialLinks = [
   { name: 'Email', href: 'mailto:simon.campos1022@gmail.com', icon: Mail },
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/simon-dc-288aab410', icon: Linkedin },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/simon-campos-b66967444/', icon: Linkedin },
   { name: 'Telegram', href: 'https://t.me/simoncampos1022', icon: SiTelegram },
   { name: 'Calendly', href: 'https://calendly.com/simon-campos1022/30min', icon: CalendarDays },
 ]
