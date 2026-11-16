@@ -75,7 +75,7 @@ export default function ProjectDetailPage() {
         <div className="text-center">
           <h1 className="heading-display mb-6 text-3xl text-white">Project not found</h1>
           <button
-            onClick={() => router.push('/#projects')}
+            onClick={() => router.push(`/${window.location.search}#projects`)}
             className="btn-primary"
           >
             Back to Projects
@@ -110,7 +110,7 @@ export default function ProjectDetailPage() {
             <div className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center sm:gap-6">
               {/* Back Button */}
               <button
-                onClick={() => router.push('/#projects')}
+                onClick={() => router.push(`/${window.location.search}#projects`)}
                 className="flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-wider text-white/70 transition-colors hover:text-brand"
               >
                 <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -121,7 +121,7 @@ export default function ProjectDetailPage() {
                 {previousProject && (
                   <button
                     onClick={() => {
-                      router.push(`/projects/${previousProject.id}`)
+                      router.push(`/projects/${previousProject.id}${window.location.search}`)
                       setCurrentImageIndex(0)
                     }}
                     className={pagerButtonClass}
@@ -135,7 +135,7 @@ export default function ProjectDetailPage() {
                 {nextProject && (
                   <button
                     onClick={() => {
-                      router.push(`/projects/${nextProject.id}`)
+                      router.push(`/projects/${nextProject.id}${window.location.search}`)
                       setCurrentImageIndex(0)
                     }}
                     className={pagerButtonClass}
@@ -341,7 +341,7 @@ export default function ProjectDetailPage() {
               {previousProject ? (
                 <button
                   onClick={() => {
-                    router.push(`/projects/${previousProject.id}`)
+                    router.push(`/projects/${previousProject.id}${window.location.search}`)
                     setCurrentImageIndex(0)
                   }}
                   className="card-dark-hover group flex w-full items-center gap-3 p-4 text-left sm:w-auto sm:max-w-[48%]"
@@ -359,7 +359,7 @@ export default function ProjectDetailPage() {
               {nextProject ? (
                 <button
                   onClick={() => {
-                    router.push(`/projects/${nextProject.id}`)
+                    router.push(`/projects/${nextProject.id}${window.location.search}`)
                     setCurrentImageIndex(0)
                   }}
                   className="card-dark-hover group ml-auto flex w-full items-center justify-end gap-3 p-4 text-right sm:w-auto sm:max-w-[48%]"

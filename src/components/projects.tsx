@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useLayoutEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Github, Eye, Search, ArrowDownUp, ArrowRight, ChevronLeft, ChevronRight, Smartphone } from 'lucide-react'
 import Image from 'next/image'
@@ -9,11 +9,19 @@ import { SectionHeader } from '@/components/section-header'
 import { ProjectMedia } from '@/components/project-media'
 import { RedGlow } from '@/components/red-glow'
 import { cn, isSvgImage } from '@/lib/utils'
+import {
+  defaultProjectListState,
+  parseProjectListState,
+  projectCategories as categories,
+  projectListQuery,
+  projectSortOptions as sortOptions,
+  type ProjectSort as SortOption,
+} from '@/lib/projects-query'
 
-const categories = ['All', 'AI/ML', 'Frontend', 'Mobile', 'Backend', 'FullStack', 'Trading', 'DevOps']
-const sortOptions = ['Time', 'A-Z', 'Size'] as const
-type SortOption = (typeof sortOptions)[number]
 const PROJECTS_PER_PAGE = 9
+
+// useLayoutEffect warns when rendered on the server; the effect itself only needs the browser
+const useBrowserLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect
 
 const projectOrder = new Map(projects.map((project, index) => [project.id, index]))
 
@@ -40,11 +48,42 @@ const cardLinkClass = 'rounded-lg p-1.5 text-neutral-500 transition-colors hover
 
 export function Projects() {
   const router = useRouter()
-  const [selectedCategory, setSelectedCategory] = useState('All')
-  const [searchQuery, setSearchQuery] = useState('')
-  const [sortBy, setSortBy] = useState<SortOption>('Time')
-  const [sortReverse, setSortReverse] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
+  const [selectedCategory, setSelectedCategory] = useState(defaultProjectListState.category)
+  const [searchQuery, setSearchQuery] = useState(defaultProjectListState.search)
+  const [sortBy, setSortBy] = useState<SortOption>(defaultProjectListState.sort)
+  const [sortReverse, setSortReverse] = useState(defaultProjectListState.reverse)
+  const [currentPage, setCurrentPage] = useState(defaultProjectListState.page)
+  // The list state lives in the URL (?page=2&category=...), so coming back from a project shows the same page.
+  // The server renders the defaults; the saved state is read from the address bar before the first paint.
+  const [urlRestored, setUrlRestored] = useState(false)
+
+  useBrowserLayoutEffect(() => {
+    const saved = parseProjectListState(window.location.search)
+    setSelectedCategory(saved.category)
+    setSearchQuery(saved.search)
+    setSortBy(saved.sort)
+    setSortReverse(saved.reverse)
+    setCurrentPage(saved.page)
+    setUrlRestored(true)
+  }, [])
+
+  // Changing a filter or the sort order starts again from the first page
+  const changeCategory = (category: string) => {
+    setSelectedCategory(category)
+    setCurrentPage(1)
+  }
+  const changeSearch = (query: string) => {
+    setSearchQuery(query)
+    setCurrentPage(1)
+  }
+  const changeSort = (option: SortOption) => {
+    setSortBy(option)
+    setCurrentPage(1)
+  }
+  const toggleSortReverse = () => {
+    setSortReverse((prev) => !prev)
+    setCurrentPage(1)
+  }
 
   const mapCategory = (
     category: string | string[]
@@ -92,16 +131,29 @@ export function Projects() {
     return sortReverse ? -result : result
   })
 
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [selectedCategory, searchQuery, sortBy, sortReverse])
-
   const totalPages = Math.max(1, Math.ceil(sortedProjects.length / PROJECTS_PER_PAGE))
   const safePage = Math.min(currentPage, totalPages)
   const paginatedProjects = sortedProjects.slice(
     (safePage - 1) * PROJECTS_PER_PAGE,
     safePage * PROJECTS_PER_PAGE
   )
+
+  const listQuery = projectListQuery({
+    category: selectedCategory,
+    search: searchQuery,
+    sort: sortBy,
+    reverse: sortReverse,
+    page: safePage,
+  })
+
+  // Keep the address bar in step with the list, in place so the browser's Back button is not filled with every click
+  useEffect(() => {
+    if (!urlRestored) return
+    const { pathname, search, hash } = window.location
+    if (search !== listQuery) {
+      window.history.replaceState(window.history.state, '', `${pathname}${listQuery}${hash}`)
+    }
+  }, [urlRestored, listQuery])
 
   return (
     <section id="projects" className="section-dark section-padding">
@@ -136,7 +188,7 @@ export function Projects() {
                 <button
                   key={category}
                   type="button"
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => changeCategory(category)}
                   className={cn('flex-1 px-5 py-3.5 text-sm', segmentClass(selectedCategory === category))}
                 >
                   {category}
@@ -151,7 +203,7 @@ export function Projects() {
               <input
                 type="text"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => changeSearch(e.target.value)}
                 placeholder="Search projects or technologies..."
                 className="form-input pl-11"
               />
@@ -163,7 +215,7 @@ export function Projects() {
                   <button
                     key={option}
                     type="button"
-                    onClick={() => setSortBy(option)}
+                    onClick={() => changeSort(option)}
                     className={cn('px-4 py-2.5 text-xs', segmentClass(sortBy === option))}
                   >
                     {option}
@@ -172,7 +224,7 @@ export function Projects() {
               </div>
               <button
                 type="button"
-                onClick={() => setSortReverse((prev) => !prev)}
+                onClick={toggleSortReverse}
                 aria-label={sortReverse ? 'Sort ascending' : 'Sort descending'}
                 title={sortReverse ? 'Reverse to ascending' : 'Reverse to descending'}
                 className={cn(
@@ -192,7 +244,7 @@ export function Projects() {
           {paginatedProjects.map((project) => (
             <article
               key={project.id}
-              onClick={() => router.push(`/projects/${project.id}`)}
+              onClick={() => router.push(`/projects/${project.id}${listQuery}`)}
               className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-white text-black transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#e60000,0_0_28px_rgba(230,0,0,0.45)]"
             >
               <div className="relative h-56 overflow-hidden bg-neutral-100 sm:h-60">
